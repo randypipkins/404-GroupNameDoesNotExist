@@ -5,6 +5,20 @@
     line-height: 1.6;
     font-family: system-ui;
 }
+/** navigation bar style **/
+nav.main-nav{
+    padding-left: 2rem;
+    border-bottom: 2px solid black;
+    background-color: #fad2e0;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+nav.main-nav h1 {
+    font-size: 1.5rem;
+    font-family: 'Courgette';
+
+}
 /** main section styling **/
 section.main-section{
     background-color: #fad2e0;
@@ -24,6 +38,11 @@ section.main-section article{
 section.main-section article h1 {
     margin-bottom: 2rem;
     font-size: 2.5rem;
+    font-family: 'Open Sans';
+}
+section.main-section article h2{
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
     font-family: 'Open Sans';
 }
 div {
