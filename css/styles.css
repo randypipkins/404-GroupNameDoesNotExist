@@ -34,6 +34,7 @@ section.main-section article{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-left: 0.6em;
 }
 section.main-section article h1 {
     margin-bottom: 2rem;
@@ -46,6 +47,7 @@ section.main-section article h2{
     font-family: 'Open Sans';
     display: flex;
     margin-bottom: 14rem;
+    padding-left: 0.6em;
 }  
 section.main-section article a {
     color: black;
