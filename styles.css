@@ -7,5 +7,7 @@
 }
 /** main section styling **/
 section.main-section{
-    background-color: #ffafcc;
+    background-color: #fad2e0;
+    height: 100vh;
+    padding: 2rem;
 }
