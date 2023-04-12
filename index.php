@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "CSCD350GroupWeb";
+    $password = "CSCD378GroupWeb";
 
     //Create connection
     $conn = new mysqli($servername, $username, $password);
