@@ -9,7 +9,7 @@
 nav.main-nav{
     padding-left: 2rem;
     border-bottom: 2px solid black;
-    background-color: #fad2e0;
+    background-color: #ffdad8;
     height: 60px;
     display: flex;
     align-items: flex-end;
@@ -21,7 +21,7 @@ nav.main-nav h1 {
 }
 /** main section styling **/
 section.main-section{
-    background-color: #fad2e0;
+    background-color: #ffdad8;
     height: 100vh;
     padding: 4rem;
     display: flex;
