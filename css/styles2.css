@@ -35,3 +35,7 @@ article.form-container {
     height: 90%;
     background-color: whitesmoke;
 }
+article.form-container h1 {
+    font-size: 3rem;
+    text-align: center;
+}
