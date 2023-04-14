@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+    font-family: system-ui;
+}
+/** navigation bar style **/
+nav.main-nav{
+    padding-left: 2rem;
+    border-bottom: 2px solid black;
+    background-color: #bde0fe;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+nav.main-nav h1 {
+    font-size: 1.5rem;
+    font-family: 'Courgette';
+}
