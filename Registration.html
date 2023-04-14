@@ -20,6 +20,23 @@
             <h1>
                 <strong>Registration</strong>
             </h1>
+            <form action="" method="POST" class="form">
+                <div>
+                    <label for="fullName" class="fullName"><strong>Enter Full Name:</strong></label>
+                    <br>
+                    <input type="text" class="fullNametxt" name="fullName" id="fullName" required>
+                    <br>
+                    <label for="email" class="email"><strong>Enter Email Address:</strong></label>
+                    <br>
+                    <input type="text" class="borderE" name="email" id="email" pattern="[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" placeholder="example@email.com" required>
+                    <br>
+                    <label for="password" class="password"><strong>Enter Password:</strong></label>
+                    <br>
+                    <input type="password"class="borderP" name="secret">
+                    <br>
+                    <button type="submit" class="login">Login</button>
+                </div>
+            </form>
         </article>
     </section>
 </body>
