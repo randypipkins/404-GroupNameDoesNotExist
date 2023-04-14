@@ -54,5 +54,14 @@ section.main-section article a {
 }  
 div {
     border: 2px solid blue;
-
 }
+/*** Form container styling ***/
+article.form-container {
+    position: relative;
+    border: 2px solid black;
+    display:flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: whitesmoke;
+}
+
