@@ -51,9 +51,6 @@ section.main-section article h2{
 section.main-section article a {
     color: black;
 }  
-div {
-    /**border: 2px solid blue;*/
-}
 /*** Form container styling ***/
 article.form-container {
     position: relative;
@@ -107,5 +104,8 @@ button.login{
   border:solid black;
   background-color: black;
   color: whitesmoke;
+}
+a.forgot{
+    color:solid black
 }
 
