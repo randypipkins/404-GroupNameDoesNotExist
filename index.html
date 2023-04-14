@@ -30,12 +30,15 @@
             <form action="" method="POST" class="form">
                 <img src="img/loginPhoto.jpg" alt="wedding photo" class="form-image">
                 <div>
-                    <label for="email">Email Address</label>
+                    <label for="email" class="email"><strong>Email Address:</strong></label>
                     <br>
-                    <input type="text" name="email" id="email" pattern="[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" placeholder="example@email.com" required>
-                    <label for="password">Password</label>
-                    <input type="password" name="secret">
-                    <button type="submit">Submit</button>
+                    <input type="text" class="borderE" name="email" id="email" pattern="[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" placeholder="example@email.com" required>
+                    <br>
+                    <label for="password" class="password"><strong>Password:</strong></label>
+                    <br>
+                    <input type="password"class="borderP" name="secret">
+                    <br>
+                    <button type="submit" class="login">Login</button>
                 </div>
             </form>
         </article>

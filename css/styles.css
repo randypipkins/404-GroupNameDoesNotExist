@@ -28,7 +28,7 @@ section.main-section{
     justify-content: space-around;
 }
 section.main-section article{
-    border: 2px solid red;
+    /**border: 2px solid red;**/
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -52,12 +52,12 @@ section.main-section article a {
     color: black;
 }  
 div {
-    border: 2px solid blue;
+    /**border: 2px solid blue;*/
 }
 /*** Form container styling ***/
 article.form-container {
     position: relative;
-    border: 2px solid black;
+    border: 3px solid black;
     display:flex;
     flex-direction: column;
     width: 40%;
@@ -68,10 +68,10 @@ form.form {
 }
 
 form div {
-    border: 2px solid rebeccapurple;
     position: relative;
     top: 60%;
     padding: 3.3rem;
+    text-align: center;
 }
 
 /**** Form image styling **/
@@ -82,5 +82,27 @@ img.form-image {
     /* absolute children -breaks from normal flow*/
     top: 0;
     left: 0;
+    border-bottom: 3px solid black;
+}
+label.email{
+    font-family: 'Open Sans';
+}
+input.borderE{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    padding: .10px 30px;
+    text-align: center;
+}
+label.password{
+    font-family: 'Open Sans';
+}
+input.borderP{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    padding: .10px 30px;
+}
+button.login{
+  font-size: .70em;
+  padding: .10px 60px;
 }
 
