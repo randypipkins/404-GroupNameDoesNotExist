@@ -104,5 +104,8 @@ input.borderP{
 button.login{
   font-size: .70em;
   padding: .10px 60px;
+  border:solid black;
+  background-color: black;
+  color: whitesmoke;
 }
 
