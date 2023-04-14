@@ -25,8 +25,7 @@ section.main-section{
     height: 100vh;
     padding: 4rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 section.main-section article{
     border: 2px solid red;
@@ -63,5 +62,25 @@ article.form-container {
     flex-direction: column;
     width: 40%;
     background-color: whitesmoke;
+}
+form.form {
+    background-color: whitesmoke;
+}
+
+form div {
+    border: 2px solid rebeccapurple;
+    position: relative;
+    top: 60%;
+    padding: 3.3rem;
+}
+
+/**** Form image styling **/
+img.form-image {
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    /* absolute children -breaks from normal flow*/
+    top: 0;
+    left: 0;
 }
 
