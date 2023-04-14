@@ -32,8 +32,12 @@ article.form-container {
     display:flex;
     flex-direction: column;
     width: 90%;
-    height: 90%;
+    height: 70%;
     background-color: whitesmoke;
+    text-align: center;
+}
+article.form-container div {
+    margin-top: 3%;
 }
 article.form-container h1 {
     font-size: 3rem;
@@ -51,11 +55,13 @@ input.borderE{
 }
 label.password{
     font-family: 'Open Sans';
+    position: relative;
 }
-input.borderP{
+input.borderP{ 
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     padding: .10px 30px;
+    margin-top: 4px;
 }
 button.submit{
   font-size: .70em;
