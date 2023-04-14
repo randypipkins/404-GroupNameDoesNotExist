@@ -18,3 +18,10 @@ nav.main-nav h1 {
     font-size: 1.5rem;
     font-family: 'Courgette';
 }
+section.main-section{
+    background-color: #bde0fe;
+    height: 100vh;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+}
