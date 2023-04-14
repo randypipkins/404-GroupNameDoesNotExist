@@ -25,3 +25,13 @@ section.main-section{
     display: flex;
     justify-content: space-around;
 }
+/*** container design***/
+article.form-container {
+    position: relative;
+    border: 3px solid black;
+    display:flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    background-color: whitesmoke;
+}
