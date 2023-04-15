@@ -178,4 +178,51 @@ button.submit2{
   color: whitesmoke;
   margin-top: 15px;
 }
+/*** css file for forgotpassword ********************************************************/
+nav.main-nav3{
+    padding-left: 2rem;
+    border-bottom: 2px solid black;
+    background-color: #bde0fe;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
+nav.main-nav3 h1 {
+    font-size: 1.5rem;
+    font-family: 'Courgette';
+}
+/*** background color ***/
+section.main-section3{
+    background-color: #bde0fe;
+    height: 100vh;
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+}
+/*** container design***/
+article.form-container3 {
+    width: 40%;
+    background-color: whitesmoke;
+    text-align: center;
+    border: 3px solid black;
+    height: 300px;
+}
+label.email3{
+    font-family: 'Open Sans';
+
+}
+input.borderE3{
+    border: 2px solid black;
+    padding: .10px 30px;
+    text-align: center;
+}
+button.submit3{
+    font-size: .70em;
+    padding: .10px 60px;
+    border:solid black;
+    background-color: black;
+    color: whitesmoke;
+    margin-top: 15px;
+  }
+
 
