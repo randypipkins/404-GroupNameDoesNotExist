@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -16,8 +17,7 @@ nav.main-nav{
 }
 nav.main-nav h1 {
     font-size: 1.5rem;
-    font-family: 'Courgette';
-
+    font-family: 'Pacifico', cursive;
 }
 /** main section styling **/
 section.main-section{
@@ -121,7 +121,7 @@ nav.main-nav2{
 }
 nav.main-nav2 h1 {
     font-size: 1.5rem;
-    font-family: 'Courgette';
+    font-family: 'Pacifico', cursive;
 }
 /*** background color ***/
 section.main-section2{
@@ -144,6 +144,7 @@ article.form-container2 h1 {
     font-size: 3rem;
     text-align: center;
     font-family: 'Open Sans';
+
 }
 input.fullNametxt {
     padding: .10px 30px;
@@ -189,7 +190,7 @@ nav.main-nav3{
 }
 nav.main-nav3 h1 {
     font-size: 1.5rem;
-    font-family: 'Courgette';
+    font-family: 'Pacifico', cursive;
 }
 /*** background color ***/
 section.main-section3{
@@ -206,6 +207,12 @@ article.form-container3 {
     text-align: center;
     border: 3px solid black;
     height: 300px;
+}
+article.form-container3 h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Open Sans';
+    
 }
 label.email3{
     font-family: 'Open Sans';
