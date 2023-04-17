@@ -250,5 +250,9 @@ button.submit3{
   button.submit3:hover {
     background-color: grey;
 }
+/**********************Partipant dashboard************************/
+body {
+    font-family: 'Open Sans';
+}
 
 
