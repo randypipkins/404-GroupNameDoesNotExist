@@ -191,6 +191,10 @@ button.submit2{
   color: whitesmoke;
   margin-top: 15px;
 }
+button.submit2:hover {
+    background-color: grey;
+}
+
 /*** css file for forgotpassword ********************************************************/
 nav.main-nav3{
     padding-left: 2rem;
@@ -242,6 +246,9 @@ button.submit3{
     background-color: black;
     color: whitesmoke;
     margin-top: 15px;
-  }
+}
+  button.submit3:hover {
+    background-color: grey;
+}
 
 
