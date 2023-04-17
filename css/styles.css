@@ -6,6 +6,9 @@
     line-height: 1.6;
     font-family: system-ui;
 }
+a {
+    color: black;
+}
 /** navigation bar style **/
 nav.main-nav{
     padding-left: 2rem;
@@ -48,8 +51,10 @@ section.main-section article h2{
     margin-bottom: 14rem;
     padding-left: 0.6em;
 }  
-section.main-section article a {
-    color: black;
+section.main-section article a:hover {
+
+    color: white
+
 }  
 /*** Form container styling ***/
 article.form-container {
@@ -104,9 +109,6 @@ button.login{
   background-color: black;
   color: whitesmoke;
   margin-top: 15px;
-}
-a.forgot{
-    color:solid black
 }
 /*** css file for Registration ********************************************************/
 
