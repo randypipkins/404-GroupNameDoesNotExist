@@ -251,21 +251,21 @@ button.submit3{
     background-color: grey;
 }
 /**********************Partipant dashboard************************/
+nav.top-nav{
+    padding-left: 2rem;
+    border-bottom: 2px solid black;
+    background-color: #ffdad8;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+}
 body {
     font-family: 'Open Sans';
     margin: 0;
     background-color: whitesmoke;
-  /** option changes background white **/
   }
   
   /* Layout */
-  
-  #main {
-    padding: 4% 1.5em;
-    max-width: 55em;
-    margin: 0 auto;
-    background-color: whitesmoke;
-  }/** not important rn but might use it ***/
   
   /* Menu Styles */
   
