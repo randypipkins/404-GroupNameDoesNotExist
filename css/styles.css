@@ -253,7 +253,6 @@ button.submit3{
 /**********************Partipant dashboard************************/
 nav.top-nav{
     padding-left: 2rem;
-    border-bottom: 2px solid black;
     background-color: #ffdad8;
     height: 60px;
     display: flex;
@@ -264,122 +263,81 @@ body {
     margin: 0;
     background-color: whitesmoke;
   }
-  
-  /* Layout */
-  
   /* Menu Styles */
-  
   .main-nav {
       position: fixed;
       z-index: 999;
-  }/** not import rn but might use it **/
+  }
   .menu ul {
-    margin: 0;
-    padding: 0;
     list-style: none;
   }
-  
   .panel {
     border: none;
-    background-color:whitesmoke;
-    padding: 0;
   }
-  
   .nav {
-      background: whitesmoke;
-      position: relative;
-      display: block;
-      text-align: center;
-      padding: 13px 0;
-      width: 50px;
+    background: whitesmoke;
+    position: relative;
+    display: block;
+    text-align: center;
+    padding: 13px 0;
+    width: 50px;
     height: 73px;
-      left: 0;
+    left: 0;
     top: 0;
-      z-index: 1000;
+    z-index: 1000;
     cursor: pointer;
   }
-  
   .nav:before {
-      content:"\2630"; /* hamburger icon */
-      display: block;
+    content:"\2630"; 
+    display: block;
     color: #000;
     line-height: 32px;
     font-size: 16px;
   }
-  .nav:hover:before {
-    color: #777;
-  }
-  
-  .main-nav .menu li {
-      position: relative;
-  }
-  
-  
-  .menu,
-  .menu a,
-  .menu a:visited {
+  .menu a, .menu a:visited {
     color: #aaa;
-    text-decoration: none!important;
-      position: relative;
+    text-decoration: none;
+    position: relative;
   }
-  
   .menu a {
     display: block;
     white-space: nowrap;
     padding: 1em;
     font-size: 14px;
   }
-  
   .menu a:hover {
       color: whitesmoke;
   }
-  
-  .menu input[type="checkbox"] {
-    display: none;
-  }
-  
-  input#menu[type="checkbox"] {
-    display: none;
-  }
-  
-  
   .menu {
-      position: absolute;
-      display: block;
-      left: -200px;
+    position: absolute;
+    display: block;
+    left: -200px;
     top: 0;
-      width: 250px;
+    width: 250px;
     transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1);
     background-color: #000;
-      z-index: 999;
+    z-index: 999;
   }
-  
   .container {
     position: relative;
-    height: calc(100vh - 73px)!important;
+    height: calc(100vh - 73px);
     overflow-y: auto;
     border-top: 73px solid whitesmoke;
     z-index: -1;
     display:block;
   }
-  
   .menu a.IDoCrew {
-    position: absolute!important;
+    position: absolute;
     top: 11px;
     left: 55px;
     display: block;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Pacifico', cursive;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
     font-size: 21px;
     padding: 10px;
   }
-  
-  .menu a.logotype span {
-    font-weight: 400;
-  }
-  
   .menu:hover {
       position: absolute;
       left: 0;
