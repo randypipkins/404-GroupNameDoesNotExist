@@ -10,16 +10,14 @@ a {
     color: black;
     transition: color 500ms ease;
 }
-a:hover {
-    cursor: pointer;
-}
-button:hover {
+a:hover, button:hover {
     cursor: pointer;
 }
 /** navigation bar style **/
 nav.main-nav{
     padding-left: 2rem;
     border-bottom: 2px solid black;
+    width: 100%;
     background-color: #ffdad8;
     height: 60px;
     display: flex;
