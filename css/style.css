@@ -52,3 +52,6 @@ body {
   border-radius: 2rem;
   padding: 2px 20px;
 }
+#button {
+  background-color: black;
+}
