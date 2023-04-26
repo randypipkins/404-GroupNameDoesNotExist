@@ -13,11 +13,11 @@ if($conn->connect_error){
 }
 
 //user registration
-if(isset($_POST['register'])){
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $passwrd = $_POST['passwrd'];
-    $email = $_POST['email'];
+if(isset($_POST[`users`])){
+    $first_name = $_POST[`first_name`];
+    $last_name = $_POST[`last_name`];
+    $passwrd = $_POST[`passwrd`];
+    $email = $_POST[`email`];
 
     //check if the name already exists
     $stmt = $db -> prepare(`SELECT * FROM users WHERE first_name = ? AND last_name = ?`);
@@ -30,10 +30,10 @@ if(isset($_POST['register'])){
     }
 
     //validate the password strength
-    $uppercase = preg_match('@[A-Z]@', $passwrd);
-    $lowercase = preg_match('@[a-z]@', $passwrd);
-    $number = preg_match('@[0-9]@', $passwrd);
-    $specialChar = preg_match('@[^\w]@', $passwrd);
+    $uppercase = preg_match(`@[A-Z]@`, $passwrd);
+    $lowercase = preg_match(`@[a-z]@`, $passwrd);
+    $number = preg_match(`@[0-9]@`, $passwrd);
+    $specialChar = preg_match(`@[^\w]@`, $passwrd);
 
     if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) < 8){
         echo "Password needs to be at least 8 characters and must contain at least 1 uppercase, 1 
