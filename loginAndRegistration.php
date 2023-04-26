@@ -44,7 +44,7 @@ if(isset($_POST['register'])){
 
     //insert the new user into the database
     $stmt = $db -> prepare("INSERT INTO users (first_name, last_name, passwrd, email) VALUES (?, ?, ?, ?)");
-    $stmt -> execute([$first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email]);
+    $stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email]);
     echo "You have been successfully registered";
 }
 
