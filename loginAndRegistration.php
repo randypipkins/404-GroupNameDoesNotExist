@@ -29,6 +29,19 @@ if(isset($_POST['register'])){
         exit;
     }
 
+    //validate the password strength
+    $uppercase = preg_match('@[A-Z]@', $passwrd);
+    $lowercase = preg_match('@[a-z]@', $passwrd);
+    $number = preg_match('@[0-9]@', $passwrd);
+    $specialChar = preg_match('@[^\w]@', $passwrd);
+
+    if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) < 8){
+        echo "Password needs to be at least 8 characters and must contain at least 1 uppercase, 1 
+        lowercase, 1 number, and 1 special character.";
+    } else{
+        echo "Strong password.";
+    }
+
     //insert the new user into the database
     $stmt = $db -> prepare("INSERT INTO users (first_name, last_name, passwrd, email) VALUES (?, ?, ?, ?)");
     $stmt -> execute([$first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email]);
