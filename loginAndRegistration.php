@@ -20,7 +20,7 @@ if(isset($_POST[`users`])){
     $email = $_POST[`email`];
 
     //check if the name already exists
-    $stmt = $db -> prepare(`SELECT * FROM users WHERE first_name = ? AND last_name = ?`);
+    $stmt = $db -> prepare("SELECT * FROM `users` WHERE first_name = ? AND last_name = ?;");
     $stmt -> bindParam(1, $first_name, PDO::PARAM_STR, 50);
     $stmt -> bindParam(2, $last_name, PDO::PARAM_STR, 50);
     $stmt -> execute();
@@ -43,7 +43,7 @@ if(isset($_POST[`users`])){
     }
 
     //insert the new user into the database
-    $stmt = $db -> prepare(`INSERT INTO users (first_name, last_name, passwrd, email) VALUES (?, ?, ?, ?)`);
+    $stmt = $db -> prepare("INSERT INTO `users` (first_name, last_name, passwrd, email) VALUES (?, ?, ?, ?);");
     $stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email]);
     echo "You have been successfully registered";
 }
