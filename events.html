@@ -78,23 +78,22 @@
                     <br>
                     <textarea class="desc" name="desc" id="desc" rows="4" cols="50">Description...</textarea>
                     <br>
-                    <label for="date"><strong>Select a date:</strong></label>
-                    <p><input type="date" name="Date" required></p>
-                    <label for="Time"><strong>Select a time:</strong></label>
+                    <label for="date" name="date"><strong>Select a date:</strong></label>
+                    <p><input type="date" name="Date" id="Date" required></p>
+                    <label for="Time" name="Time"><strong>Select a time:</strong></label>
                     <br>
-                    <input type="time"class="Time" name="Time" required>
+                    <input type="time"class="Time" name="Time" id="Time" required>
                     <br>
-                    <label class="form-label" for="form7Example4"><strong>Enter Address:</strong></label>
+                    <label class="form-label" name="address" for="form7Example4"><strong>Enter Address:</strong></label>
                     <br>
                     <input type="text" id="form7Example4" class="form-control" required/>
-                    <br>
                     <label class ="capacity" for="capacity" ><strong>Enter capacity:</strong></label>
                     <br>
                     <input type="number" id="Number" max="1000" min="1">
                     <br>
                     <label for="type" class="type"><strong>Choose event type:</strong></label>
                     <br>
-                    <select name="Type" class="Type">
+                    <select name="Type" class="Type" id="Type">
                         <option value="Bridal Shower">Bridal Shower</option>
                         <option value="Bachelorette Party">Bachelorette Party</option>
                         <option value="Bachelor Party">Bachelor Party</option>
@@ -104,14 +103,13 @@
                         <option value="Honeymoon">Honeymoon</option>
                         <option value="Other">Other</option>
                     </select>
-                    <br>
-                    <button type="submit" class="submit">Submit</button>
                 </div>
             </form>
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
+              <button type="submit" class="submit">Submit</button>
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
       

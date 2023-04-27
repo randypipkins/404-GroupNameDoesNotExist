@@ -59,12 +59,62 @@ body {
 /*** modal add event in event organizer ***/
 div.modal-header {
   background-color: #bde0fe;
+  border-bottom: solid black;
 }
 div.modal-body {
   background-color: #ffdad8;
+  text-align: center;
 }
-
-
+label.title {
+  margin-top: 10px;
+}
+#Title {
+  width: 500px;
+  margin-top: 10px;
+}
+label.description {
+  margin-top: 10px;
+}
+#desc {
+  width: 500px;
+  margin-top: 10px;
+}
+label.date {
+  margin-top: 10px;
+}
+#Date {
+  width: 140px;
+  margin-top: 10px;
+}
+label.Time {
+  margin-top: 10px;
+}
+#Time {
+  width: 140px;
+  margin-top: 10px;
+}
+#form7Example4 {
+  width: 500px;
+  margin-top: 10px;
+  margin-left: 430px;
+}
+label.form-label {
+  margin-top: 10px;
+}
+label.capacity {
+  margin-top: 10px;
+}
+#Number {
+  width: 140px;
+  margin-top: 10px;
+}
+label.type {
+  margin-top: 10px;
+}
+#Type {
+  width: 140px;
+  margin-top: 10px;
+}
 button.submit{
   font-size: .70em;
   padding: .10px 60px;
@@ -72,7 +122,13 @@ button.submit{
   background-color: black;
   color: whitesmoke;
   margin-top: 15px;
+  margin-right: 530px;
 }
 button.submit:hover {
   background-color: grey;
+}
+div.modal-footer {
+  background-color: #bde0fe;
+  border-top: solid black;
+  text-align: center;
 }
