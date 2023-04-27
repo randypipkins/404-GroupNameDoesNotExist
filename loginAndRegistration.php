@@ -18,7 +18,7 @@ if(isset($_POST[`users`])){
     $last_name = $_POST[`last_name`];
     $passwrd = $_POST[`passwrd`];
     $email = $_POST[`email`];
-    $roles = $_POST[`Roles`];
+    $user_role = $_POST[`Roles`];
 
     //check if the name already exists
     $stmt = $db -> prepare("SELECT * FROM `users` WHERE first_name = ? AND last_name = ?;");
@@ -44,7 +44,7 @@ if(isset($_POST[`users`])){
     }
 
     //insert the new user into the database
-    $stmt = $db -> prepare("INSERT INTO `users` (first_name, last_name, passwrd, email, roles) VALUES (?, ?, ?, ?, ?);");
+    $stmt = $db -> prepare("INSERT INTO `users` (email, passwrd, first_name, last_name, user_role) VALUES (?, ?, ?, ?, ?);");
     $stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email, $roles]);
     echo "You have been successfully registered";
 }
