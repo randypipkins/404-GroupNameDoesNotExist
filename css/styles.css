@@ -95,8 +95,7 @@ label.email{
     font-family: 'Open Sans';
 }
 input.borderE{
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    border: 2px solid black;
     padding: .10px 30px;
     text-align: center;
 }
@@ -174,8 +173,7 @@ label.password2{
     position: relative;
 }
 input.borderP2{ 
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    border: 2px solid black;
     padding: .10px 30px;
 }
 select.list {
