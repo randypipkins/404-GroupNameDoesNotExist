@@ -20,7 +20,7 @@
             <h1>
                 <strong>Registration</strong>
             </h1>
-            <form method="POST" class="form" action="loginAndRegistration.php">
+            <form method="POST" class="form" action="index.php">
                 <div>
                     <label for="firstName" class="firstName"><strong>Enter First Name:</strong></label>
                     <br>
