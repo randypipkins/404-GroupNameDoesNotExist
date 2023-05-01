@@ -45,7 +45,7 @@ if(isset($_POST[`users`])){
 
     //$stmt = $db -> prepare("INSERT INTO `users` (email, passwrd, first_name, last_name, user_role) VALUES (?, ?, ?, ?, ?);");
     //$stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email, $roles]);
-    $sql = "INSERT INTO `users` (id, email, passwrd, first_name, last_name, user_role) VALUES ($user_id, $email, $passwrd, 
+    $sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ($user_id, $email, $passwrd, 
     $first_name, $last_name, $user_role;";
     echo "You have been successfully registered";
 }
@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
     $passwrd = $_REQUEST(`passwrd`);
 
     //get the email passed in the database
-    $stmt = $db -> prepare("SELECT from `users` WHERE email = ?");
+    $stmt = $db -> prepare("SELECT * from `users` WHERE email = ?");
     $stmt -> execute([$email]);
 
     //if email is not found
