@@ -13,7 +13,7 @@ if($conn->connect_error){
 }
 
 //user registration
-if(isset($_POST[`users`])){
+//if(isset($_POST[`users`])){
     $user_id = rand(10,100);
     $first_name = $_REQUEST[`first_name`];
     $last_name = $_REQUEST[`last_name`];
@@ -48,7 +48,7 @@ if(isset($_POST[`users`])){
     $sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ($user_id, $email, $passwrd, 
     $first_name, $last_name, $user_role);";
     echo "You have been successfully registered";
-}
+//}
 
 //user login
 if(isset($_POST['login'])){
