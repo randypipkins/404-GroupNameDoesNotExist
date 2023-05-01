@@ -75,7 +75,7 @@ $email = $_POST["email"];
 $user_role = $_POST["Roles"];
 
 //validate the password strength
-$uppercase = preg_match(`@[A-Z]@`, $passwrd);
+/*$uppercase = preg_match(`@[A-Z]@`, $passwrd);
 $lowercase = preg_match(`@[a-z]@`, $passwrd);
 $number = preg_match(`@[0-9]@`, $passwrd);
 $specialChar = preg_match(`@[^\w]@`, $passwrd);
@@ -85,17 +85,17 @@ if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) <
     lowercase, 1 number, and 1 special character.";
 } else{
     echo "Strong password.";
-}
+}*/
 
 //insert the new user into the database
-$sql = "INSERT INTO users (id, email, passwrd, first_name, last_name, user_role) VALUES ($user_id, $email, $passwrd, 
-    $first_name, $last_name, $user_role);";
+$sql = "INSERT INTO users (id, email, passwrd, first_name, last_name, user_role) VALUES ('$user_id', '$email', '$passwrd', 
+    '$first_name', '$last_name', '$user_role');";
 
-if($conn->query($sql) === TRUE){
+if(mysqli_query($conn, $sql)){
     Echo "You have been successfully registered!";
 } else{
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>
