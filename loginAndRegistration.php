@@ -68,11 +68,11 @@ if($conn->connect_error){
 
 //user registration
 $user_id = rand(10,100);
-$first_name = $_POST[`first_name`];
-$last_name = $_POST[`last_name`];
-$passwrd = $_POST[`passwrd`];
-$email = $_POST[`email`];
-$user_role = $_POST[`Roles`];
+$first_name = $_POST["first_name"];
+$last_name = $_POST["last_name"];
+$passwrd = $_POST["passwrd"];
+$email = $_POST["email"];
+$user_role = $_POST["Roles"];
 
 //validate the password strength
 $uppercase = preg_match(`@[A-Z]@`, $passwrd);
@@ -88,7 +88,14 @@ if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) <
 }
 
 //insert the new user into the database
-$sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ($user_id, $email, $passwrd, 
+$sql = "INSERT INTO users (id, email, passwrd, first_name, last_name, user_role) VALUES ($user_id, $email, $passwrd, 
     $first_name, $last_name, $user_role);";
-echo "You have been successfully registered";
+
+if($conn->query($sql) === TRUE){
+    Echo "You have been successfully registered!";
+} else{
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>
