@@ -51,7 +51,7 @@ if($conn->connect_error){
 //}
 
 //user login
-if(isset($_POST['login'])){
+/*if(isset($_POST['login'])){
     $email = $_REQUEST(`email`);
     $passwrd = $_REQUEST(`passwrd`);
 
@@ -74,6 +74,6 @@ if(isset($_POST['login'])){
     } else{
         echo "Incorrect password.";
     }
-}
+}*/
 
 ?>
