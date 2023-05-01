@@ -14,6 +14,7 @@ if($conn->connect_error){
 
 //user registration
 if(isset($_POST[`users`])){
+    $user_id = rand(10,100);
     $first_name = $_REQUEST[`first_name`];
     $last_name = $_REQUEST[`last_name`];
     $passwrd = $_REQUEST[`passwrd`];
@@ -21,14 +22,11 @@ if(isset($_POST[`users`])){
     $user_role = $_REQUEST[`Roles`];
 
     //check if the name already exists
-    $stmt = $db -> prepare("SELECT * FROM `users` WHERE first_name = ? AND last_name = ?;");
-    $stmt -> bindParam(1, $first_name, PDO::PARAM_STR, 50);
-    $stmt -> bindParam(2, $last_name, PDO::PARAM_STR, 50);
-    $stmt -> execute();
-    if($stmt->rowCount() > 0){
-        echo "Name already exists.";
-        exit;
-    }
+    //$stmt = $sql = "SELECT * FROM `users` WHERE first_name = $first_name AND last_name = last_name;";
+    //$stmt -> bindParam(1, $first_name, PDO::PARAM_STR, 50);
+    //$stmt -> bindParam(2, $last_name, PDO::PARAM_STR, 50);
+    //$stmt -> execute();
+    //if($stmt -> num_rows>= 1)
 
     //validate the password strength
     $uppercase = preg_match(`@[A-Z]@`, $passwrd);
@@ -44,8 +42,11 @@ if(isset($_POST[`users`])){
     }
 
     //insert the new user into the database
-    $stmt = $db -> prepare("INSERT INTO `users` (email, passwrd, first_name, last_name, user_role) VALUES (?, ?, ?, ?, ?);");
-    $stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email, $roles]);
+
+    //$stmt = $db -> prepare("INSERT INTO `users` (email, passwrd, first_name, last_name, user_role) VALUES (?, ?, ?, ?, ?);");
+    //$stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email, $roles]);
+    $sql = "INSERT INTO `users` (id, email, passwrd, first_name, last_name, user_role) VALUES ($user_id, $email, $passwrd, 
+    $first_name, $last_name, $user_role;";
     echo "You have been successfully registered";
 }
 
