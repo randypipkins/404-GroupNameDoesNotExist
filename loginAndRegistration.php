@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
     $passwrd = $_REQUEST(`passwrd`);
 
     //get the email passed in the database
-    $stmt = $db -> prepare("SELECT * from `users` WHERE email = ?");
+    $stmt = $db -> prepare("SELECT * from `users` WHERE email = $email");
     $stmt -> execute([$email]);
 
     //if email is not found
