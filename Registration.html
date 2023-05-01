@@ -20,7 +20,7 @@
             <h1>
                 <strong>Registration</strong>
             </h1>
-            <form action="loginAndRegistration.php" method="POST" class="form">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="form">
                 <div>
                     <label for="firstName" class="firstName"><strong>Enter First Name:</strong></label>
                     <br>
