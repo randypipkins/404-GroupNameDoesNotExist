@@ -14,11 +14,11 @@ if($conn->connect_error){
 
 //user registration
 $user_id = rand(10,100);
-$first_name = $_REQUEST[`first_name`];
-$last_name = $_REQUEST[`last_name`];
-$passwrd = $_REQUEST[`passwrd`];
-$email = $_REQUEST[`email`];
-$user_role = $_REQUEST[`Roles`];
+$first_name = $_GET[`first_name`];
+$last_name = $_GET[`last_name`];
+$passwrd = $_GET[`passwrd`];
+$email = $_GET[`email`];
+$user_role = $_GET[`Roles`];
 
 //validate the password strength
 $uppercase = preg_match(`@[A-Z]@`, $passwrd);
