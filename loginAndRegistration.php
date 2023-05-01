@@ -46,7 +46,7 @@ if(isset($_POST[`users`])){
     //$stmt = $db -> prepare("INSERT INTO `users` (email, passwrd, first_name, last_name, user_role) VALUES (?, ?, ?, ?, ?);");
     //$stmt -> execute([$first_name, $last_name, password_hash($passwrd, PASSWORD_DEFAULT), $email, $roles]);
     $sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ($user_id, $email, $passwrd, 
-    $first_name, $last_name, $user_role;";
+    $first_name, $last_name, $user_role);";
     echo "You have been successfully registered";
 }
 
