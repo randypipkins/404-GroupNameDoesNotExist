@@ -88,7 +88,7 @@ if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) <
 }
 
 //insert the new user into the database
-$sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ('$user_id', '$email', '$passwrd', 
+$sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ('$user_id', '$email', '$hashed_password', 
     '$first_name', '$last_name', '$user_role');";
 
 if(mysqli_query($conn, $sql)){
