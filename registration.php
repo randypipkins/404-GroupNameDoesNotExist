@@ -92,7 +92,7 @@ $sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`
     '$first_name', '$last_name', '$user_role');";
 
 if(mysqli_query($conn, $sql)){
-    header("Location: /404-GroupNameDoesNotExist/index.html");
+    header("Location: /index.html");
     exit;
 } else{
     echo "Error: " . $sql . "<br>" . $conn->error;
