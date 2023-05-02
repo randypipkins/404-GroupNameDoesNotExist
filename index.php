@@ -37,7 +37,7 @@
                     <br>
                     <label for="password" class="password"><strong>Password:</strong></label>
                     <br>
-                    <input type="password"class="borderP" name="secret">
+                    <input type="password"class="borderP" name="passwrd">
                     <br>
                     <button type="submit" class="login">Login</button>
                     <br>
