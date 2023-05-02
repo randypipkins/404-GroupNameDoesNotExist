@@ -84,7 +84,7 @@ if(!$uppercase || !$lowercase || !$number || !$specialChar || strlen($passwrd) <
     echo "Password needs to be at least 8 characters and must contain at least 1 uppercase, 1 
     lowercase, 1 number, and 1 special character.";
 } else{
-    echo "Strong password.";
+    $hashed_password = password_hash($passwrd, PASSWORD_DEFAULT);
 }
 
 //insert the new user into the database
