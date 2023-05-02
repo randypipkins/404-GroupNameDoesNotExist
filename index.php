@@ -28,7 +28,7 @@
         </article>
         <article class="form-container">
             <?php if (isset($error)) {echo '<p>' . $error . '<p>';} ?>
-            <form action="index.php" method="POST" class="form">
+            <form method="POST" class="form" action="index.php">
                 <img src="img/loginPhoto.jpg" alt="wedding photo" class="form-image">
                 <div>
                     <label for="email" class="email"><strong>Email Address:</strong></label>
