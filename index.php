@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION["success_msg"])){
+    echo '<div class="success-msg">' . $_SESSION['success_msg'] . '</div>';
+    unset($_SESSION["success_msg"]);
+}
+?>
 <!DOCTYPE html>
 <html>
 

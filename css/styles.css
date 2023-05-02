@@ -339,6 +339,12 @@ body {
       left: 0;
       top: 0;
   }
+  .success-msg {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
 
 
 

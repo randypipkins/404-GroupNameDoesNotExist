@@ -92,6 +92,8 @@ $sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`
     '$first_name', '$last_name', '$user_role');";
 
 if(mysqli_query($conn, $sql)){
+    session_start();
+    $_SESSION["success_msg"] = "Registration Success";
     header("Location: /404-GroupNameDoesNotExist");
     exit;
 } else{
