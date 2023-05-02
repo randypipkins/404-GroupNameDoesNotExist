@@ -34,8 +34,7 @@ if(strlen($_POST["passwrd"] < 5)){
 $hashed_password = password_hash($passwrd, PASSWORD_DEFAULT);
 
 //insert the new user into the database
-$sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES ('$user_id', '$email', '$hashed_password', 
-    '$first_name', '$last_name', '$user_role');";
+$sql = "INSERT INTO `users` (`id`, `email`, `passwrd`, `first_name`, `last_name`, `user_role`) VALUES (?, ?, ?, ?, ?, ?);";
 
 if(mysqli_query($conn, $sql)){
     session_start();
