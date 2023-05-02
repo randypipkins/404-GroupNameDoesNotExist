@@ -30,7 +30,7 @@ if(isset($_SESSION["success_msg"])){
                 <p>Let us plan your happily ever after!</p>
             </div>
             <div>
-                <h2><a href="registration.php">Register Today!</a> </h2> <!--change link-->
+                <h2><a href="registration.html">Register Today!</a> </h2> <!--change link-->
             </div>
         </article>
         <article class="form-container">
