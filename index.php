@@ -23,11 +23,12 @@
                 <p>Let us plan your happily ever after!</p>
             </div>
             <div>
-                <h2><a href="loginAndRegistration.php">Register Today!</a> </h2> <!--change link-->
+                <h2><a href="registration.php">Register Today!</a> </h2> <!--change link-->
             </div>
         </article>
         <article class="form-container">
-            <form action="loginAndRegistration.php" method="POST" class="form">
+            <?php if (isset($error)) {echo '<p>' . $error . '<p>';} ?>
+            <form action="index.php" method="POST" class="form">
                 <img src="img/loginPhoto.jpg" alt="wedding photo" class="form-image">
                 <div>
                     <label for="email" class="email"><strong>Email Address:</strong></label>
@@ -48,3 +49,38 @@
 </body>
 </body>
 </html>
+
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "mydb";
+
+//create connection to the server and the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+//check connection
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//check for user credentials
+if(isset($_POST["email"]) && isset($_POST["passwrd"])){
+    //sanitize and validate credentials
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $passwrd = mysqli_real_escape_string($conn, $_POST["passwrd"]);
+
+    $query = "SELECT `id` FROM `users` WHERE `email` = '$email' AND `passwrd` = '$password'";
+    $result = mysqli_query($conn, $query);
+
+    //check for user
+    if(mysqli_num_rows($result) == 1){
+        $_SESSION['loggedin'] = true;
+        header('Location: index.php');
+        exit;
+    } else{
+        $error = "Invalid email or password.";
+    }
+}
+?>
