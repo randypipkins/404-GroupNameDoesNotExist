@@ -38,11 +38,11 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             exit();
         } else{
             //incorrect password
-            echo "Incorrect username or password.";
+            echo "Incorrect password.";
         }
     } else{
         //incorrect email
-        echo "Incorrect username or password";
+        echo "Incorrect username";
     }
 
     $stmt->close();
