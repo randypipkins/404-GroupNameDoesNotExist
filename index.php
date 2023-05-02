@@ -77,7 +77,7 @@ if(isset($_POST["email"]) && isset($_POST["passwrd"])){
     //check for user
     if(mysqli_num_rows($result) == 1){
         $_SESSION['loggedin'] = true;
-        header('Location: index.php');
+        header('Location: eventOrg.php');
         exit;
     } else{
         $error = "Invalid email or password.";
