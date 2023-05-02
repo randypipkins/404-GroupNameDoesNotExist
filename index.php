@@ -92,7 +92,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
-            header("Location: eventOrg.php");
+            header("Location: /eventOrg.php");
             exit();
         } else{
             //incorrect password
