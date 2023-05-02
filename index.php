@@ -17,7 +17,6 @@ if(isset($_SESSION["success_msg"])){
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body> 
-    <?php include "login.php"; ?>
     <nav class="main-nav">
         <h1>
             I Do Crew
@@ -35,7 +34,7 @@ if(isset($_SESSION["success_msg"])){
             </div>
         </article>
         <article class="form-container">
-            <form method="POST" class="form" action="index.php">
+            <form method="POST" class="form" action="login.php">
                 <img src="img/loginPhoto.jpg" alt="wedding photo" class="form-image">
                 <div>
                     <label for="email" class="email"><strong>Email Address:</strong></label>
