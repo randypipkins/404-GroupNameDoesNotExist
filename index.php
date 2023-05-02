@@ -17,6 +17,7 @@ if(isset($_SESSION["success_msg"])){
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body> 
+    <?php include "login.php"; ?>
     <nav class="main-nav">
         <h1>
             I Do Crew
