@@ -27,7 +27,7 @@
         <i class="bx bxs-dashboard"></i>
         <span class="mx-2">Events</span>
       </li>
-      <li href="" class="nav-link">
+      <li href="logout.php" class="nav-link">
         <i class="bx bx-user-check"></i>
         <span class="mx-2">Logout</span>
       </li>
