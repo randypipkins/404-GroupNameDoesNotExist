@@ -27,9 +27,9 @@
         <i class="bx bxs-dashboard"></i>
         <span class="mx-2">Events</span>
       </li>
-      <li><a href="logout.php" class="btn btn-danger">
+      <li>
         <i class="bx bx-user-check"></i>
-        <span class="mx-2">Logout</span>
+        <a href="logout.php" class="btn btn-danger"><span class="mx-2">Logout</span></a>
       </li>
     </ul>
   </div>
