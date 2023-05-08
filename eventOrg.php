@@ -28,7 +28,7 @@
         <span class="mx-2">Events</span>
       </li>
       <li><a href="logout.php" class="btn btn-danger">
-        
+        <i class="bx bx-user-check"></i>
         <span class="mx-2">Logout</span>
       </li>
     </ul>
