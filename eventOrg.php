@@ -23,9 +23,9 @@
         <i class="bx bxs-dashboard"></i>
         <span class="mx-2">Dashboard</span>
       </li>
-      <li href="" class="nav-link">
+      <li>
         <i class="bx bxs-dashboard"></i>
-        <span class="mx-2">Events</span>
+        <a href="events.php" class="btn nav-link"><span class="mx-2">Events</span></a>
       </li>
       <li>
         <i class="bx bx-user-check"></i>
