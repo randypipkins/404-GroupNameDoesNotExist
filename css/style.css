@@ -34,7 +34,9 @@ body {
 }
 
 .nav-link:active,
-.nav-link:focus,
+.nav-link:focus{
+    background: pink;
+}
 .nav-link:hover {
     background-color: gray;
 }
