@@ -1,130 +1,72 @@
 var menu_btn = document.querySelector("#menu-btn");
 var sidebar = document.querySelector("#sidebar");
 var container = document.querySelector(".my-container");
+
 menu_btn.addEventListener("click", () => {
-  sidebar.classList.toggle("active-nav");
-  container.classList.toggle("active-cont");
+    sidebar.classList.toggle("active");
+    // container.classList.toggle("active-cont");
 });
-//calendar
-$(document).ready(function() {
-	var calendar = $('#calendar').fullCalendar({
-		editable: true,
-		eventLimit: true,
-		droppable: true,
-		eventColor: "#fee9be",
-		eventTextColor: "#232323",
-		eventBorderColor: "#CCC",
-		eventResize: true,
-		header: {
-			right: 'prev, next today',
-			left: 'title',
-			center: 'listMonth, month, basicWeek, basicDay'
-		},
-		events: "ajax-endpoint/fetch-calendar.php",
-		displayEventTime: false,
-		eventRender: function(event, element) {
-			element.find(".fc-content").prepend("<span class='btn-event-delete'>X</span>");
-			element.find("span.btn-event-delete").on("click", function() {
-				if (confirm("Are you sure want to delete the event?")) {
-					deleteEvent(event);
-				}
-			});
-		},
-		selectable: true,
-		selectHelper: true,
-		select: function(start, end, allDay) {
-			var title = prompt('Event Title:');
 
-			if (title) {
-				var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-				var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
-				addEvent(title, start, end);
 
-				calendar.fullCalendar('renderEvent',
-					{
-						title: title,
-						start: start,
-						end: end,
-						allDay: allDay
-					},
-					true
-				);
-			}
-			calendar.fullCalendar('unselect');
-		},
+window.addEventListener('load', () => {
+    const form = document.querySelector("#new-task-form");
+    const input = document.querySelector("#new-task-input");
+    const list_el = document.querySelector("#tasks");
 
-		eventClick: function(event) {
-			var title = prompt('Event edit Title:', event.title);
-			if (title) {
-				var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-				var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-				editEvent(title, start, end, event);
-			}
-		},
-		eventDrop: function(event) {
-			var title = event.title;
-			if (title) {
-				var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-				var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-				editEvent(title, start, end, event);
-			}
-		},
-		eventResize: function(event) {
-			var title = event.title;
-			if (title) {
-				var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-				var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-				editEvent(title, start, end, event);
-			}
-		}
-	});
-	$("#filter").datepicker();
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const task = input.value;
+
+        const task_el = document.createElement('div');
+        task_el.classList.add('task');
+
+        const task_content_el = document.createElement('div');
+        task_content_el.classList.add('content');
+
+        task_el.appendChild(task_content_el);
+
+        const task_input_el = document.createElement('input');
+        task_input_el.classList.add('text');
+        task_input_el.type = 'text';
+        task_input_el.value = task;
+        task_input_el.setAttribute('readonly', 'readonly');
+
+        task_content_el.appendChild(task_input_el);
+
+        const task_actions_el = document.createElement('div');
+        task_actions_el.classList.add('actions');
+
+        const task_edit_el = document.createElement('button');
+        task_edit_el.classList.add('edit');
+        task_edit_el.innerText = 'Edit';
+
+        const task_delete_el = document.createElement('button');
+        task_delete_el.classList.add('delete');
+        task_delete_el.innerText = 'Delete';
+
+        task_actions_el.appendChild(task_edit_el);
+        task_actions_el.appendChild(task_delete_el);
+
+        task_el.appendChild(task_actions_el);
+
+        list_el.appendChild(task_el);
+
+        input.value = '';
+
+        task_edit_el.addEventListener('click', (e) => {
+            if (task_edit_el.innerText.toLowerCase() == "edit") {
+                task_edit_el.innerText = "Save";
+                task_input_el.removeAttribute("readonly");
+                task_input_el.focus();
+            } else {
+                task_edit_el.innerText = "Edit";
+                task_input_el.setAttribute("readonly", "readonly");
+            }
+        });
+
+        task_delete_el.addEventListener('click', (e) => {
+            list_el.removeChild(task_el);
+        });
+    });
 });
-function addEvent(title, start, end) {
-	$.ajax({
-		url: 'ajax-endpoint/add-calendar.php',
-		data: 'title=' + title + '&start=' + start + '&end=' + end,
-		type: "POST",
-		success: function(data) {
-			displayMessage("Added Successfully");
-		}
-	});
-}
-
-function editEvent(title, start, end, event) {
-	$.ajax({
-		url: 'ajax-endpoint/edit-calendar.php',
-		data: 'title=' + title + '&start=' + start + '&end=' + end + '&id=' + event.id,
-		type: "POST",
-		success: function() {
-			displayMessage("Updated Successfully");
-		}
-	});
-}
-
-function deleteEvent(event) {
-	$('#calendar').fullCalendar('removeEvents', event._id);
-	$.ajax({
-		type: "POST",
-		url: "ajax-endpoint/delete-calendar.php",
-		data: "&id=" + event.id,
-		success: function(response) {
-			if (parseInt(response) > 0) {
-				$('#calendar').fullCalendar('removeEvents', event.id);
-				displayMessage("Deleted Successfully");
-			}
-		}
-	});
-}
-function displayMessage(message) {
-	$(".response").html("<div class='success'>" + message + "</div>");
-	setInterval(function() { $(".success").fadeOut(); }, 5000);
-}
-
-function filterEvent() {
-	var filterVal = $("#filter").val();
-	if (filterVal) {
-		$('#calendar').fullCalendar('gotoDate', filterVal);
-		$("#filter").val("");
-	}
-}

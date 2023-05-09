@@ -123,22 +123,3 @@
         echo "Error creating database: " . $conn->error;
     }
 
-    //Table structure for table `tbl_events`
-    $sql = "CREATE TABLE `tbl_events`(
-        `id` int(11) NOT NULL,
-        `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-        `start` date DEFAULT NULL,
-         `end` date DEFAULT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1";
-
-    //indexes for table 'tbl_events'
-    $sql = "ALTER TABLE `tbl_events`(
-            ADD PRIMARY KEY (`id`)
-    )";
-
-    //AUTO_INCREMENT for table 'tbl_events'
-    $sql = "ALTER TABLE `tbl_events` (
-        MODIFY `id` int(11) NOT NULL AUTO_INCREMENT
-        )";
-    
-
