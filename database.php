@@ -34,7 +34,7 @@
         `passwrd` VARCHAR(255) NOT NULL,
         `first_name` VARCHAR(50) NOT NULL,
         `last_name` VARCHAR(50) NOT NULL,
-        `user_role` ENUM('admin', 'event_organizer', 'participant') NOT NULL DEFAULT 'participant',
+        `user_role` ENUM('event_organizer', 'participant') NOT NULL DEFAULT 'participant',
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
