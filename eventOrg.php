@@ -25,7 +25,7 @@
       </li>
       <li href="" class="nav-link">
         <i class="bx bxs-dashboard text-white"></i>
-        <a href="events.php" class="btn nav-link" style="color:white"><span class="mx-2 text-white">Events</span></a>
+        <a href="events.php" class="btn nav-link" style="color:white">Events</a>
       </li>
       <li href="" class="nav-link">
         <i class="bx bx-user-check text-white"></i>
