@@ -20,16 +20,16 @@
       <h3 class="h3 text-white my-2" id="h3"> I Do Crew
 	  </h3>
       <li href="" class="nav-link">
-        <i class="bx bxs-dashboard"></i>
-        <span class="mx-2">Dashboard</span>
+        <i class="bx bxs-dashboard text-white"></i>
+        <span class="mx-2 text-white">Dashboard</span>
       </li>
-      <li>
-        <i class="bx bxs-dashboard"></i>
-        <a href="events.php" class="btn nav-link" style="color:white"><span class="mx-2">Events</span></a>
+      <li href="" class="nav-link">
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="events.php" class="btn nav-link" style="color:white"><span class="mx-2 text-white">Events</span></a>
       </li>
-      <li>
-        <i class="bx bx-user-check"></i>
-        <a href="logout.php" class="btn btn-danger"><span class="mx-2">Logout</span></a>
+      <li href="" class="nav-link">
+        <i class="bx bx-user-check text-white"></i>
+        <a href="logout.php" class="btn btn-danger"><span class="mx-2 text-white">Logout</span></a>
       </li>
     </ul>
   </div>

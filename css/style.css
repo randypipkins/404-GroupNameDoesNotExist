@@ -34,10 +34,8 @@ body {
 }
 
 .nav-link:active,
-.nav-link:focus{
-    background: pink;
-}
-.nav-link:hover {
+.nav-link:focus,
+.nav-link:hover{
     background-color: gray;
 }
 
