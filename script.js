@@ -1,11 +1,11 @@
-var menu_btn = document.querySelector("#menu-btn");
-var sidebar = document.querySelector("#sidebar");
-var container = document.querySelector(".my-container");
+const menu_btn = document.querySelector("#menu-btn");
+const sidebar = document.querySelector("#sidebar");
+const container = document.querySelector(".my-container");
 
-menu_btn.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
+//menu_btn.addEventListener("click", () => {
+   // sidebar.classList.toggle("active");
     // container.classList.toggle("active-cont");
-});
+//});
 
 
 window.addEventListener('load', () => {
