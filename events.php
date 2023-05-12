@@ -159,5 +159,18 @@ class EventManagementSystem{
             }
         }
     }
+
+    //delete event
+    public function deleteEvent($event_id){
+        global $conn;
+
+        //prepare and execute sql statement to prevent injection
+        $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
+
+        $stmt->bind_param("i", $event_id);
+
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 ?>
