@@ -96,7 +96,7 @@ button:hover {
 }
 button.display-modal {
     margin-bottom: 0.7rem;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     z-index: 2;
