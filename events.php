@@ -37,8 +37,8 @@
       </li>
     </ul>
   </div>
-
     <div class="container">
+    <main>
         <div class="tab tab-1">
             <table id="table" border="1">
                 <tr>
@@ -90,6 +90,7 @@
             </div>
 
         </div>
+      </main>
 
     </div>
 

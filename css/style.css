@@ -97,3 +97,8 @@ button:hover {
 button.display-modal {
     margin: 1rem;
 }
+main {
+    border:2px solid red;
+    height: 100vh;
+    display: flex;
+}
