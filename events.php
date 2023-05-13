@@ -32,10 +32,12 @@
         <i class="bx bx-user-check text-white"></i>
         <a href="logout.php" class="btn btn-danger"><span class="mx-2 text-white">Logout</span></a>
       </li>
+      <li>
+        <button class="display-modal">Add Event</button>
+      </li>
     </ul>
   </div>
 
-  <button class="display-modal">Add Event</button>
     <div class="container">
         <div class="tab tab-1">
             <table id="table" border="1">

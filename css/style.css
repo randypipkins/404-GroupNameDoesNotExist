@@ -95,9 +95,5 @@ button:hover {
     cursor: pointer;
 }
 button.display-modal {
-    margin-bottom: 0.7rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
+    margin: 1rem;
 }
