@@ -96,4 +96,8 @@ button:hover {
 }
 button.display-modal {
     margin-bottom: 0.7rem;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,0);
 }
