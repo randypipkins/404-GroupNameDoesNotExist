@@ -35,10 +35,9 @@
     </ul>
   </div>
 
-
+  <button class="display-modal">Add Event</button>
     <div class="container">
         <div class="tab tab-1">
-            <button class="display-modal">Add Event</button>
             <table id="table" border="1">
                 <tr>
                     <th>Event Title</th>
