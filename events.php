@@ -16,23 +16,24 @@
 
 <body>
         <!-- Side-Nav -->
-        <div class="side-nav active-nav" id="sidebar">
-            <ul class="nav flex-column text-white w-100">
-                <h3 class="h3 text-white my-2" id="h3"> I Do Crew</h3>
-                <li href="" class="nav-link">
-                    <i class="bx bxs-dashboard text-white"></i>
-                    <span class="mx-2 text-white">Dashboard</span>
-                </li>
-                <li href="" class="nav-link">
-                    <i class="bx bxs-dashboard text-white"></i>
-                    <span class="mx-2 text-white">Events</span>
-                </li>
-                <li href="" class="nav-link">
-                    <i class="bx bx-user-check text-white"></i>
-                    <span class="mx-2 text-white">Logout</span>
-                </li>
-            </ul>
-        </div>
+  <div class="side-nav active-nav" id="sidebar">
+    <ul class="nav flex-column text-white w-100">
+      <h3 class="h3 text-white my-2" id="h3"> I Do Crew
+	  </h3>
+    <li href="" class="nav-link">
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="eventOrg.php" class="btn btn-danger"><span class="mx-2 text-white">Dashboard</span></a>
+      </li>
+      <li href="" class="nav-link">
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="events.php" class="btn btn-danger"><span class="mx-2 text-white">Events</span></a>
+      </li>
+      <li href="" class="nav-link">
+        <i class="bx bx-user-check text-white"></i>
+        <a href="logout.php" class="btn btn-danger"><span class="mx-2 text-white">Logout</span></a>
+      </li>
+    </ul>
+  </div>
 
 
     <div class="container">
