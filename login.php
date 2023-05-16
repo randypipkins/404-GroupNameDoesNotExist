@@ -34,13 +34,20 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
-            $_SESSION["Roles"] = $user_role;
-            if($user_role == 'partipant') {
-                header("Location: events.php");}
-            else if($user_role == 'event_organizer') {
+            $stmt = $conn->prepare("SELECT Roles FROM users WHERE email = ?");
+            $stmt->bind_param('s', $_POST["email"]);
+            $stmt->execute();
+            $stmt->bind_result($role);
+            $stmt->fetch();
+            $stmt->close();
+            
+            if ($role === "participant") {
+                header("Location: events.php");
+                exit();
+            } else {
                 header("Location: eventOrg.php");
+                exit();
             }
-            exit();
         } else{
             //incorrect password
             echo "Incorrect password.";
