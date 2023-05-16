@@ -34,11 +34,10 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
-            if($_SESSION["user_role"] = "event_organizer") {
+            if($user_role == 'partipant') {
+                header("Location: eventOrg.php");}
+            else if($user_role == 'event_organizer') {
                 header("Location: eventOrg.php");
-            }
-            else if($_SESSION["user_role"] = "partipant") {
-                header("Location: registration.php");
             }
             exit();
         } else{
