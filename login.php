@@ -35,15 +35,17 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
             //header("Location: eventOrg.php");
-            if($_POST["user_role"]== "participant") {
-                header("Location: events.php");
-            }
+        } 
+        else if($_POST["user_role"]== "participant") {
+            header("Location: events.php");
             exit();
-        } else{
+        }
+        else{
             //incorrect password
             echo "Incorrect password.";
         }
-    } else{
+    } 
+    else{
         //incorrect email
         echo "Incorrect username";
     }
