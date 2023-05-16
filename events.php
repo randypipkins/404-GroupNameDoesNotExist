@@ -42,8 +42,8 @@
         <div class="tab tab-1">
             <table id="table" border="1">
                 <tr>
-                    <th>Event title</th>
-                    <th>Event type</th>
+                    <th>Event Title</th>
+                    <th>Event Type</th>
                     <th>Description</th>
                     <th>Start Date</th>
                     <th>End Date</th>
