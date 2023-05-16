@@ -42,7 +42,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $stmt->close();
             
             if ($user_role === "participant") {
-                header("Location: events.php");
+                header("Location: registration.php");
                 exit();
             } else {
                 header("Location: eventOrg.php");
