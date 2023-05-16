@@ -36,7 +36,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["id"] = $id;
             $_SESSION["Roles"] = $user_role;
             if($user_role == 'partipant') {
-                header("Location: eventOrg.php");}
+                header("Location: events.php");}
             else if($user_role == 'event_organizer') {
                 header("Location: eventOrg.php");
             }
