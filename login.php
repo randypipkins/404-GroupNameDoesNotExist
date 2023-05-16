@@ -37,11 +37,11 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $stmt = $conn->prepare("SELECT user_role FROM users WHERE email = ?");
             $stmt->bind_param('s', $_POST["email"]);
             $stmt->execute();
-            $stmt->bind_result($role);
+            $stmt->bind_result($user_role);
             $stmt->fetch();
             $stmt->close();
             
-            if ($user_role == "participant") {
+            if ($user_role === "participant") {
                 header("Location: registration.php");
                 exit();
             } else {
