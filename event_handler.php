@@ -25,14 +25,14 @@ class Event{
 
     public function __construct($title, $location, $start_time, $end_time, 
     $capacity, $description, $organizer_id, $category_id){
-        $this->$title;
-        $this->$location;
-        $this->$start_time;
-        $this->$end_time;
-        $this->$capacity;
-        $this->$description;
-        $this->$organizer_id;
-        $this->$category_id;
+        $this->title = $title;
+        $this->location = $location;
+        $this->start_time = $start_time;
+        $this->end_time = $end_time;
+        $this->capacity = $capacity;
+        $this->description = $description;
+        $this->organizer_id = $organizer_id;
+        $this->category_id = $category_id;
     }
 }
 
@@ -50,7 +50,7 @@ class EventManagementSystem{
 
         //prepare and execute sql statement to prevent injection
         $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
-        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
         $stmt->bind_param("ssssisii", $events->title, $events->location, $events->start_time, 
             $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
@@ -94,7 +94,7 @@ class EventManagementSystem{
         //prepare and execute sql statement to prevent injection
         $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
 
-        $stmt->bind_param("i", $event_id);
+        $stmt->bind_param("i", $id);
 
         $stmt->execute();
         $stmt->close();
