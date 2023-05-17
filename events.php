@@ -65,7 +65,9 @@
             <input type="text" placeholder="Description" name="lname" id="input-2">
 
             <label for="date">Date:</label>
-            <input type="text" placeholder="Date" name="date" id="input-3">
+            <input type="text" pattern= "\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" name="date" id="input-3">
+
+
 
             <label for="start-time">Start Time:</label>
             <input type="text" placeholder="Start Time" name="start_time" id="input-4">
