@@ -39,9 +39,6 @@ function checkEmptyInput() {
   
     return false;
   }
-  
-
-
 function addRow() {
     if (!checkEmptyInput()) {
         const newRow = table.insertRow(table.rows.length);
@@ -144,11 +141,11 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     xhr.send(formData);
 
     //reset the form
-    document.getElementById("input-0") = "";
-    document.getElementById("input-6") = "";
-    document.getElementById("input-3") = "";
-    document.getElementById("input-4") = "";
-    document.getElementById("input-5") = "";
-    document.getElementById("input-7") = "";
-    document.getElementById("input-2") = "";
+    document.getElementById("input-0").value = "";
+    document.getElementById("input-6").value = "";
+    document.getElementById("input-3").value = "";
+    document.getElementById("input-4").value = "";
+    document.getElementById("input-5").value = "";
+    document.getElementById("input-7").value = "";
+    document.getElementById("input-2").value = "";
 });
