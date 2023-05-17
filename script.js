@@ -32,7 +32,7 @@ function checkEmptyInput() {
       }
   
       if (dateRegex.test(inputs[i].value)) {
-        alert("Invalid date format. Please use YYYY-MM-DD");
+        console.log("Invalid date format. Please use YYYY-MM-DD");
         return true;
       }
     }
