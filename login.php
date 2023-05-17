@@ -19,17 +19,16 @@ if(!isset($_POST["email"], $_POST["passwrd"])){
 }
 
 //prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")){
+if ($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")) {
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
-    //store results to check if exists in db
     $stmt->store_result();
 
-    if($stmt->num_rows > 0){
+    if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $passwrd, $user_role);
         $stmt->fetch();
-        //verify the password
-        if(password_verify($_POST["passwrd"], $passwrd)){
+        // Verify the password
+        if (password_verify($_POST["passwrd"], $passwrd)) {
             if ($user_role === "participant") {
                 $_SESSION["loggedin"] = true;
                 $_SESSION["email"] = $_POST["email"];
@@ -37,17 +36,21 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email 
                 $_SESSION["user_role"] = $user_role;
                 header("Location: events.php");
                 exit();
+            } else {
+                // User role is not participant
+                echo "You are not authorized to login.";
             }
-        }
-        else{
-            //incorrect password
+        } else {
+            // Incorrect password
             echo "Incorrect password.";
         }
-    }else{
-        //incorrect email
+    } else {
+        // Incorrect email
         echo "Incorrect username";
     }
 
     $stmt->close();
 }
+
+$conn->close();
 ?>
