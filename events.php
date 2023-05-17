@@ -42,7 +42,7 @@
             <h1>Events</h1>
             <p class="description-p">Add event title, description, start date (d/m/yr), start time(hh:mm AM/PM), end
                 day(d/m/yr), end time(hh:mm AM/PM), location, capacity, event type(ex: Bridal Shower)</p>
-            <form id="new-task-form">
+            <form id="new-task-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <input type="text" name="new-task-input" id="new-task-input" placeholder="Enter Event" />
                 <input type="submit" id="new-task-submit" value="Add event" />
             </form>
@@ -52,9 +52,7 @@
                 <div class="tabs">
                     <h2>Event title ||</h2>
                     <h2>description ||</h2>
-                    <h2>start date || </h2>
                     <h2>start time ||</h2>
-                    <h2>end date ||</h2>
                     <h2>end time ||</h2>
                     <h2>location ||</h2>
                     <h2>capacity ||</h2>
@@ -172,5 +170,10 @@ class EventManagementSystem{
         $stmt->execute();
         $stmt->close();
     }
+}
+
+//check if form is submitted
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    
 }
 ?>
