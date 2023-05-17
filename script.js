@@ -19,19 +19,6 @@ function checkEmptyInput() {
     }
     return false;
 }
-function checkNumberInput() {
-    const input = document.querySelector('input[type="number"]');
-    for (let i = 0; i < input.length; i++) {
-        if (input[i].value === "") {
-            const fieldName = input[i].getAttribute("placeholder");
-            alert("Any input cannot be empty");
-            return true;
-        }
-    }
-    return false;
-}
-
-
 function addRow() {
     if (!checkEmptyInput()) {
         const newRow = table.insertRow(table.rows.length);
