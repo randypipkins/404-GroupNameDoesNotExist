@@ -19,38 +19,31 @@ if(!isset($_POST["email"], $_POST["passwrd"])){
 }
 
 //prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
+if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")){
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
     //store results to check if exists in db
     $stmt->store_result();
 
     if($stmt->num_rows > 0){
-        $stmt->bind_result($id, $passwrd);
+        $stmt->bind_result($id, $passwrd, $user_role);
         $stmt->fetch();
         //verify the password
-        if(password_verify($_POST["passwrd"], $passwrd) && isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "participant"){
-            session_regenerate_id();
-            $_SESSION["loggedin"] = true;
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["id"] = $id;
-            header("Location: events.php");
-            exit();
-        } 
-        else if(password_verify($_POST["passwrd"], $passwrd) && isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "event_organizer"){
-            session_regenerate_id();
-            $_SESSION["loggedin"] = true;
-            $_SESSION["email"] = $_POST["email"];
-            $_SESSION["id"] = $id;
-            header("Location: eventOrg.php");
-            exit();
-        } 
+        if(password_verify($_POST["passwrd"], $passwrd)){
+            if ($user_role === "participant") {
+                $_SESSION["loggedin"] = true;
+                $_SESSION["email"] = $_POST["email"];
+                $_SESSION["id"] = $id;
+                $_SESSION["user_role"] = $user_role;
+                header("Location: events.php");
+                exit();
+            }
+        }
         else{
             //incorrect password
             echo "Incorrect password.";
         }
-    } 
-    else{
+    }else{
         //incorrect email
         echo "Incorrect username";
     }
