@@ -34,7 +34,17 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
-            header("Location: eventOrg.php");
+            
+            //redirect based on user role
+            if($user_role === "participant"){
+                header("Location: participant.html");
+            } else if($user_role === "event_organizer"){
+                header("Location: eventOrg.php");
+            } else if($user_role === "admin"){
+                header("Location: admin.html");
+            } else{
+                echo "Invalid role";
+            }
             exit();
         } else{
             //incorrect password
