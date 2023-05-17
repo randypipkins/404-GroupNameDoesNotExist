@@ -19,7 +19,6 @@ function checkEmptyInput() {
     }
     return false;
 }
-
 function addRow() {
     if (!checkEmptyInput()) {
         const newRow = table.insertRow(table.rows.length);
