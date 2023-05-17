@@ -68,7 +68,7 @@
             <input type="text" name="date" id="input-3" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
 
             <label for="start-time">Start Time:</label>
-            <input type="time" name="start_time" id="input-4" placeholder="Start Time" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"placeholder="HH:MM:SS" required>
+            <input type="text" name="start_time" id="input-4" placeholder="Start Time" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}"placeholder="HH:MM:SS" required>
 
             <label for="end-time">End Time:</label>
             <input type="text" placeholder="End Time" name="end_time" id="input-5">
@@ -77,7 +77,7 @@
             <input type="text" placeholder="Location" name="location" id="input-6">
 
             <label for="capacity">Capacity:</label>
-            <input type="text" placeholder="Capacity" name="capacity" id="input-7">
+            <input type="number" placeholder="Capacity" name="capacity" id="input-7">
 
             <div class="button-div">
                 <button class="btn add-btn">Add</button>
