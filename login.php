@@ -19,7 +19,7 @@ if(!isset($_POST["email"], $_POST["passwrd"])){
 }
 
 //prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
+if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")){
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
     //store results to check if exists in db
