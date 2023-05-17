@@ -29,7 +29,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
         $stmt->bind_result($id, $passwrd);
         $stmt->fetch();
         //verify the password
-        if(password_verify($_POST["passwrd"], $passwrd) && $_SESSION["user_role"] === "participant"){
+        if(password_verify($_POST["passwrd"], $passwrd) && isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "participant"){
             session_regenerate_id();
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
