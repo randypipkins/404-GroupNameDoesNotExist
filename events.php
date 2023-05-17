@@ -91,7 +91,6 @@
 
         </div>
       </main>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -100,3 +99,110 @@
 </body>
 
 </html>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "mydb";
+
+//create connection to the server and the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+//check connection
+if($conn->connect_error){
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//event construction
+class Event{
+    public $id;
+    public $title;
+    public $location;
+    public $start_time;
+    public $end_time;
+    public $description;
+    public $organizer_id;
+    public $category_id;
+
+    public function __construct($title, $location, $start_time, $end_time, 
+    $description, $organizer_id, $category_id){
+        $this->$title;
+        $this->$location;
+        $this->$start_time;
+        $this->$end_time;
+        $this->$description;
+        $this->$organizer_id;
+        $this->$category_id;
+    }
+}
+
+//event management system class
+class EventManagementSystem{
+    public $events;
+
+    public function __construct(){
+        $this->events = array();
+    }
+
+    //add event
+    public function addEvent($events){
+        global $conn;
+
+        //prepare and execute sql statement to prevent injection
+        $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
+        description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
+            $events->end_time, $events->description, $events->organizer_id, $events->category_id);
+
+        $stmt->execute();
+
+        $events->id = $stmt->insert_id;
+
+        $this->events[] = $events;
+
+        $stmt->close();
+    }
+
+    //modify event
+    public function modifyEvent($events){
+        global $conn;
+
+        //prepare and execute sql statement to prevent injection
+        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, start_time=?, end_time=?, 
+            description=?, organizer_id=?, category_id=? WHERE id=?");
+        
+        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
+            $events->end_time, $events->description, $events->organizer_id, $events->category_id);
+
+        $stmt->execute();
+        $stmt->close();
+        
+        //update the events in the array
+        foreach($this->events as &$e){
+            if($e->id == $events->id){
+                $e=$events;
+                break;
+            }
+        }
+    }
+
+    //delete event
+    public function deleteEvent($event_id){
+        global $conn;
+
+        //prepare and execute sql statement to prevent injection
+        $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
+
+        $stmt->bind_param("i", $event_id);
+
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+//check if form is submitted
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    
+}
+?>

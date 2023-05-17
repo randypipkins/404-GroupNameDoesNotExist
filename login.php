@@ -19,14 +19,14 @@ if(!isset($_POST["email"], $_POST["passwrd"])){
 }
 
 //prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
+if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")){
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
     //store results to check if exists in db
     $stmt->store_result();
 
     if($stmt->num_rows > 0){
-        $stmt->bind_result($id, $passwrd);
+        $stmt->bind_result($id, $passwrd, $user_role);
         $stmt->fetch();
         //verify the password
         if(password_verify($_POST["passwrd"], $passwrd)){
@@ -34,7 +34,17 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             $_SESSION["loggedin"] = true;
             $_SESSION["email"] = $_POST["email"];
             $_SESSION["id"] = $id;
-            header("Location: eventOrg.php");
+            
+            //redirect based on user role
+            if($user_role === "participant"){
+                header("Location: participant.html");
+            } else if($user_role === "event_organizer"){
+                header("Location: eventOrg.php");
+            } else if($user_role === "admin"){
+                header("Location: admin.html");
+            } else{
+                echo "Invalid role";
+            }
             exit();
         } else{
             //incorrect password
