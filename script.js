@@ -1,72 +1,94 @@
-var menu_btn = document.querySelector("#menu-btn");
-var sidebar = document.querySelector("#sidebar");
-var container = document.querySelector(".my-container");
+// buttons
+const addBtn = document.querySelector('button.add-btn');
+const editBtn = document.querySelector('button.edit-btn');
+const removeBtn = document.querySelector('button.remove-btn');
+const modalBtn = document.querySelector('button.display-modal');
+const inputModal = document.querySelector('div.tab-2');
 
-menu_btn.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-    // container.classList.toggle("active-cont");
-});
+let rIndex;
+const table = document.getElementById("table");
 
+function checkEmptyInput() {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value === "") {
+            const fieldName = inputs[i].getAttribute("placeholder");
+            alert("Any input cannot be empty");
+            return true;
+        }
+    }
+    return false;
+}
 
-window.addEventListener('load', () => {
-    const form = document.querySelector("#new-task-form");
-    const input = document.querySelector("#new-task-input");
-    const list_el = document.querySelector("#tasks");
+function addRow() {
+    if (!checkEmptyInput()) {
+        const newRow = table.insertRow(table.rows.length);
+        const cellsCount = table.rows[0].cells.length;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+        for (let i = 0; i < cellsCount; i++) {
+            const cell = newRow.insertCell(i);
+            const input = document.getElementById(`input-${i}`);
+            cell.innerHTML = input.value;
+        }
 
-        const task = input.value;
+        selectedRowToInput();
 
-        const task_el = document.createElement('div');
-        task_el.classList.add('task');
+        // Clear input fields
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach((input) => {
+            input.value = "";
+        });
+    }
+}
 
-        const task_content_el = document.createElement('div');
-        task_content_el.classList.add('content');
-
-        task_el.appendChild(task_content_el);
-
-        const task_input_el = document.createElement('input');
-        task_input_el.classList.add('text');
-        task_input_el.type = 'text';
-        task_input_el.value = task;
-        task_input_el.setAttribute('readonly', 'readonly');
-
-        task_content_el.appendChild(task_input_el);
-
-        const task_actions_el = document.createElement('div');
-        task_actions_el.classList.add('actions');
-
-        const task_edit_el = document.createElement('button');
-        task_edit_el.classList.add('edit');
-        task_edit_el.innerText = 'Edit';
-
-        const task_delete_el = document.createElement('button');
-        task_delete_el.classList.add('delete');
-        task_delete_el.innerText = 'Delete';
-
-        task_actions_el.appendChild(task_edit_el);
-        task_actions_el.appendChild(task_delete_el);
-
-        task_el.appendChild(task_actions_el);
-
-        list_el.appendChild(task_el);
-
-        input.value = '';
-
-        task_edit_el.addEventListener('click', (e) => {
-            if (task_edit_el.innerText.toLowerCase() == "edit") {
-                task_edit_el.innerText = "Save";
-                task_input_el.removeAttribute("readonly");
-                task_input_el.focus();
-            } else {
-                task_edit_el.innerText = "Edit";
-                task_input_el.setAttribute("readonly", "readonly");
+function selectedRowToInput() {
+    for (let i = 1; i < table.rows.length; i++) {
+        table.rows[i].onclick = function () {
+            rIndex = this.rowIndex;
+            const cells = this.cells;
+            for (let j = 0; j < cells.length; j++) {
+                const input = document.getElementById(`input-${j}`);
+                input.value = cells[j].innerHTML;
             }
-        });
+        };
+    }
+}
 
-        task_delete_el.addEventListener('click', (e) => {
-            list_el.removeChild(task_el);
+selectedRowToInput();
+
+function editRow() {
+    if (!checkEmptyInput()) {
+        const cellsCount = table.rows[0].cells.length;
+        for (let i = 0; i < cellsCount; i++) {
+            const input = document.getElementById(`input-${i}`);
+            table.rows[rIndex].cells[i].innerHTML = input.value;
+        }
+    }
+}
+
+function removeRow() {
+    if (table.rows.length > 1) {
+        table.deleteRow(rIndex);
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach((input) => {
+            input.value = "";
         });
-    });
+    }
+}
+
+// Event Listeners
+addBtn.addEventListener("click", () => {
+    addRow();
 });
+
+editBtn.addEventListener("click", () => {
+    editRow();
+});
+
+removeBtn.addEventListener("click", () => {
+    removeRow();
+});
+
+modalBtn.addEventListener("click", () => {
+    inputModal.classList.toggle("active");
+})
