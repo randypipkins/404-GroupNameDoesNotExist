@@ -75,6 +75,22 @@ function removeRow() {
         });
     }
 }
+function updateEventsTable() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        document.getElementById("eventsTable").getElementsByTagName("tbody")[0].innerHTML = xhr.responseText;
+      }
+    };
+    xhr.open("GET", "get_events.php", true);
+    xhr.send();
+  }
+
+  // Call the function to initially populate the events table
+  updateEventsTable();
+
+  // Set an interval to update the events table every few seconds
+  setInterval(updateEventsTable, 5000); // Update every 5 seconds
 
 // Event Listeners
 addBtn.addEventListener("click", () => {
