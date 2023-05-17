@@ -68,10 +68,10 @@
             <input type="text" name="date" id="input-3" placeholder="YYYY-MM-DD"> 
 
             <label for="start-time">Start Time:</label>
-            <input type="text" name="start_time" id="input-4" placeholder="HH:MM:SS">
+            <input type="text" name="start_time" id="input-4" placeholder="HH:MM PM/AM">
 
             <label for="end-time">End Time:</label>
-            <input type="text" placeholder="HH:MM:SS" name="end_time" id="input-5">
+            <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-5">
 
             <label for="location">Location:</label>
             <input type="text" placeholder="Location" name="location" id="input-6">
