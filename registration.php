@@ -41,6 +41,7 @@ if(mysqli_query($conn, $sql)){
     session_start();
     $_SESSION["success_msg"] = "Registration Success";
     $_SESSION["user_role"] = $user_role; 
+    $_SESSION["email"] = $email;
     header("Location: /404-GroupNameDoesNotExist");
     exit;
 } else{
