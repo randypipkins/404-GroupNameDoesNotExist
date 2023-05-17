@@ -37,6 +37,14 @@ if($stmt = $conn->prepare("SELECT id, passwrd FROM users WHERE email = ?")){
             header("Location: events.php");
             exit();
         } 
+        else if(password_verify($_POST["passwrd"], $passwrd) && isset($_SESSION["user_role"]) && $_SESSION["user_role"] === "event_organizer"){
+            session_regenerate_id();
+            $_SESSION["loggedin"] = true;
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["id"] = $id;
+            header("Location: eventOrg.php");
+            exit();
+        } 
         else{
             //incorrect password
             echo "Incorrect password.";
