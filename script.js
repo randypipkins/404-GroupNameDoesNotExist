@@ -8,7 +8,7 @@ const inputModal = document.querySelector('div.tab-2');
 let rIndex;
 const table = document.getElementById("table");
 
-/*function checkEmptyInput() {
+function checkEmptyInput() {
     const inputs = document.querySelectorAll('input[type="text"]');
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].value === "") {
@@ -19,26 +19,7 @@ const table = document.getElementById("table");
     }
     return false;
 }
-*/
-function checkEmptyInput() {
-    const inputs = document.querySelectorAll('input[type="text"]');
-    const dateRegex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
-  
-    for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].value === "") {
-        const fieldName = inputs[i].getAttribute("placeholder");
-        alert("Input cannot be empty");
-        return true;
-      }
-  
-      if (dateRegex.test(inputs[i].value)) {
-        console.log("Invalid date format. Please use YYYY-MM-DD");
-        return true;
-      }
-    }
-  
-    return false;
-  }
+
 function addRow() {
     if (!checkEmptyInput()) {
         const newRow = table.insertRow(table.rows.length);
