@@ -76,6 +76,7 @@
         `date` DATE NOT NULL,
         `start_time` DATETIME NOT NULL,
         `end_time` DATETIME NOT NULL,
+        `capacity` INT NOT NULL
         `description` TEXT,
         `organizer_id` INT UNSIGNED NOT NULL,
         `category_id` INT UNSIGNED NOT NULL,
