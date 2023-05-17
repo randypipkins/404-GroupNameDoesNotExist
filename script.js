@@ -22,7 +22,7 @@ const table = document.getElementById("table");
 */
 function checkEmptyInput() {
     const inputs = document.querySelectorAll('input[type="text"]');
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Regular expression for YYYY-MM-DD format
+    const dateRegex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
   
     for (let i = 0; i < inputs.length; i++) {
       if (inputs[i].value === "") {
@@ -40,6 +40,7 @@ function checkEmptyInput() {
     return false;
   }
   
+
 
 function addRow() {
     if (!checkEmptyInput()) {
