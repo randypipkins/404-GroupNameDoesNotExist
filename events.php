@@ -77,7 +77,7 @@
             <input type="text" placeholder="Location" name="location" id="input-6">
 
             <label for="capacity">Capacity:</label>
-            <input type="number" placeholder="Capacity" name="capacity" id="input-7">
+            <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
             <div class="button-div">
                 <button class="btn add-btn">Add</button>
