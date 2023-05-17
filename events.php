@@ -45,8 +45,7 @@
                     <th>Event Title</th>
                     <th>Event Type</th>
                     <th>Description</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th>Date</th>
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Location</th>
@@ -60,28 +59,25 @@
             <input type="text" placeholder="Event Title" name="fname" id="input-0">
 
             <label for="Event Type">Event Type:</label>
-            <input type="text" placeholder="Event Type" name="event-type" id="input-1">
+            <input type="text" placeholder="Event Type" name="event_type" id="input-1">
 
             <label for="description">Description:</label>
             <input type="text" placeholder="Description" name="lname" id="input-2">
 
-            <label for="start-date">Start Date:</label>
-            <input type="text" placeholder="Start Date" name="start-date" id="input-3">
-
-            <label for="end-date">End Date:</label>
-            <input type="text" placeholder="End Date" name="end-date" id="input-4">
+            <label for="date">Date:</label>
+            <input type="text" placeholder="Date" name="date" id="input-3">
 
             <label for="start-time">Start Time:</label>
-            <input type="text" placeholder="Start Time" name="start-time" id="input-5">
+            <input type="text" placeholder="Start Time" name="start_time" id="input-4">
 
             <label for="end-time">End Time:</label>
-            <input type="text" placeholder="End Time" name="end-time" id="input-6">
+            <input type="text" placeholder="End Time" name="end_time" id="input-5">
 
             <label for="location">Location:</label>
-            <input type="text" placeholder="Location" name="location" id="input-7">
+            <input type="text" placeholder="Location" name="location" id="input-6">
 
             <label for="capacity">Capacity:</label>
-            <input type="text" placeholder="Capacity" name="capacity" id="input-8">
+            <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
             <div class="button-div">
                 <button class="btn add-btn">Add</button>
@@ -99,110 +95,3 @@
 </body>
 
 </html>
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "CSCD378GroupWeb";
-$dbname = "mydb";
-
-//create connection to the server and the database
-$conn = new mysqli($servername, $username, $password, $dbname);
-//check connection
-if($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
-}
-
-//event construction
-class Event{
-    public $id;
-    public $title;
-    public $location;
-    public $start_time;
-    public $end_time;
-    public $description;
-    public $organizer_id;
-    public $category_id;
-
-    public function __construct($title, $location, $start_time, $end_time, 
-    $description, $organizer_id, $category_id){
-        $this->$title;
-        $this->$location;
-        $this->$start_time;
-        $this->$end_time;
-        $this->$description;
-        $this->$organizer_id;
-        $this->$category_id;
-    }
-}
-
-//event management system class
-class EventManagementSystem{
-    public $events;
-
-    public function __construct(){
-        $this->events = array();
-    }
-
-    //add event
-    public function addEvent($events){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
-        description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
-            $events->end_time, $events->description, $events->organizer_id, $events->category_id);
-
-        $stmt->execute();
-
-        $events->id = $stmt->insert_id;
-
-        $this->events[] = $events;
-
-        $stmt->close();
-    }
-
-    //modify event
-    public function modifyEvent($events){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, start_time=?, end_time=?, 
-            description=?, organizer_id=?, category_id=? WHERE id=?");
-        
-        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
-            $events->end_time, $events->description, $events->organizer_id, $events->category_id);
-
-        $stmt->execute();
-        $stmt->close();
-        
-        //update the events in the array
-        foreach($this->events as &$e){
-            if($e->id == $events->id){
-                $e=$events;
-                break;
-            }
-        }
-    }
-
-    //delete event
-    public function deleteEvent($event_id){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
-
-        $stmt->bind_param("i", $event_id);
-
-        $stmt->execute();
-        $stmt->close();
-    }
-}
-
-//check if form is submitted
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    
-}
-?>
