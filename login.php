@@ -26,7 +26,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email 
     $stmt->store_result();
 
     if($stmt->num_rows > 0){
-        $stmt->bind_result($id, $passwrd);
+        $stmt->bind_result($id, $passwrd, $user_role);
         $stmt->fetch();
         //verify the password
         if(password_verify($_POST["passwrd"], $passwrd)){
