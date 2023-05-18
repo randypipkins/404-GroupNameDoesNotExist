@@ -37,7 +37,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email 
             
             //redirect based on user role
             if($user_role === "participant"){
-                header("Location: participant.html");
+                header("Location: participant.php");
             } else if($user_role === "event_organizer"){
                 header("Location: eventOrg.php");
             } else if($user_role === "admin"){
