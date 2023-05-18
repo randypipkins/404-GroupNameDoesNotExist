@@ -1,3 +1,21 @@
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "CSCD378GroupWeb";
+    $dbname = "myDB";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch data from the events table
+    $sql = "SELECT * FROM events";
+    $result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,10 +66,7 @@
                 </tr>
                 <?php
                 // Fetch data from the events table
-                $sql = "SELECT * FROM events";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
+                if ($result && $result->num_rows > 0) {
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
