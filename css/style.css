@@ -108,4 +108,7 @@ main {
     justify-content: flex-end;
 }
 /**********partipant table *************/
-
+#participantT {
+    width: 100%;
+    border:solid red 2px;
+}

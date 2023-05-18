@@ -50,7 +50,7 @@
 
   <div class="container">
     <main>
-        <div class="tab tab-1">
+        <div class="tab tab-1" id="participantT">
             <table id="table" border="1">
                 <tr>
                     <th>ID</th>
