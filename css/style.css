@@ -111,6 +111,9 @@ main {
 #participantT {
     width: 100%;
     border:solid red 2px;
-    display: flex;
-    justify-content: flex-end;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
 }
