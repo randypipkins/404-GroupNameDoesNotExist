@@ -110,10 +110,9 @@ main {
 /**********partipant table *************/
 #participantT {
     width: 100%;
-    border:solid red 2px;
     position: relative;
     top: 50%;
-    left: 65%;
+    left: 63%;
     transform: translate(-50%,-50%);
     padding: 0.33em;
 
