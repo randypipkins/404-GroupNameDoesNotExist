@@ -35,16 +35,42 @@
         <div class="tab tab-1">
             <table id="table" border="1">
                 <tr>
+                    <th>ID</th>
                     <th>Title</th>
                     <th>Location</th>
                     <th>Date</th>
                     <th>Start Time</th>
                     <th>End Time</th>
+                    <th>Capacity</th>
                     <th>Description</th>
                     <th>Organizer ID</th>
                     <th>Category ID</th>
-                    <th>Capacity</th>
                 </tr>
+                <?php
+                // Fetch data from the events table
+                $sql = "SELECT * FROM events";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["location"] . "</td>";
+                        echo "<td>" . $row["date"] . "</td>";
+                        echo "<td>" . $row["start_time"] . "</td>";
+                        echo "<td>" . $row["end_time"] . "</td>";
+                        echo "<td>" . $row["capacity"] . "</td>";
+                        echo "<td>" . $row["description"] . "</td>";
+                        echo "<td>" . $row["organizer_id"] . "</td>";
+                        echo "<td>" . $row["category_id"] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='10'>No events found</td></tr>";
+                }
+                ?>
             </table>
         </div>
     </main>
