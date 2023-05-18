@@ -63,6 +63,7 @@
                     <th>Description</th>
                     <th>Organizer ID</th>
                     <th>Category ID</th>
+                    <th>Register</th>
                 </tr>
                 <?php
                 // Fetch data from the events table
@@ -80,10 +81,16 @@
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
                         echo "<td>" . $row["category_id"] . "</td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='register.php'>"; // Change 'register.php' to the appropriate PHP file for handling registration
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>"; // Hidden input field to store the event ID
+                        echo "<button type='submit' class='btn btn-primary'>Register</button>"; // Style the button as needed
+                        echo "</form>";
+                        echo "</td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='10'>No events found</td></tr>";
+                    echo "<tr><td colspan='11'>No events found</td></tr>";
                 }
                 ?>
             </table>
