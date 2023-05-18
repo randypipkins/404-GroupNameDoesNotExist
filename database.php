@@ -76,7 +76,7 @@
         `date` VARCHAR(255) NOT NULL,
         `start_time` VARCHAR(255) NOT NULL,
         `end_time` VARCHAR(255) NOT NULL,
-        `capacity` VARCHAR(255) NOT NULL
+        `capacity` VARCHAR(255) NOT NULL,
         `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
         `category_id` INT UNSIGNED NOT NULL,
