@@ -113,7 +113,7 @@ main {
     border:solid red 2px;
     position: relative;
     top: 50%;
-    left: 100%;
+    left: 60%;
     transform: translate(-50%,-50%);
 
 }
