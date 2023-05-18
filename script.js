@@ -97,8 +97,9 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     //retrieve the form values
     var title = document.getElementById("input-0").value;
     var location = document.getElementById("input-6").value;
-    var start_time = document.getElementById("input-3").value + " " + document.getElementById("input-4").value;
-    var end_time = document.getElementById("input-3").value + " " + document.getElementById("input-5").value;
+    var date = document.getElementById("input-3").value;
+    var start_time = document.getElementById("input-4").value;
+    var end_time = document.getElementById("input-5").value;
     var capacity = document.getElementById("input-7");
     var description = document.getElementById("input-2").value;
 
