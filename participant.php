@@ -84,7 +84,7 @@
                         echo "<td>";
                         echo "<form method='POST' action='register.php'>"; // Change 'register.php' to the appropriate PHP file for handling registration
                         echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>"; // Hidden input field to store the event ID
-                        echo "<button type='submit' class='btn btn-primary'>Register</button>"; // Style the button as needed
+                        echo "<button type='submit' class='btn btn-primary'>Register</button>";
                         echo "</form>";
                         echo "</td>";
                         echo "</tr>";
