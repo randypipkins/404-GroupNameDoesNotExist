@@ -13,7 +13,6 @@
     }
 
        // Fetch data from the events table with filters
-       $search_date = $_POST['search_date'] ?? '';
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
@@ -22,9 +21,6 @@
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
-       if (!empty($search_date)) {
-        $sql .= " AND STR_TO_DATE(date, '%m/%d/%Y') = STR_TO_DATE('$search_date', '%m/%d/%Y')";
-    }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
        }
@@ -32,14 +28,26 @@
            $sql .= " AND capacity >= $search_capacity";
        }
        if (!empty($search_keywords)) {
-           // Split the keywords into an array
-           $keywords = explode(" ", $search_keywords);
-           $conditions = [];
-           foreach ($keywords as $keyword) {
-               $conditions[] = "title LIKE '%$keyword%' OR description LIKE '%$keyword%'";
-           }
-           $sql .= " AND (" . implode(" OR ", $conditions) . ")";
-       }
+        // Split the keywords into an array
+        $keywords = explode(" ", $search_keywords);
+        $dateKeywords = [];
+        $otherKeywords = [];
+        foreach ($keywords as $keyword) {
+            if (preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $keyword)) {
+                $dateKeywords[] = "date LIKE '%$keyword%'";
+            } else {
+                $otherKeywords[] = "(title LIKE '%$keyword%' OR description LIKE '%$keyword%')";
+            }
+        }
+        $conditions = [];
+        if (!empty($dateKeywords)) {
+            $conditions[] = "(" . implode(" OR ", $dateKeywords) . ")";
+        }
+        if (!empty($otherKeywords)) {
+            $conditions[] = "(" . implode(" OR ", $otherKeywords) . ")";
+        }
+        $sql .= " AND (" . implode(" OR ", $conditions) . ")";
+    }
    
        $result = $conn->query($sql);
    ?>
