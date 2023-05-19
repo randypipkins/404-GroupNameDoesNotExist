@@ -29,8 +29,15 @@
            $sql .= " AND location = '$search_location'";
        }
        if (!empty($search_capacity)) {
-           $sql .= " AND capacity >= '$search_capacity'";
-       }
+        // Check if the input is a string representation of a number
+        if (is_numeric($search_capacity)) {
+            $sql .= " AND capacity >= $search_capacity";
+        } else {
+            echo "Invalid capacity input";
+            // You can redirect or display an error message here
+            exit;
+        }
+    }
 
        if (!empty($search_keywords)) {
         // Split the keywords into an array
