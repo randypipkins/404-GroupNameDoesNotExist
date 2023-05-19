@@ -89,10 +89,6 @@
         <form method="POST" action="">
                     <div class="row mb-3">
                         <div class="col-md-3">
-                            <label for="search_date" class="form-label">Search by Date:</label>
-                            <input type="date" class="form-control" id="search_date" name="search_date" value="<?php echo $search_date; ?>">
-                        </div>
-                        <div class="col-md-3">
                             <label for="search_location" class="form-label">Search by Location:</label>
                             <input type="text" class="form-control" id="search_location" name="search_location" value="<?php echo $search_location; ?>">
                         </div>
@@ -101,7 +97,7 @@
                             <input type="number" class="form-control" id="search_capacity" name="search_capacity" value="<?php echo $search_capacity; ?>">
                         </div>
                         <div class="col-md-3">
-                            <label for="search_keywords" class="form-label">Search by Keywords:</label>
+                            <label for="search_keywords" class="form-label">Search by Keywords/Date:</label>
                             <input type="text" class="form-control" id="search_keywords" name="search_keywords" value="<?php echo $search_keywords; ?>">
                         </div>
                     </div>
