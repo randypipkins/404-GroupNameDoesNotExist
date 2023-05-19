@@ -35,21 +35,9 @@
        if (!empty($search_keywords)) {
         // Split the keywords into an array
         $keywords = explode(" ", $search_keywords);
-        $dateKeywords = [];
-        $otherKeywords = [];
-        foreach ($keywords as $keyword) {
-            if (preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $keyword)) {
-                $dateKeywords[] = "date LIKE '%$keyword%'";
-            } else {
-                $otherKeywords[] = "(title LIKE '%$keyword%' OR description LIKE '%$keyword%')";
-            }
-        }
         $conditions = [];
-        if (!empty($dateKeywords)) {
-            $conditions[] = "(" . implode(" OR ", $dateKeywords) . ")";
-        }
-        if (!empty($otherKeywords)) {
-            $conditions[] = "(" . implode(" OR ", $otherKeywords) . ")";
+        foreach ($keywords as $keyword) {
+            $conditions[] = "title LIKE '%$keyword%' OR description LIKE '%$keyword%'";
         }
         $sql .= " AND (" . implode(" OR ", $conditions) . ")";
     }
@@ -106,7 +94,7 @@
                             <input type="text" class="form-control" id="search_capacity" name="search_capacity" value="<?php echo $search_capacity; ?>">
                         </div>
                         <div class="col-md-3">
-                            <label for="search_keywords" class="form-label">Search by Keywords/Date:</label>
+                            <label for="search_keywords" class="form-label">Search by Keywords:</label>
                             <input type="text" class="form-control" id="search_keywords" name="search_keywords" value="<?php echo $search_keywords; ?>">
                         </div>
                     </div>
