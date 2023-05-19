@@ -23,7 +23,7 @@
    
        // Add filters based on the search criteria
        if (!empty($search_string)) {
-        $sql .= " AND date LIKE '%$search_string%'";
+        $sql .= " AND date = '$search_string'";
     }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
