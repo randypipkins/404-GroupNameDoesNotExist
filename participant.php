@@ -22,7 +22,9 @@
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
-
+       if (!empty($search_date)) {
+           $sql .= " AND date = '$search_date'";
+       }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
        }
