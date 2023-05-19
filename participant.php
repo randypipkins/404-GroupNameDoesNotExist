@@ -15,18 +15,23 @@
        // Fetch data from the events table with filters
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
+       $search_date = $_POST['search_date'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
    
        // Construct the base SQL query
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
+       if (!empty($search_date)) {
+        $sql .= " AND date LIKE '%$search_date%'";
+    }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
        }
        if (!empty($search_capacity)) {
            $sql .= " AND capacity >= '$search_capacity'";
        }
+
        if (!empty($search_keywords)) {
         // Split the keywords into an array
         $keywords = explode(" ", $search_keywords);
@@ -88,13 +93,17 @@
         <div class="tab tab-1" id="participantT">
         <form method="POST" action="">
                     <div class="row mb-3">
+                    <div class="col-md-3">
+                            <label for="search_date" class="form-label">Search by Date:</label>
+                            <input type="text" class="form-control" id="search_date" name="search_date" value="<?php echo $search_date; ?>">
+                        </div>
                         <div class="col-md-3">
                             <label for="search_location" class="form-label">Search by Location:</label>
                             <input type="text" class="form-control" id="search_location" name="search_location" value="<?php echo $search_location; ?>">
                         </div>
                         <div class="col-md-3">
                             <label for="search_capacity" class="form-label">Search by Capacity:</label>
-                            <input type="number" class="form-control" id="search_capacity" name="search_capacity" value="<?php echo $search_capacity; ?>">
+                            <input type="text" class="form-control" id="search_capacity" name="search_capacity" value="<?php echo $search_capacity; ?>">
                         </div>
                         <div class="col-md-3">
                             <label for="search_keywords" class="form-label">Search by Keywords/Date:</label>
