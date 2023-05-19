@@ -13,7 +13,7 @@
     }
 
        // Fetch data from the events table with filters
-       $search_date = $_POST['search_date'] ?? '';
+       $search_string = $_POST['search_string'] ?? '';
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
@@ -22,9 +22,9 @@
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
-       if (!empty($search_date)) {
-           $sql .= " AND date = '$search_date'";
-       }
+       if (!empty($search_string)) {
+        $sql .= " AND date LIKE '%$search_string%'";
+    }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
        }
