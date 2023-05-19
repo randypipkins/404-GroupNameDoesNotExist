@@ -17,23 +17,17 @@
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
+
+       // Format the search date to mm/dd/yyyy
+       $search_date = date('m/d/Y', strtotime($search_date));
    
        // Construct the base SQL query
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
- // Validate the search date format
-// Validate the search date format
-if (!empty($search_date)) {
-    // Convert the search date to a valid SQL date format (assuming mm/dd/yyyy)
-    $search_date = date('Y-m-d', strtotime(str_replace('/', '-', $search_date)));
-}
-
-// ...
-if (!empty($search_date)) {
-    $sql .= " AND DATE_FORMAT(date, '%m/%d/%Y') LIKE '%$search_date%'";
-}
-
+       if (!empty($search_date)) {
+        $sql .= " AND date LIKE '%$search_date%'";
+        }
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
        }
