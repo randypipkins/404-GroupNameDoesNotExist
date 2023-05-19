@@ -22,18 +22,19 @@
        $sql = "SELECT * FROM events WHERE 1=1";
    
        // Add filters based on the search criteria
-       if (!empty($search_date) && !preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $search_date)) {
-        echo "Invalid date format. Please enter a date in the format mm/dd/yyyy.";
-        // Additional error handling if needed
-        exit; // Stop execution if the date format is invalid
-    }
-    
-    // ...
-    if (!empty($search_date)) {
-        // Convert the search date to a valid SQL date format (assuming mm/dd/yyyy)
-        $search_date = date('Y-m-d', strtotime(str_replace('/', '-', $search_date)));
-        $sql .= " AND date = '$search_date'";
-    }
+ // Validate the search date format
+if (!empty($search_date) && !preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $search_date)) {
+    echo "Invalid date format. Please enter a date in the format mm/dd/yyyy.";
+    // Additional error handling if needed
+    exit; // Stop execution if the date format is invalid
+}
+
+// ...
+if (!empty($search_date)) {
+    // Convert the search date to a valid SQL date format (assuming mm/dd/yyyy)
+    $search_date = date('Y-m-d', strtotime(str_replace('/', '-', $search_date)));
+    $sql .= " AND date LIKE '%$search_date%'";
+}
 
        if (!empty($search_location)) {
            $sql .= " AND location = '$search_location'";
