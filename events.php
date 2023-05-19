@@ -65,7 +65,7 @@
             <input type="text" placeholder="Description" name="lname" id="input-2">
 
             <label for="date">Date:</label>
-            <input type="text" name="date" id="input-3" placeholder="YYYY-MM-DD"> 
+            <input type="text" name="date" id="input-3" placeholder="mm/dd/yyyy"> 
 
             <label for="start-time">Start Time:</label>
             <input type="text" name="start_time" id="input-4" placeholder="HH:MM PM/AM">
