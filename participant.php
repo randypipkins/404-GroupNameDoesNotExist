@@ -25,7 +25,7 @@
            $sql .= " AND location = '$search_location'";
        }
        if (!empty($search_capacity)) {
-           $sql .= " AND capacity >= $search_capacity";
+           $sql .= " AND capacity >= '$search_capacity'";
        }
        if (!empty($search_keywords)) {
         // Split the keywords into an array
