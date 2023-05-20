@@ -127,4 +127,8 @@ main {
     position: relative;
     z-index: 1;
   }
+  .side-nav {
+    position: relative;
+    z-index: 2;
+  }
 
