@@ -117,3 +117,14 @@ main {
     padding: 0.33em;
 
 }
+.wrapper {
+    position: relative;
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+

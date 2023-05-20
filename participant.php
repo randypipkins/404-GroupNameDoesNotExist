@@ -60,6 +60,7 @@
 </head>
 
 <body>
+    <div class="wrapper">
   <!-- Side-Nav -->
   <div class="side-nav active-nav" id="sidebar">
     <ul class="nav flex-column text-white w-100">
@@ -150,6 +151,7 @@
         </div>
     </main>
   </div>
+</div>
 
     <!-- Top Nav -->
   <!-- bootstrap js -->
