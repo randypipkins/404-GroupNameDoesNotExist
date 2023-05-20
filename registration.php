@@ -26,12 +26,8 @@ if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
 }
 
 //password character length check
-if(strlen($_POST["passwrd"]) < 5){
+if(strlen($_POST["passwrd"] < 5)){
     exit("Password must be more than 5 characters.");
-}
-$allowed_roles = ['admin', 'event_organizer', 'participant'];
-if (!in_array($user_role, $allowed_roles)) {
-    exit("Invalid user role.");
 }
 
 //hashing the password
