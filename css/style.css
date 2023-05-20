@@ -10,6 +10,7 @@
     height: 100%;
     position: fixed;
     background-color: #100901;
+    z-index: 2;
 }
 .text-white {
     color: whitesmoke;
@@ -126,9 +127,5 @@ main {
   .container {
     position: relative;
     z-index: 1;
-  }
-  .side-nav {
-    position: relative;
-    z-index: 2;
   }
 
