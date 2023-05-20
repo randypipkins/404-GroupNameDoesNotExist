@@ -41,7 +41,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email 
             } else if($user_role === "event_organizer"){
                 header("Location: eventOrg.php");
             } else if($user_role === "admin"){
-                header("Location: admin.html");
+                header("Location: admin.php");
             } else{
                 echo "Invalid role";
             }
