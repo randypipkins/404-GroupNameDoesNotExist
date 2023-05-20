@@ -19,21 +19,21 @@
     <ul class="nav flex-column text-white w-100">
       <h3 class="h3 text-white my-2" id="h3"> I Do Crew
 	  </h3>
-      <li href="" class="nav-link">
-        <i class="bx bxs-dashboard"></i>
-        <span class="mx-2">Dashboard</span>
+    <li href="" class="nav-link">
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="admin.php" class="btn btn-danger"><span class="mx-2 text-white">Dashboard</span></a>
       </li>
       <li href="" class="nav-link">
-        <i class="bx bxs-dashboard"></i>
-        <span class="mx-2">Events</span>
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="adminEvents.php" class="btn btn-danger"><span class="mx-2 text-white">Events</span></a>
       </li>
       <li href="" class="nav-link">
-        <i class="bx bxs-dashboard"></i>
-        <span class="mx-2">Users</span>
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="users.php" class="btn btn-danger"><span class="mx-2 text-white">Users</span></a>
       </li>
       <li href="" class="nav-link">
-        <i class="bx bx-user-check"></i>
-        <span class="mx-2">Logout</span>
+        <i class="bx bx-user-check text-white"></i>
+        <a href="logout.php" class="btn btn-danger"><span class="mx-2 text-white">Logout</span></a>
       </li>
     </ul>
   </div>
