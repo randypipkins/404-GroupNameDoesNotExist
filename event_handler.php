@@ -16,6 +16,7 @@ class Event{
     public $id;
     public $title;
     public $location;
+    public $date;
     public $start_time;
     public $end_time;
     public $capacity;
@@ -23,10 +24,11 @@ class Event{
     public $organizer_id;
     public $category_id;
 
-    public function __construct($title, $location, $start_time, $end_time, 
+    public function __construct($title, $location, $date, $start_time, $end_time, 
     $capacity, $description, $organizer_id, $category_id){
         $this->title = $title;
         $this->location = $location;
+        $this->date = $date;
         $this->start_time = $start_time;
         $this->end_time = $end_time;
         $this->capacity = $capacity;
@@ -49,10 +51,10 @@ class EventManagementSystem{
         global $conn;
 
         //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
-        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, 
+        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
+        $stmt->bind_param("sssssssii", $events->title, $events->location, $events->date, $events->start_time, 
             $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
 
         $stmt->execute();
@@ -69,10 +71,10 @@ class EventManagementSystem{
         global $conn;
 
         //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, start_time=?, end_time=?, 
+        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, date=?, start_time=?, end_time=?, 
             capacity=?, description=?, organizer_id=?, category_id=? WHERE id=?");
         
-        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
+        $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
             $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
 
         $stmt->execute();
@@ -94,9 +96,32 @@ class EventManagementSystem{
         //prepare and execute sql statement to prevent injection
         $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
 
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("i", $event_id);
 
         $stmt->execute();
         $stmt->close();
     }
 }
+
+//handle the incoming request
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $title = $_POST["title"];
+    $location = $_POST["location"];
+    $date = $_POST["date"];
+    $start_time = $_POST["start_time"];
+    $end_time = $_POST["end_time"];
+    $capacity = $_POST["capacity"];
+    $description = $_POST["description"];
+
+    $event = new Event($title, $location, $date, $start_time, $end_time, $capacity,
+        $description, $organizer_id, $category_id);
+
+    $eventManagementSystem = new EventManagementSystem();
+
+    //add the event
+    $eventManagementSystem->addEvent($event);
+
+    //echo the event ID as the response
+    echo $event->id;
+}
+?>
