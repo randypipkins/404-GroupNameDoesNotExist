@@ -55,6 +55,7 @@
         </div>
 
         <div class="tab tab-2">
+        <form action="event_handler.php" method="POST">
             <label for="event-title">Event Title:</label>
             <input type="text" placeholder="Event Title" name="fname" id="input-0">
 
