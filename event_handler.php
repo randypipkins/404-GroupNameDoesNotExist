@@ -1,48 +1,42 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $servername = "localhost";
-    $username = "root";
-    $password = "CSCD378GroupWeb";
-    $dbname = "mydb";
+$servername = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "myDB";
 
-    //create connection to the server and the database
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    //check connection
-    if($conn->connect_error){
-        die("Connection failed: " . $conn->connect_error);
-    }
-       // Prepare and bind the SQL statement
-    $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssi", $title, $location, $date, $start_time, $end_time, $capacity, $description, $organizer_id, $category_id);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Get the form data
-    $title = $_POST['title'];
-    $location = $_POST['location'];
-    $date = $_POST['date'];
-    $start_time = $_POST['start_time'];
-    $end_time = $_POST['end_time'];
-    $capacity = $_POST['capacity'];
-    $description = $_POST['description'];
-    $organizer_id = 1; // Assuming organizer_id is 1 (you may need to change this)
-    $category_id = 1; // Assuming category_id is 1 (you may need to change this)
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Retrieve form data
+    $title = $_POST["event_title"];
+    $location = $_POST["location"];
+    $date = $_POST["date"];
+    $start_time = $_POST["start_time"];
+    $end_time = $_POST["end_time"];
+    $capacity = $_POST["capacity"];
+    $description = $_POST["description"];
+
+    // Prepare and bind the SQL statement
+    $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $title, $location, $date, $start_time, $end_time, $capacity, $description);
 
     // Execute the statement
     if ($stmt->execute()) {
-        // Event added successfully
         echo "Event added successfully";
-        $stmt->close();
-        $conn->close();
-        exit;
     } else {
-        // Error adding event
         echo "Error adding event: " . $stmt->error;
-        $stmt->close();
-        $conn->close();
-        exit;
     }
+
+    // Close the statement
+    $stmt->close();
 }
 
-// Redirect to the form page if accessed directly
-header("Location: events.php");
-exit;
+// Close the connection
+$conn->close();
 ?>
