@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve form data
-    $title = $_POST["event_title"];
+    $title = $_POST["title"];
     $location = $_POST["location"];
     $date = $_POST["date"];
     $start_time = $_POST["start_time"];
