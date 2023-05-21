@@ -19,7 +19,7 @@ if(isset($_SESSION["email"])){
 
     //prepare the sql statement to retrieve the ID based on the email of the logged in user
     $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $organizer_email);
     $stmt->execute();
 
     //get the result
