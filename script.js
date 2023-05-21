@@ -107,6 +107,7 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     var formData = new FormData();
     formData.append("title", title);
     formData.append("location", location);
+    formData.append("date", date);
     formData.append("start_time", start_time);
     formData.append("end_time", end_time);
     formData.append("capacity", capacity);
