@@ -98,7 +98,7 @@ class EventManagementSystem{
             die("An error occurred. Please check the error log for details.");
         }
     
-        $stmt->bind_param("sssssssi", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $organizer_id);
+        $stmt->bind_param("sssssssi", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id);
     
         if (!$stmt->execute()) {
             // Error executing the statement
