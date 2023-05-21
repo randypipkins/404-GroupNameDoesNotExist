@@ -38,6 +38,7 @@ if(isset($_SESSION["email"])){
 class Event{
     public $id;
     public $title;
+    public $event_type;
     public $location;
     public $date;
     public $start_time;
@@ -46,9 +47,10 @@ class Event{
     public $description;
     public $organizer_id;
 
-    public function __construct($title, $location, $date, $start_time, $end_time, 
+    public function __construct($title, $event_type, $location, $date, $start_time, $end_time, 
     $capacity, $description, $organizer_id){
         $this->title = $title;
+        $this->event_type = $event_type;
         $this->location = $location;
         $this->date = $date;
         $this->start_time = $start_time;
@@ -68,7 +70,7 @@ class EventManagementSystem{
     }
 
     //add event
-    public function addEvent($events, $organizer_id, $conn){
+    public function addEvent($event, $organizer_id, $conn){
 
         // Prepare and execute SQL statement to prevent injection
         $stmt = $conn->prepare("INSERT INTO events (title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -98,7 +100,7 @@ class EventManagementSystem{
             die("An error occurred. Please check the error log for details.");
         }
     
-        $stmt->bind_param("ssssssssi", $events->title, $events->event_type, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id);
+        $stmt->bind_param("ssssssssi", $event->title, $event->event_type, $event->location, $event->date, $event->start_time, $event->end_time, $event->capacity, $event->description, $event->organizer_id);
     
         if (!$stmt->execute()) {
             // Error executing the statement
@@ -108,32 +110,32 @@ class EventManagementSystem{
             die("An error occurred. Please check the error log for details.");
         }
     
-        $events->id = $stmt->insert_id;
+        $event->id = $stmt->insert_id;
     
-        $this->events[] = $events;
+        $this->events[] = $event;
     
         $stmt->close();
     }
     
 
     //modify event
-    public function modifyEvent($events){
+    public function modifyEvent($event){
         global $conn;
 
         //prepare and execute sql statement to prevent injection
         $stmt = $conn->prepare("UPDATE events SET title=?, location=?, date=?, start_time=?, end_time=?, 
             capacity=?, description=?, organizer_id=?, category_id=? WHERE id=?");
         
-        $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
-            $events->end_time, $events->capacity, $events->description, $events->organizer_id);
+        $stmt->bind_param("ssssssii", $event->title, $event->location, $event->start_time, 
+            $event->end_time, $event->capacity, $event->description, $event->organizer_id);
 
         $stmt->execute();
         $stmt->close();
         
         //update the events in the array
         foreach($this->events as &$e){
-            if($e->id == $events->id){
-                $e=$events;
+            if($e->id == $event->id){
+                $e=$event;
                 break;
             }
         }
@@ -156,6 +158,7 @@ class EventManagementSystem{
 //handle the incoming request
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $title = $_POST["title"];
+    $event_type = $_POST["event_type"];
     $location = $_POST["location"];
     $date = $_POST["date"];
     $start_time = $_POST["start_time"];
@@ -163,7 +166,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $capacity = $_POST["capacity"];
     $description = $_POST["description"];
 
-    $event = new Event($title, $location, $date, $start_time, $end_time, $capacity,
+    $event = new Event($title, $event_type, $location, $date, $start_time, $end_time, $capacity,
         $description, $organizer_id);
 
     $eventManagementSystem = new EventManagementSystem();
