@@ -47,24 +47,53 @@ class EventManagementSystem{
     }
 
     //add event
-    public function addEvent($events){
-        global $conn;
+    public function addEvent($events, $conn){
 
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, 
-        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        $stmt->bind_param("sssssssii", $events->title, $events->location, $events->date, $events->start_time, 
-            $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
-
-        $stmt->execute();
-
+        // Prepare and execute SQL statement to prevent injection
+        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    
+        if (!$stmt) {
+            // Error occurred while preparing the statement
+            $errorLogDirectory = "ErrorLogs";
+            $errorLogFile = "error.log";
+            $errorLogPath = $errorLogDirectory . "/" . $errorLogFile;
+    
+            if (!is_dir($errorLogDirectory)) {
+                // Create the error log directory if it doesn't exist
+                mkdir($errorLogDirectory, 0755, true);
+                // Set appropriate write permissions for the directory
+                chmod($errorLogDirectory, 0755);
+            }
+    
+            if (!file_exists($errorLogPath)) {
+                // Create the error log file if it doesn't exist
+                touch($errorLogPath);
+                // Set appropriate write permissions for the file
+                chmod($errorLogPath, 0644);
+            }
+    
+            $errorMessage = "Error preparing the statement: " . $conn->error;
+            error_log($errorMessage, 3, $errorLogPath);
+            die("An error occurred. Please check the error log for details.");
+        }
+    
+        $stmt->bind_param("sssssssii", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
+    
+        if (!$stmt->execute()) {
+            // Error executing the statement
+            $errorLogPath = "ErrorLogs/error.log";
+            $errorMessage = "Error executing the statement: " . $conn->error;
+            error_log($errorMessage, 3, $errorLogPath);
+            die("An error occurred. Please check the error log for details.");
+        }
+    
         $events->id = $stmt->insert_id;
-
+    
         $this->events[] = $events;
-
+    
         $stmt->close();
     }
+    
 
     //modify event
     public function modifyEvent($events){
@@ -119,7 +148,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $eventManagementSystem = new EventManagementSystem();
 
     //add the event
-    $eventManagementSystem->addEvent($event);
+    $eventManagementSystem->addEvent($event, $conn);
 
     //echo the event ID as the response
     echo $event->id;
