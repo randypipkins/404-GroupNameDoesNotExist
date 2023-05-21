@@ -124,9 +124,9 @@ class EventManagementSystem{
 
         //prepare and execute sql statement to prevent injection
         $stmt = $conn->prepare("UPDATE events SET title=?, location=?, date=?, start_time=?, end_time=?, 
-            capacity=?, description=?, organizer_id=?, category_id=? WHERE id=?");
+            capacity=?, description=?, organizer_id=? WHERE id=?");
         
-        $stmt->bind_param("ssssssii", $event->title, $event->location, $event->start_time, 
+        $stmt->bind_param("sssssssi", $event->title, $event->location, $event->start_time, 
             $event->end_time, $event->capacity, $event->description, $event->organizer_id);
 
         $stmt->execute();
