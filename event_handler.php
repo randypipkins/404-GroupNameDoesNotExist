@@ -49,19 +49,29 @@ class EventManagementSystem{
         global $conn;
 
         //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
-        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, 
+        capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)");
 
-        $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
-            $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
+    $stmt->bind_param("sssssss", $title, $location, $date, $start_time, $end_time, $capacity, $description);
 
-        $stmt->execute();
+    // Retrieve the form values
+    $title = $_POST["title"];
+    $location = $_POST["location"];
+    $date = $_POST["date"];
+    $start_time = $_POST["start_time"];
+    $end_time = $_POST["end_time"];
+    $capacity = $_POST["capacity"];
+    $description = $_POST["description"];
 
-        $events->id = $stmt->insert_id;
-
-        $this->events[] = $events;
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "Event added successfully";
+    } else {
+        echo "Error adding event: " . $stmt->error;
+    }
 
         $stmt->close();
+        $conn->close();
     }
 
     //modify event
