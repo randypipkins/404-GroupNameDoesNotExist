@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssssssi", $event_title, $location, $date, $start_time, $end_time, $capacity, $description, $organizer_id, $category_id);
 
     // Get the form data
-    $event_title = $_POST['event_title'];
+    $event_title = $_POST['title'];
     $location = $_POST['location'];
     $date = $_POST['date'];
     $start_time = $_POST['start_time'];
