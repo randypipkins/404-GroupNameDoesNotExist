@@ -11,6 +11,29 @@ if($conn->connect_error){
     die("Connection failed: " . $conn->connect_error);
 }
 
+//retrieve the id of the organizer currently logged in
+session_start();
+
+if(isset($_SESSION["email"])){
+    $organizer_email = $_SESSION["email"];
+
+    //prepare the sql statement to retrieve the ID based on the email of the logged in user
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    //get the result
+    $result = $stmt->get_result();
+
+    //check if a row is returned(i.e. there is an ID with the associated email)
+    if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $organizer_id = $row["id"];
+    }
+
+    $stmt->close();
+}
+
 //event construction
 class Event{
     public $id;
@@ -22,10 +45,9 @@ class Event{
     public $capacity;
     public $description;
     public $organizer_id;
-    public $category_id;
 
     public function __construct($title, $location, $date, $start_time, $end_time, 
-    $capacity, $description, $organizer_id, $category_id){
+    $capacity, $description, $organizer_id){
         $this->title = $title;
         $this->location = $location;
         $this->date = $date;
@@ -34,7 +56,6 @@ class Event{
         $this->capacity = $capacity;
         $this->description = $description;
         $this->organizer_id = $organizer_id;
-        $this->category_id = $category_id;
     }
 }
 
@@ -47,10 +68,10 @@ class EventManagementSystem{
     }
 
     //add event
-    public function addEvent($events, $conn){
+    public function addEvent($events, $organizer_id, $conn){
 
         // Prepare and execute SQL statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     
         if (!$stmt) {
             // Error occurred while preparing the statement
@@ -77,7 +98,7 @@ class EventManagementSystem{
             die("An error occurred. Please check the error log for details.");
         }
     
-        $stmt->bind_param("sssssssii", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
+        $stmt->bind_param("sssssssi", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $organizer_id);
     
         if (!$stmt->execute()) {
             // Error executing the statement
@@ -104,7 +125,7 @@ class EventManagementSystem{
             capacity=?, description=?, organizer_id=?, category_id=? WHERE id=?");
         
         $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
-            $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
+            $events->end_time, $events->capacity, $events->description, $events->organizer_id);
 
         $stmt->execute();
         $stmt->close();
@@ -143,12 +164,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $description = $_POST["description"];
 
     $event = new Event($title, $location, $date, $start_time, $end_time, $capacity,
-        $description, $organizer_id, $category_id);
+        $description, $organizer_id);
 
     $eventManagementSystem = new EventManagementSystem();
 
     //add the event
-    $eventManagementSystem->addEvent($event, $conn);
+    $eventManagementSystem->addEvent($event, $organizer_id, $conn);
 
     //echo the event ID as the response
     echo $event->id;
