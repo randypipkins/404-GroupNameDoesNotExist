@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
        // Prepare and bind the SQL statement
     $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssssi", $event_title, $location, $date, $start_time, $end_time, $capacity, $description, $organizer_id, $category_id);
+    $stmt->bind_param("ssssssssi", $title, $location, $date, $start_time, $end_time, $capacity, $description, $organizer_id, $category_id);
 
     // Get the form data
-    $event_title = $_POST['title'];
+    $title = $_POST['title'];
     $location = $_POST['location'];
     $date = $_POST['date'];
     $start_time = $_POST['start_time'];
