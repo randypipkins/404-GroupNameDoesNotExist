@@ -71,7 +71,7 @@ class EventManagementSystem{
     public function addEvent($events, $organizer_id, $conn){
 
         // Prepare and execute SQL statement to prevent injection
-        $stmt = $conn->prepare("INSERT INTO events (title, location, date, start_time, end_time, capacity, description, organizer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO events (title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
         if (!$stmt) {
             // Error occurred while preparing the statement
@@ -98,7 +98,7 @@ class EventManagementSystem{
             die("An error occurred. Please check the error log for details.");
         }
     
-        $stmt->bind_param("sssssssi", $events->title, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id);
+        $stmt->bind_param("ssssssssi", $events->title, $events->event_type, $events->location, $events->date, $events->start_time, $events->end_time, $events->capacity, $events->description, $events->organizer_id);
     
         if (!$stmt->execute()) {
             // Error executing the statement
