@@ -52,7 +52,7 @@ class EventManagementSystem{
         $stmt = $conn->prepare("INSERT INTO events (title, location, start_time, end_time, 
         capacity, description, organizer_id, category_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-        $stmt->bind_param("ssssisii", $events->title, $events->location, $events->start_time, 
+        $stmt->bind_param("ssssssii", $events->title, $events->location, $events->start_time, 
             $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
 
         $stmt->execute();
@@ -72,7 +72,7 @@ class EventManagementSystem{
         $stmt = $conn->prepare("UPDATE events SET title=?, location=?, start_time=?, end_time=?, 
             capacity=?, description=?, organizer_id=?, category_id=? WHERE id=?");
         
-        $stmt->bind_param("ssssisii", $events->title, $events->location, $events->start_time, 
+        $stmt->bind_param("sssssii", $events->title, $events->location, $events->start_time, 
             $events->end_time, $events->capacity, $events->description, $events->organizer_id, $events->category_id);
 
         $stmt->execute();

@@ -65,13 +65,13 @@
             <input type="text" placeholder="Description" name="lname" id="input-2">
 
             <label for="date">Date:</label>
-            <input type="text" placeholder="Date" name="date" id="input-3">
+            <input type="text" name="date" id="input-3" placeholder="mm/dd/yyyy"> 
 
             <label for="start-time">Start Time:</label>
-            <input type="text" placeholder="Start Time" name="start_time" id="input-4">
+            <input type="text" name="start_time" id="input-4" placeholder="HH:MM PM/AM">
 
             <label for="end-time">End Time:</label>
-            <input type="text" placeholder="End Time" name="end_time" id="input-5">
+            <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-5">
 
             <label for="location">Location:</label>
             <input type="text" placeholder="Location" name="location" id="input-6">

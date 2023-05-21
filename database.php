@@ -34,7 +34,7 @@
         `passwrd` VARCHAR(255) NOT NULL,
         `first_name` VARCHAR(50) NOT NULL,
         `last_name` VARCHAR(50) NOT NULL,
-        `user_role` ENUM('event_organizer', 'participant') NOT NULL DEFAULT 'participant',
+        `user_role` ENUM('event_organizer', 'participant', 'admin') NOT NULL DEFAULT 'participant',
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
@@ -73,11 +73,11 @@
         `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `title` VARCHAR(255) NOT NULL,
         `location` VARCHAR(255) NOT NULL,
-        `date` DATE NOT NULL,
-        `start_time` DATETIME NOT NULL,
-        `end_time` DATETIME NOT NULL,
-        `capacity` INT NOT NULL
-        `description` TEXT,
+        `date` VARCHAR(255) NOT NULL,
+        `start_time` VARCHAR(255) NOT NULL,
+        `end_time` VARCHAR(255) NOT NULL,
+        `capacity` VARCHAR(255) NOT NULL,
+        `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
         `category_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -113,6 +113,7 @@
     $sql = "CREATE TABLE IF NOT EXISTS `registration`(
         `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `user_id` INT UNSIGNED NOT NULL,
+        `email` VARCHAR(255) UNIQUE NOT NULL,
         `event_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

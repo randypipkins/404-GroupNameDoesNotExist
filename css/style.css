@@ -10,6 +10,7 @@
     height: 100%;
     position: fixed;
     background-color: #100901;
+    z-index: 2;
 }
 .text-white {
     color: whitesmoke;
@@ -107,3 +108,24 @@ main {
     align-content: center;
     justify-content: flex-end;
 }
+/**********partipant table *************/
+#participantT {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    left: 63%;
+    transform: translate(-50%,-50%);
+    padding: 0.33em;
+
+}
+.wrapper {
+    position: relative;
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
