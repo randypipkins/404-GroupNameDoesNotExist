@@ -95,23 +95,23 @@ modalBtn.addEventListener("click", () => {
 //functionality for the events
 document.querySelector(".add-btn").addEventListener("click", function(){
     //retrieve the form values
-    var title = document.getElementById("title").value;
-    var location = document.getElementById("location").value;
-    var date = document.getElementById("date").value;
-    var start_time = document.getElementById("start_time").value;
-    var end_time = document.getElementById("end_time").value;
-    var capacity = document.getElementById("capacity");
-    var description = document.getElementById("description").value;
+    var title = document.getElementById("input-0").value;
+    var location = document.getElementById("input-6").value;
+    var date = document.getElementById("input-3").value;
+    var start_time = document.getElementById("input-4").value;
+    var end_time = document.getElementById("input-5").value;
+    var capacity = document.getElementById("input-7");
+    var description = document.getElementById("input-2").value;
 
     //create new FormData object
     var formData = new FormData();
-    formData.append("title", title);
-    formData.append("location", location);
-    formData.append("date", date);
-    formData.append("start_time", start_time);
-    formData.append("end_time", end_time);
-    formData.append("capacity", capacity);
-    formData.append("description", description);
+    formData.append("input-0", title);
+    formData.append("input-6", location);
+    formData.append("input-3",date);
+    formData.append("input-4", start_time);
+    formData.append("input-5", end_time);
+    formData.append("input-7", capacity);
+    formData.append("input-2", description);
 
     //create new XMLHttpRequest
     var xhr = new XMLHttpRequest();
@@ -123,12 +123,11 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     xhr.send(formData);
 
     //reset the form
-    document.getElementById("title").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("date").value = "";
-    document.getElementById("start_time").value = "";
-    document.getElementById("end_time").value = "";
-    document.getElementById("capacity").value = "";
-    document.getElementById("description").value = "";
-    
+    document.getElementById("input-0").value = "";
+    document.getElementById("input-6").value = "";
+    document.getElementById("input-3").value = "";
+    document.getElementById("input-4").value = "";
+    document.getElementById("input-5").value = "";
+    document.getElementById("input-7").value = "";
+    document.getElementById("input-2").value = "";
 });
