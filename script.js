@@ -90,9 +90,9 @@ removeBtn.addEventListener("click", () => {
 
 modalBtn.addEventListener("click", () => {
     inputModal.classList.toggle("active");
-});
+})
 
-/*functionality for the events
+//functionality for the events
 document.querySelector(".add-btn").addEventListener("click", function(){
     //retrieve the form values
     var title = document.getElementById("input-0").value;
@@ -132,4 +132,3 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     document.getElementById("input-2").value = "";
     
 });
-*/
