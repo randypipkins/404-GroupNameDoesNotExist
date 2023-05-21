@@ -72,7 +72,6 @@
     $sql = "CREATE TABLE IF NOT EXISTS `events`(
         `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `title` VARCHAR(255) NOT NULL,
-        `event_type` VARCHAR(255) NOT NULL,
         `location` VARCHAR(255) NOT NULL,
         `date` VARCHAR(255) NOT NULL,
         `start_time` VARCHAR(255) NOT NULL,
