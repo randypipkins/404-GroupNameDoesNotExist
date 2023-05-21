@@ -2,6 +2,7 @@
 document.querySelector(".add-btn").addEventListener("click", function(){
     //retrieve the form values
     var title = document.getElementById("input-0").value;
+    var event_type = document.getElementById("input-1").value;
     var location = document.getElementById("input-6").value;
     var date = document.getElementById("input-3").value;
     var start_time = document.getElementById("input-4").value;
@@ -12,6 +13,7 @@ document.querySelector(".add-btn").addEventListener("click", function(){
     //create new FormData object
     var formData = new FormData();
     formData.append("title", title);
+    formData.append("event_type", event_type);
     formData.append("location", location);
     formData.append("date", date);
     formData.append("start_time", start_time);
@@ -32,6 +34,7 @@ document.querySelector(".add-btn").addEventListener("click", function(){
             console.log(xhr.responseText);
             //reset the form
             document.getElementById("input-0").value = "";
+            document.getElementById("input-1").value = "";
             document.getElementById("input-6").value = "";
             document.getElementById("input-3").value = "";
             document.getElementById("input-4").value = "";
