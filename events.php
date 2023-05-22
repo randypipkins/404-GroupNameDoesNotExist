@@ -89,30 +89,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="script.js" async defer></script>
-  <script>
-    // Get the form element
-    const addEventForm = document.getElementById('add-event-form');
-
-    // Add an event listener for the form submission
-    addEventForm.addEventListener('submit', function(event) {
-      // Prevent the default form submission behavior
-      event.preventDefault();
-
-      // Create a new FormData object to store the form data
-      const formData = new FormData(addEventForm);
-
-      // Send the form data to the server using AJAX
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'add_event.php', true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          // Handle the response from the server
-          console.log(xhr.responseText);
-        }
-      };
-      xhr.send(formData);
-    });
-  </script>
 </body>
 
 </html>
