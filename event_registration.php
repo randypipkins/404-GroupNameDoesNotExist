@@ -6,7 +6,7 @@
     $event_id = mysqli_real_escape_string($conn, $_POST['event_id']);
 
     //retrieve the logged in user's id from the session using their email
-    $user_email = $_SESSION['user_email'];
+    $user_email = $_SESSION['email'];
     $sql = "SELECT id FROM users WHERE email = '$user_email'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
