@@ -14,7 +14,7 @@
 
     //insert the user's participation record into the participation table in the database
     $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, event_id) 
-        VALUES ('', '', '', '$user_id', '$event_id')";
+        VALUES (0, 0, false, '$user_id', '$event_id')";
     $result = mysqli_query($conn, $sql);
 
     //update the event's capacity in the events table
