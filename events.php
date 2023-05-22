@@ -108,7 +108,6 @@
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
           // Handle the response from the server
           console.log(xhr.responseText);
-          // You can perform additional actions here, such as displaying a success message or updating the UI
         }
       };
       xhr.send(formData);
