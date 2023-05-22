@@ -70,9 +70,17 @@ class EventManagementSystem{
     //add event
     public function addEvent($event, $organizer_id, $conn){
 
+        $title = $_POST["title"];
+        $location = $_POST["location"];
+        $date = $_POST["date"];
+        $start_time = $_POST["start_time"];
+        $end_time = $_POST["end_time"];
+        $capacity = $_POST["capacity"];
+        $description = $_POST["description"];
+
         // Prepare and execute SQL statement to prevent injection
         $stmt = $conn->prepare("INSERT INTO `events` (`title`, `location`, `date`, `start_time`, `end_time`, `capacity`, 
-            `description`, `organizer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            `description`, `organizer_id`) VALUES ('$title', '$location', '$date', '$start_time', '$end_time', '$capacity', '$description', ?)");
     
         if (!$stmt) {
             // Error occurred while preparing the statement
@@ -113,43 +121,6 @@ class EventManagementSystem{
     
         $this->events[] = $event;
     
-        $stmt->close();
-    }
-    
-
-    //modify event
-    public function modifyEvent($event){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, date=?, start_time=?, end_time=?, 
-            capacity=?, description=?, organizer_id=? WHERE id=?");
-        
-        $stmt->bind_param("sssssssi", $event->title, $event->location, $event->start_time, 
-            $event->end_time, $event->capacity, $event->description, $event->organizer_id);
-
-        $stmt->execute();
-        $stmt->close();
-        
-        //update the events in the array
-        foreach($this->events as &$e){
-            if($e->id == $event->id){
-                $e=$event;
-                break;
-            }
-        }
-    }
-
-    //delete event
-    public function deleteEvent($event_id){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
-
-        $stmt->bind_param("i", $event_id);
-
-        $stmt->execute();
         $stmt->close();
     }
 }
