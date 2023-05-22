@@ -37,8 +37,32 @@ function addRow() {
         inputs.forEach((input) => {
             input.value = "";
         });
-    }
-}
+                // Send the data to the server
+                const data = new FormData();
+                data.append("title", newRow.cells[0].innerHTML);
+                data.append("event_type", newRow.cells[1].innerHTML);
+                data.append("description", newRow.cells[2].innerHTML);
+                data.append("date", newRow.cells[3].innerHTML);
+                data.append("start_time", newRow.cells[4].innerHTML);
+                data.append("end_time", newRow.cells[5].innerHTML);
+                data.append("location", newRow.cells[6].innerHTML);
+                data.append("capacity", newRow.cells[7].innerHTML);
+        
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert("Event added successfully!");
+                        } else {
+                            alert("Error adding event: " + xhr.responseText);
+                        }
+                    }
+                };
+        
+                xhr.open("POST", "add_event.php", true);
+                xhr.send(data);
+            }
+        }
 
 function selectedRowToInput() {
     for (let i = 1; i < table.rows.length; i++) {
@@ -74,33 +98,6 @@ function removeRow() {
         });
     }
 }
-
-/*var form = document.getElementById("event-form");
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    submitForm();
-});
-
-
-function submitForm() {
-    var form = document.getElementById("event-form");
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                alert("Event added successfully!")
-                form.reset();
-            } else {
-                var response = xhr.responseText;
-                alert("Error: " + response);
-            }
-        }
-    };
-    xhr.open("POST", "event_handler.php", true);
-    xhr.send(formData);
-}
-*/
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();

@@ -5,7 +5,7 @@ require_once 'config.php';
 // Start the session
 session_start();
 
-if (isset($_POST['add_event'])) {
+if (isset($_POST['title']) && isset($_POST['event_type']) && isset($_POST['description']) && isset($_POST['date']) && isset($_POST['start_time']) && isset($_POST['end_time']) && isset($_POST['location']) && isset($_POST['capacity'])) {
     $title = $_POST['title'];
     $event_type = $_POST['event_type'];
     $description = $_POST['description'];
@@ -40,7 +40,10 @@ if (isset($_POST['add_event'])) {
     } else {
         echo "User not found";
     }
+} else {
+    echo "Incomplete event data";
 }
 
 $conn->close();
 ?>
+
