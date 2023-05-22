@@ -75,11 +75,12 @@ function removeRow() {
     }
 }
 
-var form = document.getElementById("event-form");
+/*var form = document.getElementById("event-form");
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     submitForm();
 });
+
 
 function submitForm() {
     var form = document.getElementById("event-form");
@@ -99,7 +100,7 @@ function submitForm() {
     xhr.open("POST", "event_handler.php", true);
     xhr.send(formData);
 }
-
+*/
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
