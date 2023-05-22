@@ -51,28 +51,6 @@
                         <th>Location</th>
                         <th>Capacity</th>
                     </tr>
-                    <?php
-                    // Retrieve events from the database and display them in the table
-                    require_once 'config.php';
-                    $sql = "SELECT * FROM events";
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row['title'] . "</td>";
-                            echo "<td>" . $row['event_type'] . "</td>";
-                            echo "<td>" . $row['description'] . "</td>";
-                            echo "<td>" . $row['date'] . "</td>";
-                            echo "<td>" . $row['start_time'] . "</td>";
-                            echo "<td>" . $row['end_time'] . "</td>";
-                            echo "<td>" . $row['location'] . "</td>";
-                            echo "<td>" . $row['capacity'] . "</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='8'>No events found.</td></tr>";
-                    }
-                    ?>
                 </table>
             </div>
 
