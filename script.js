@@ -75,6 +75,23 @@ function removeRow() {
     }
 }
 
+function submitForm(){
+    var form = document.getElementById("event-form");
+    var formData = new FormData(form);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.status === XMLHttpRequest.DONE){
+            if(xhr.status === 200){
+                alert("Event added successfully!")
+                form.requestFullscreen();
+            } else{
+                var response = xhr.responseText;
+                alert("Error: " + response);
+            }
+        }
+    }
+}
+
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
