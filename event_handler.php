@@ -138,8 +138,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $capacity = $_POST["capacity"];
     $description = $_POST["description"];
 
-    $event = new Event($title, $location, $date, $start_time, $end_time, $capacity,
-        $description, $organizer_id);
+    $event = new Event($eventData);
 
     $eventManagementSystem = new EventManagementSystem();
 
