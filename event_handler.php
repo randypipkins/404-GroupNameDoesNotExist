@@ -70,9 +70,17 @@ class EventManagementSystem{
     //add event
     public function addEvent($event, $organizer_id, $conn){
 
+        $title = $_POST["title"];
+        $location = $_POST["location"];
+        $date = $_POST["date"];
+        $start_time = $_POST["start_time"];
+        $end_time = $_POST["end_time"];
+        $capacity = $_POST["capacity"];
+        $description = $_POST["description"];
+
         // Prepare and execute SQL statement to prevent injection
         $stmt = $conn->prepare("INSERT INTO `events` (`title`, `location`, `date`, `start_time`, `end_time`, `capacity`, 
-            `description`, `organizer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            `description`, `organizer_id`) VALUES ('$title', '$location', '$date', '$start_time', '$end_time', '$capacity', '$description', ?)");
     
         if (!$stmt) {
             // Error occurred while preparing the statement
