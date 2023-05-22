@@ -34,6 +34,18 @@ if(isset($_SESSION["email"])){
     $stmt->close();
 }
 
+//create associative array from the $_POST array
+$eventData = array(
+    'title' => $_POST['title'],
+    'location' => $_POST['location'],
+    'date' => $_POST['date'],
+    'start_time' => $_POST['start_time'],
+    'end_time' => $_POST['end_time'],
+    'capacity' => $_POST['capacity'],
+    'description' => $_POST['description'],
+    'organizer_id' => $organizer_id
+);
+
 //event construction
 class Event{
     public $id;
@@ -46,16 +58,15 @@ class Event{
     public $description;
     public $organizer_id;
 
-    public function __construct($title, $location, $date, $start_time, $end_time, 
-    $capacity, $description, $organizer_id){
-        $this->title = $title;
-        $this->location = $location;
-        $this->date = $date;
-        $this->start_time = $start_time;
-        $this->end_time = $end_time;
-        $this->capacity = $capacity;
-        $this->description = $description;
-        $this->organizer_id = $organizer_id;
+    public function __construct($eventData){
+        $this->title = $eventData["title"];
+        $this->location = $eventData["location"];
+        $this->date = $eventData["date"];
+        $this->start_time = $eventData["start_time"];
+        $this->end_time = $eventData["end_time"];
+        $this->capacity = $eventData["capacity"];
+        $this->description = $eventData["description"];
+        $this->organizer_id = $eventData["organizer_id"];
     }
 }
 
