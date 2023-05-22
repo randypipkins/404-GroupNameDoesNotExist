@@ -52,7 +52,7 @@
                 </tr>
             </table>
         </div>
-      <form method="POST" action="event_handler.php" id= "event-form">
+      <form method="POST" action="">
         <div class="tab tab-2">
           <label for="title">Event Title:</label>
           <input type="text" placeholder="Event Title" name="title" id="input-0">
@@ -76,11 +76,27 @@
           <input type="text" placeholder="Description" name="description" id="input-6">
 
           <div class="button-div">
-              <button class="btn add-btn">Add</button>
-              <button class="btn edit-btn">Edit</button>
-              <button class="btn remove-btn">Remove</button>
+              <button class="btn add-btn" onclick="addAction()">Add</button>
+              <button class="btn edit-btn" onclick="editAction()">Edit</button>
+              <button class="btn remove-btn" onclick="deleteAction()">Remove</button>
           </div>
       </form>
+      <script>
+        function addAction(){
+          document.getElementById("action").value = "add";
+          document.forms[0].submit();
+        }
+
+        function editAction(){
+          document.getElementById("action").value = "edit";
+          document.forms[0].submit();
+        }
+
+        function deleteAction(){
+          document.getElementById("action").value = "delete";
+          document.forms[0].submit();
+        }
+      </script>
 
 
         </div>
