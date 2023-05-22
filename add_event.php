@@ -2,6 +2,9 @@
 // Add event to the database
 require_once 'config.php';
 
+// Start the session
+session_start();
+
 if (isset($_POST['add_event'])) {
     $title = $_POST['title'];
     $event_type = $_POST['event_type'];
@@ -13,7 +16,7 @@ if (isset($_POST['add_event'])) {
     $capacity = $_POST['capacity'];
 
     // Retrieve the email of the logged-in user from the session or authentication data
-    $logged_in_email = $_SESSION['email']; // Replace with your specific session variable or authentication data
+    $logged_in_email = $_SESSION['user_email']; // Replace with your specific session variable or authentication data
 
     // Get the user ID based on the logged-in email
     $query = "SELECT id FROM users WHERE email = '$logged_in_email'";
