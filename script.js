@@ -98,33 +98,6 @@ function removeRow() {
         });
     }
 }
-
-/*var form = document.getElementById("event-form");
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    submitForm();
-});
-
-
-function submitForm() {
-    var form = document.getElementById("event-form");
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                alert("Event added successfully!")
-                form.reset();
-            } else {
-                var response = xhr.responseText;
-                alert("Error: " + response);
-            }
-        }
-    };
-    xhr.open("POST", "event_handler.php", true);
-    xhr.send(formData);
-}
-*/
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
