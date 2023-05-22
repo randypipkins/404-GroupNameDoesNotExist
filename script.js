@@ -75,6 +75,11 @@ function removeRow() {
     }
 }
 
+var form = document.getElementById("event-form");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    submitForm();
+});
 function submitForm(){
     var form = document.getElementById("event-form");
     var formData = new FormData(form);
