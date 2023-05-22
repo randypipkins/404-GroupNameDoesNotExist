@@ -115,43 +115,6 @@ class EventManagementSystem{
     
         $stmt->close();
     }
-    
-
-    //modify event
-    public function modifyEvent($event){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("UPDATE events SET title=?, location=?, date=?, start_time=?, end_time=?, 
-            capacity=?, description=?, organizer_id=? WHERE id=?");
-        
-        $stmt->bind_param("sssssssi", $event->title, $event->location, $event->start_time, 
-            $event->end_time, $event->capacity, $event->description, $event->organizer_id);
-
-        $stmt->execute();
-        $stmt->close();
-        
-        //update the events in the array
-        foreach($this->events as &$e){
-            if($e->id == $event->id){
-                $e=$event;
-                break;
-            }
-        }
-    }
-
-    //delete event
-    public function deleteEvent($event_id){
-        global $conn;
-
-        //prepare and execute sql statement to prevent injection
-        $stmt = $conn->prepare("DELETE FROM events WHERE id=?");
-
-        $stmt->bind_param("i", $event_id);
-
-        $stmt->execute();
-        $stmt->close();
-    }
 }
 
 //handle the incoming request
