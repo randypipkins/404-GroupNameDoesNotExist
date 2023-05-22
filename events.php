@@ -55,7 +55,7 @@
             </div>
 
             <div class="tab tab-2">
-                <form method="POST" action="add_event.php">
+                <!--<form method="POST" action="add_event.php">-->
                     <label for="event-title">Event Title:</label>
                     <input type="text" placeholder="Event Title" name="title" id="input-0">
 
@@ -85,7 +85,7 @@
                         <button class="btn edit-btn">Edit</button>
                         <button class="btn remove-btn">Remove</button>
                     </div>
-                </form>
+                <!--</form>-->
             </div>
         </main>
     </div>
