@@ -80,25 +80,24 @@
               <button class="btn edit-btn" onclick="editAction()">Edit</button>
               <button class="btn remove-btn" onclick="deleteAction()">Remove</button>
           </div>
+        </div>
       </form>
-      <script>
-        function addAction(){
-          document.getElementById("action").value = "add";
-          document.forms[0].submit();
-        }
+        <script>
+          function addAction(){
+            document.getElementById("action").value = "add";
+            document.forms[0].submit();
+          }
 
-        function editAction(){
-          document.getElementById("action").value = "edit";
-          document.forms[0].submit();
-        }
+          function editAction(){
+            document.getElementById("action").value = "edit";
+            document.forms[0].submit();
+          }
 
-        function deleteAction(){
-          document.getElementById("action").value = "delete";
-          document.forms[0].submit();
-        }
-      </script>
-
-
+          function deleteAction(){
+            document.getElementById("action").value = "delete";
+            document.forms[0].submit();
+          }
+        </script>
         </div>
       </main>
     </div>
