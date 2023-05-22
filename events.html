@@ -52,55 +52,57 @@
                 </tr>
             </table>
         </div>
-      <form method="POST" action="">
-        <div class="tab tab-2">
-          <label for="title">Event Title:</label>
-          <input type="text" placeholder="Event Title" name="title" id="input-0">
-
-          <label for="location">Location:</label>
-          <input type="text" placeholder="Location" name="location" id="input-1">
-
-          <label for="date">Date:</label>
-          <input type="text" placeholder="mm/dd/yyyy" name="date" id="input-2"> 
-
-          <label for="start_time">Start Time:</label>
-          <input type="text" placeholder="HH:MM PM/AM" name="start_time" id="input-3">
-
-          <label for="end_time">End Time:</label>
-          <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-4">
-
-          <label for="capacity">Capacity:</label>
-          <input type="text" placeholder="Capacity" name="capacity" id="input-5">
-
-          <label for="description">Description:</label>
-          <input type="text" placeholder="Description" name="description" id="input-6">
-
-          <div class="button-div">
-              <button class="btn add-btn" onclick="addAction()">Add</button>
-              <button class="btn edit-btn" onclick="editAction()">Edit</button>
-              <button class="btn remove-btn" onclick="deleteAction()">Remove</button>
+        <form method="POST" action="">
+          <div class="tab tab-2">
+              <label for="title">Event Title:</label>
+              <input type="text" placeholder="Event Title" name="title" id="input-0">
+      
+              <label for="location">Location:</label>
+              <input type="text" placeholder="Location" name="location" id="input-1">
+      
+              <label for="date">Date:</label>
+              <input type="text" placeholder="mm/dd/yyyy" name="date" id="input-2"> 
+      
+              <label for="start_time">Start Time:</label>
+              <input type="text" placeholder="HH:MM PM/AM" name="start_time" id="input-3">
+      
+              <label for="end_time">End Time:</label>
+              <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-4">
+      
+              <label for="capacity">Capacity:</label>
+              <input type="text" placeholder="Capacity" name="capacity" id="input-5">
+      
+              <label for="description">Description:</label>
+              <input type="text" placeholder="Description" name="description" id="input-6">
+      
+              <div class="button-div">
+                  <button class="btn add-btn" onclick="addAction()">Add</button>
+                  <button class="btn edit-btn" onclick="editAction()">Edit</button>
+                  <button class="btn remove-btn" onclick="deleteAction()">Remove</button>
+              </div>
           </div>
-        </div>
       </form>
-        <script>
+      
+      <script>
           function addAction(){
-            document.getElementById("action").value = "add";
-            document.forms[0].submit();
+              document.getElementById("action").value = "add";
+              document.forms[0].submit();
           }
-
+      
           function editAction(){
-            document.getElementById("action").value = "edit";
-            document.forms[0].submit();
+              document.getElementById("action").value = "edit";
+              document.forms[0].submit();
           }
-
+      
           function deleteAction(){
-            document.getElementById("action").value = "delete";
-            document.forms[0].submit();
+              document.getElementById("action").value = "delete";
+              document.forms[0].submit();
           }
-        </script>
-        </div>
+      </script>
+      
+      </div>
       </main>
-    </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="script.js" async defer></script>
