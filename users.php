@@ -12,6 +12,9 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+      // Execute SQL query
+      $sql = "SELECT id, email, first_name, last_name, user_role FROM users";
+      $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
