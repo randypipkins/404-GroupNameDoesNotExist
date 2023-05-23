@@ -92,29 +92,27 @@
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
                         echo "<td>";
-                           // Check if the event is in the approved_events table
-        $event_id = $row["id"];
-        $approved_query = "SELECT * FROM approved_events WHERE id = '$event_id'";
-        $approved_result = $conn->query($approved_query);
-        
-        if ($approved_result && $approved_result->num_rows > 0) {
-            // Event is approved, display a checkmark
-            echo "<span class='btn btn-success'><i class='bx bx-check'></i></span>";
-        } else {
-            // Event is not approved, display the Approve button
-            echo "<form method='POST' action='approve.php'>"; 
-            echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
-            echo "<button type='submit' class='btn btn-primary'>Approve</button>";
-            echo "</form>";
-        }
-        
-        echo "</td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='12'>No events found</td></tr>";
-}
-?>
+                        echo "<form method='POST' action='approve.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Approve</button>";
+                        echo "</form>";
+                        echo "<td>";
+                        echo "<form method='POST' action='reject.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Reject</button>";
+                        echo "</form>";
+                        echo "<td>";
+                        echo "<form method='POST' action='delete_event.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Delete</button>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='12'>No users found</td></tr>";
+                }
+                ?>
             </table>
         </div>
     </main>
