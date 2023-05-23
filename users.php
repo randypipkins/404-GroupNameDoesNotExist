@@ -48,7 +48,6 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Role</th>
-                    <th>End Time</th>
                     <th>Ban/Delete/Promote</th>
                 </tr>
                 <?php
