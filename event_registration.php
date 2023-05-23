@@ -22,11 +22,6 @@
     $result = mysqli_query($conn, $sql);
 
     //display a message to the user indicating whether the registration was successful or not
-    if($result){
-        echo "Registration successful!";
-    } else{
-        echo "Registration failed: " . mysqli_error($conn);
-    }
     if ($conn->query($sql) === TRUE) {
         echo "Registration successful!";
     } else {
