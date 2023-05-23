@@ -89,9 +89,11 @@
                         echo "<form method='POST' action='ban.php'>"; // Change 'ban.php' to the appropriate PHP file for handling ban
                         echo "<button type='submit' class='btn btn-primary'>Ban</button>";
                         echo "</form>";
+                        echo "<td>";
                         echo "<form method='POST' action='delete.php'>"; // Change 'delete.php' to the appropriate PHP file for handling delete
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
+                        echo "<td>";
                         echo "<form method='POST' action='promote.php'>"; // Change 'promote.php' to the appropriate PHP file for handling promote
                         echo "<button type='submit' class='btn btn-primary'>Promote</button>";
                         echo "</form>";
