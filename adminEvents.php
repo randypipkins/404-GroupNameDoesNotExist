@@ -92,16 +92,17 @@
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
                         echo "<td>";
-                        echo "<form method='POST' action='approve.php'>"; // Change 'approve.php' to the appropriate PHP file for handling ban
+                        echo "<form method='POST' action='approve.php'>"; 
                         echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Approve</button>";
                         echo "</form>";
                         echo "<td>";
-                        echo "<form method='POST' action='reject.php'>"; // Change 'reject.php' to the appropriate PHP file for handling delete
+                        echo "<form method='POST' action='reject.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Reject</button>";
                         echo "</form>";
                         echo "<td>";
-                        echo "<form method='POST' action='delete.php'>"; // Change 'delete.php' to the appropriate PHP file for handling promote
+                        echo "<form method='POST' action='delete.php'>"; 
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
                         echo "</td>";
