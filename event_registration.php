@@ -25,7 +25,7 @@
     if ($result) {
         $message = "Registration successful!";
         // Redirect to participants.php
-        header("Location: participants.php");
+        header("Location: participant.php");
         exit();
     } else {
         $message = "Registration failed: " . $conn->error;
