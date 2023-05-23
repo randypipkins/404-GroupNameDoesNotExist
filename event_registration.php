@@ -21,16 +21,16 @@
     $sql = "UPDATE events SET capacity = capacity - 1 WHERE id = '$event_id'";
     $result = mysqli_query($conn, $sql);
 
-    // Set the registration status message in a session variable
-    if ($result) {
-        $_SESSION['registration_status'] = "Registration successful!";
-    } else {
-        $_SESSION['registration_status'] = "Registration failed: " . mysqli_error($conn);
-    }
+// Set the registration status message in a session variable
+if ($result) {
+    $_SESSION['registration_status'] = "Registration successful!";
+} else {
+    $_SESSION['registration_status'] = "Registration failed: " . mysqli_error($conn);
+}
 
-    mysqli_close($conn);
+mysqli_close($conn);
 
-    // Redirect back to the participant.php page
-    header("Location: participant.php");
-    exit();
+// Redirect back to the participant.php page
+header("Location: participant.php#registration-popup");
+exit();
 ?>
