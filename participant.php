@@ -134,7 +134,6 @@
                         echo "<td>" . $row["capacity"] . "</td>";
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
-                        echo "<td>" . $row["category_id"] . "</td>";
                         echo "<td>";
                         echo "<form method='POST' action='event_registration.php'>"; // Change 'register.php' to the appropriate PHP file for handling registration
                         echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>"; // Hidden input field to store the event ID
