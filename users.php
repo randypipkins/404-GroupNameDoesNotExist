@@ -97,7 +97,7 @@
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='11'>No users found</td></tr>";
+                    echo "<tr><td colspan='6'>No users found</td></tr>";
                 }
                 ?>
             </table>
