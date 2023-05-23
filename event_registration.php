@@ -2,22 +2,22 @@
     session_start();
     require_once 'config.php';
 
-    //sanitize form data
+    // Sanitize form data
     $event_id = mysqli_real_escape_string($conn, $_POST['event_id']);
 
-    //retrieve the logged in user's id from the session using their email
+    // Retrieve the logged in user's id from the session using their email
     $user_email = $_SESSION['email'];
     $sql = "SELECT id FROM users WHERE email = '$user_email'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $user_id = $row['id'];
 
-    //insert the user's participation record into the participation table in the database
+    // Insert the user's participation record into the participation table in the database
     $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, event_id) 
         VALUES (0, 0, false, '$user_id', '$event_id')";
     $result = mysqli_query($conn, $sql);
 
-    //update the event's capacity in the events table
+    // Update the event's capacity in the events table
     $sql = "UPDATE events SET capacity = capacity - 1 WHERE id = '$event_id'";
     $result = mysqli_query($conn, $sql);
 
@@ -25,16 +25,18 @@
     if ($result) {
         $message = "Registration successful!";
         // Redirect to participant.php
-        header("Location: participant.php?message=" . urlencode($message));
+        header("Location: participant.php");
         exit();
     } else {
         $message = "Registration failed: " . $conn->error;
-        // Redirect to participant.php
-        header("Location: participant.php?message=" . urlencode($message));
-        exit();
     }
 
     mysqli_close($conn);
+
+    // Output the registration status message using JavaScript
+    echo "<script>alert('$message');</script>";
+    echo "<script>window.location.href = 'participant.php';</script>";
 ?>
+
 
 
