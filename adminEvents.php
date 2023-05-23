@@ -93,6 +93,7 @@
                         echo "<td>" . $row["organizer_id"] . "</td>";
                         echo "<td>";
                         echo "<form method='POST' action='approve.php'>"; // Change 'approve.php' to the appropriate PHP file for handling ban
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Approve</button>";
                         echo "</form>";
                         echo "<td>";
