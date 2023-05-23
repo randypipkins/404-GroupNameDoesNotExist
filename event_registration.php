@@ -21,13 +21,15 @@
     $sql = "UPDATE events SET capacity = capacity - 1 WHERE id = '$event_id'";
     $result = mysqli_query($conn, $sql);
 
-    //display a message to the user indicating whether the registration was successful or not
-    if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+    // Set the response message
+    if ($result) {
+        $message = "Registration successful!";
     } else {
-        echo "Registration failed: " . $conn->error;
+        $message = "Registration failed: " . $conn->error;
     }
 
     mysqli_close($conn);
 
+    // Output the registration status message directly to the webpage
+    echo $message;
 ?>
