@@ -24,8 +24,8 @@
     // Set the response message
     if ($result) {
         $message = "Registration successful!";
-        // Redirect to participants.php
-        header("Location: participant.php");
+        // Redirect to participant.php with message
+        header("Location: participant.php?message=".urlencode($message));
         exit();
     } else {
         $message = "Registration failed: " . $conn->error;
@@ -33,7 +33,7 @@
 
     mysqli_close($conn);
 
-    // Output the registration status message directly to the same webpage
-    echo "<script>alert('$message');</script>";
+    // Output the registration status message using JavaScript and redirect to participant.php
+    echo "<script>alert('$message'); window.location.href = 'participant.php';</script>";
 ?>
 
