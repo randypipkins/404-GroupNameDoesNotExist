@@ -139,7 +139,7 @@
                         echo "<td>";
                          // Check if the user is already registered for the event
                         $event_id = $row["id"];
-                        $user_id = $_SESSION["user_id"]; // Assuming you have the user's ID stored in a session variable
+                        $user_id = $_SESSION["id"]; // Assuming you have the user's ID stored in a session variable
                         $registration_query = "SELECT * FROM participation WHERE event_id = '$event_id' AND user_id = '$user_id'";
                         $registration_result = $conn->query($registration_query);
         
