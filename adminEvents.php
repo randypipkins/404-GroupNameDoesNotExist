@@ -94,7 +94,7 @@
                         echo "<td>";
                            // Check if the event is in the approved_events table
         $event_id = $row["id"];
-        $approved_query = "SELECT * FROM approved_events WHERE event_id = '$event_id'";
+        $approved_query = "SELECT * FROM approved_events WHERE id = '$event_id'";
         $approved_result = $conn->query($approved_query);
         
         if ($approved_result && $approved_result->num_rows > 0) {
