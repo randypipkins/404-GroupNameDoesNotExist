@@ -30,6 +30,5 @@
 
     mysqli_close($conn);
 
-    // Output the registration status message directly to the webpage
-    echo $message;
+    echo "<script>alert('$message');</script>";
 ?>
