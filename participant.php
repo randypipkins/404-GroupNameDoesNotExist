@@ -146,14 +146,6 @@
                 }
                 ?>
             </table>
-            <!-- Add the JavaScript code for displaying the popup -->
-            <?php
-    if (isset($_SESSION['registration_status'])) {
-        echo "<script>alert('" . $_SESSION['registration_status'] . "');</script>";
-        unset($_SESSION['registration_status']); // Remove the session variable after displaying the message
-    }
-?>
-
         </div>
     </main>
   </div>
