@@ -18,20 +18,24 @@ if (isset($_POST['event_id'])) {
     $event_id = $_POST['event_id'];
 
     // Fetch the event data from the events table
-    $sql = "SELECT * FROM events WHERE id = $event_id";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM events WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $event_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result && $result->num_rows > 0) {
         $event = $result->fetch_assoc();
 
         // Insert the event data into the approved_events table
-        $approved_sql = "INSERT INTO approved_events (title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) 
-                         VALUES ('{$event['title']}', '{$event['event_type']}', '{$event['location']}', '{$event['date']}', '{$event['start_time']}', '{$event['end_time']}', '{$event['capacity']}', '{$event['description']}', {$event['organizer_id']})";
-
-        if ($conn->query($approved_sql) === TRUE) {
+        $approved_sql = "INSERT INTO approved_events (event_id, title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) 
+                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($approved_sql);
+        $stmt->bind_param("issssssssi", $event['id'], $event['title'], $event['event_type'], $event['location'], $event['date'], $event['start_time'], $event['end_time'], $event['capacity'], $event['description'], $event['organizer_id']);
+        if ($stmt->execute()) {
             echo "Event approved successfully";
         } else {
-            echo "Error approving event: " . $conn->error;
+            echo "Error approving event: " . $stmt->error;
         }
     } else {
         echo "Event not found";
@@ -41,7 +45,9 @@ if (isset($_POST['event_id'])) {
 }
 
 // Close the database connection
+$stmt->close();
 $conn->close();
 ?>
+
 
 
