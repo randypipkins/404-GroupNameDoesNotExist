@@ -1,8 +1,17 @@
 <?php
 // approve.php
 
-// Include the database connection file
-require_once 'database.php';
+// Establish database connection
+$servername = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "myDB";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Retrieve event ID from the POST request
 if (isset($_POST['event_id'])) {
@@ -15,34 +24,14 @@ if (isset($_POST['event_id'])) {
     if ($result && $result->num_rows > 0) {
         $event = $result->fetch_assoc();
 
-        // Get the organizer ID
-        $organizer_id = $event['organizer_id'];
+        // Insert the event data into the approved_events table
+        $approved_sql = "INSERT INTO approved_events (title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) 
+                         VALUES ('{$event['title']}', '{$event['event_type']}', '{$event['location']}', '{$event['date']}', '{$event['start_time']}', '{$event['end_time']}', '{$event['capacity']}', '{$event['description']}', {$event['organizer_id']})";
 
-        // Check if the organizer ID exists in the users table
-        $check_organizer_sql = "SELECT * FROM users WHERE id = $organizer_id";
-        $check_organizer_result = $conn->query($check_organizer_sql);
-
-        if ($check_organizer_result && $check_organizer_result->num_rows > 0) {
-            // Organizer ID exists, proceed with inserting the event data into the approved_events table
-
-            $title = $event['title'];
-            $event_type = $event['event_type'];
-            $location = $event['location'];
-            $date = $event['date'];
-            $start_time = $event['start_time'];
-            $end_time = $event['end_time'];
-            $capacity = $event['capacity'];
-            $description = $event['description'];
-
-            $approved_sql = "INSERT INTO approved_events (title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) VALUES ('$title', '$event_type', '$location', '$date', '$start_time', '$end_time', '$capacity', '$description', $organizer_id)";
-
-            if ($conn->query($approved_sql) === TRUE) {
-                echo "Event approved successfully";
-            } else {
-                echo "Error approving event: " . $conn->error;
-            }
+        if ($conn->query($approved_sql) === TRUE) {
+            echo "Event approved successfully";
         } else {
-            echo "Invalid organizer ID";
+            echo "Error approving event: " . $conn->error;
         }
     } else {
         echo "Event not found";
@@ -54,4 +43,5 @@ if (isset($_POST['event_id'])) {
 // Close the database connection
 $conn->close();
 ?>
+
 
