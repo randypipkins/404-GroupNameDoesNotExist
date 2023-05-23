@@ -1,3 +1,25 @@
+<?php
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "CSCD378GroupWeb";
+    $dbname = "myDB";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // Get the current user's ID from the session
+    $currentUserId = $_SESSION['id'];
+
+    // Execute SQL query with condition to exclude current user
+    $sql = "SELECT id, email, first_name, last_name, user_role FROM users WHERE id <> $currentUserId";
+    $result = $conn->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +70,9 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Role</th>
-                    <th>End Time</th>
-                    <th>Ban/Delete/Promote</th>
+                    <th>Ban</th>
+                    <th>Delete</th>
+                    <th>Promote</th>   
                 </tr>
                 <?php
                 // Fetch data from the users table
@@ -66,9 +89,11 @@
                         echo "<form method='POST' action='ban.php'>"; // Change 'ban.php' to the appropriate PHP file for handling ban
                         echo "<button type='submit' class='btn btn-primary'>Ban</button>";
                         echo "</form>";
+                        echo "<td>";
                         echo "<form method='POST' action='delete.php'>"; // Change 'delete.php' to the appropriate PHP file for handling delete
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
+                        echo "<td>";
                         echo "<form method='POST' action='promote.php'>"; // Change 'promote.php' to the appropriate PHP file for handling promote
                         echo "<button type='submit' class='btn btn-primary'>Promote</button>";
                         echo "</form>";
@@ -76,7 +101,7 @@
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='11'>No users found</td></tr>";
+                    echo "<tr><td colspan='8'>No users found</td></tr>";
                 }
                 ?>
             </table>

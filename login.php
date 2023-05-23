@@ -39,7 +39,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email 
             if($user_role === "participant"){
                 header("Location: participant.php");
             } else if($user_role === "event_organizer"){
-                header("Location: eventOrg.php");
+                header("Location: eventOrg.html");
             } else if($user_role === "admin"){
                 header("Location: admin.php");
             } else{

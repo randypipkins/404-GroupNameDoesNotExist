@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $servername = "localhost";
     $username = "root";
     $password = "CSCD378GroupWeb";
@@ -51,6 +52,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+
   <!-- bootstrap 5 css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
   <!-- BOX ICONS CSS-->
@@ -116,7 +118,6 @@
                     <th>Capacity</th>
                     <th>Description</th>
                     <th>Organizer ID</th>
-                    <th>Category ID</th>
                     <th>Register</th>
                 </tr>
                 <?php
@@ -134,18 +135,30 @@
                         echo "<td>" . $row["capacity"] . "</td>";
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
-                        echo "<td>" . $row["category_id"] . "</td>";
                         echo "<td>";
-                        echo "<form method='POST' action='register.php'>"; // Change 'register.php' to the appropriate PHP file for handling registration
-                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>"; // Hidden input field to store the event ID
-                        echo "<button type='submit' class='btn btn-primary'>Register</button>";
-                        echo "</form>";
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='11'>No events found</td></tr>";
-                }
+                         // Check if the user is already registered for the event
+                        $event_id = $row["id"];
+                        $user_id = $_SESSION["id"]; // Assuming you have the user's ID stored in a session variable
+                        $registration_query = "SELECT * FROM participation WHERE event_id = '$event_id' AND user_id = '$user_id'";
+                        $registration_result = $conn->query($registration_query);
+        
+                        if ($registration_result && $registration_result->num_rows > 0) {
+                        // User is already registered, display a checkmark
+                        echo "<span class='btn btn-success'><i class='bx bx-check'></i></span>";
+                        } else {
+                            // User is not registered, display the registration button
+                            echo "<form method='POST' action='event_registration.php'>";
+                            echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                            echo "<button type='submit' class='btn btn-primary'>Register</button>";
+                            echo "</form>";
+                        }
+        
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='11'>No events found</td></tr>";
+}
                 ?>
             </table>
         </div>

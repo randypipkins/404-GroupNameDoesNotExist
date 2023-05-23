@@ -37,8 +37,32 @@ function addRow() {
         inputs.forEach((input) => {
             input.value = "";
         });
-    }
-}
+                // Send the data to the server
+                const data = new FormData();
+                data.append("title", newRow.cells[0].innerHTML);
+                data.append("event_type", newRow.cells[1].innerHTML);
+                data.append("description", newRow.cells[2].innerHTML);
+                data.append("date", newRow.cells[3].innerHTML);
+                data.append("start_time", newRow.cells[4].innerHTML);
+                data.append("end_time", newRow.cells[5].innerHTML);
+                data.append("location", newRow.cells[6].innerHTML);
+                data.append("capacity", newRow.cells[7].innerHTML);
+        
+                const xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert("Event added successfully!");
+                        } else {
+                            alert("Error adding event: " + xhr.responseText);
+                        }
+                    }
+                };
+        
+                xhr.open("POST", "add_event.php", true);
+                xhr.send(data);
+            }
+        }
 
 function selectedRowToInput() {
     for (let i = 1; i < table.rows.length; i++) {
@@ -74,7 +98,6 @@ function removeRow() {
         });
     }
 }
-
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
@@ -91,43 +114,3 @@ removeBtn.addEventListener("click", () => {
 modalBtn.addEventListener("click", () => {
     inputModal.classList.toggle("active");
 })
-
-//functionality for the events
-document.querySelector(".add-btn").addEventListener("click", function(){
-    //retrieve the form values
-    var title = document.getElementById("input-0").value;
-    var location = document.getElementById("input-6").value;
-    var date = document.getElementById("input-3").value;
-    var start_time = document.getElementById("input-4").value;
-    var end_time = document.getElementById("input-5").value;
-    var capacity = document.getElementById("input-7");
-    var description = document.getElementById("input-2").value;
-
-    //create new FormData object
-    var formData = new FormData();
-    formData.append("input-0", title);
-    formData.append("input-6", location);
-    formData.append("input-3",date);
-    formData.append("input-4", start_time);
-    formData.append("input-5", end_time);
-    formData.append("input-7", capacity);
-    formData.append("input-2", description);
-
-    //create new XMLHttpRequest
-    var xhr = new XMLHttpRequest();
-
-    //open a POST request to the event_handler.php file
-    xhr.open("POST", "event_handler.php", true);
-
-    //send the form data
-    xhr.send(formData);
-
-    //reset the form
-    document.getElementById("input-0").value = "";
-    document.getElementById("input-6").value = "";
-    document.getElementById("input-3").value = "";
-    document.getElementById("input-4").value = "";
-    document.getElementById("input-5").value = "";
-    document.getElementById("input-7").value = "";
-    document.getElementById("input-2").value = "";
-});

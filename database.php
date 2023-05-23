@@ -72,6 +72,7 @@
     $sql = "CREATE TABLE IF NOT EXISTS `events`(
         `id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `title` VARCHAR(255) NOT NULL,
+        `event_type` VARCHAR(255) NOT NULL,
         `location` VARCHAR(255) NOT NULL,
         `date` VARCHAR(255) NOT NULL,
         `start_time` VARCHAR(255) NOT NULL,
@@ -79,11 +80,9 @@
         `capacity` VARCHAR(255) NOT NULL,
         `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
-        `category_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (organizer_id) REFERENCES users(id),
-        FOREIGN KEY (category_id) REFERENCES event_categories(id)
+        FOREIGN KEY (organizer_id) REFERENCES users(id)
     )";
     if($conn->query($sql) === TRUE){
         echo "Table events created successfully";
