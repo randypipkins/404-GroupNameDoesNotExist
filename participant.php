@@ -13,14 +13,14 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-       // Fetch data from the events table with filters
+       // Fetch data from the approved_events table with filters
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
        $search_date = $_POST['search_date'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
    
        // Construct the base SQL query
-       $sql = "SELECT * FROM events WHERE 1=1";
+       $sql = "SELECT * FROM approved_events WHERE 1=1";
    
        // Add filters based on the search criteria
        if (!empty($search_date)) {
@@ -121,7 +121,7 @@
                     <th>Register</th>
                 </tr>
                 <?php
-                // Fetch data from the events table
+                // Fetch data from the approved_events table
                 if ($result && $result->num_rows > 0) {
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
