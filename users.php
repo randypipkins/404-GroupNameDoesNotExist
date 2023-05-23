@@ -70,7 +70,9 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Role</th>
-                    <th>Ban/Delete/Promote</th>
+                    <th>Ban</th>
+                    <th>Delete</th>
+                    <th>Promote</th>   
                 </tr>
                 <?php
                 // Fetch data from the users table
@@ -97,7 +99,7 @@
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6'>No users found</td></tr>";
+                    echo "<tr><td colspan='8'>No users found</td></tr>";
                 }
                 ?>
             </table>

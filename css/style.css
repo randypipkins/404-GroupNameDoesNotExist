@@ -128,12 +128,3 @@ main {
     position: relative;
     z-index: 1;
   }
-  /**********users table in admin *************/
-  table#table td {
-    white-space: nowrap;
-  }
-
-  table#table td form {
-    display: inline;
-    margin-right: 5px;
-  }
