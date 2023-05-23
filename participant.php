@@ -147,16 +147,13 @@
                 ?>
             </table>
             <!-- Add the JavaScript code for displaying the popup -->
-    <script>
-        // Check if the URL contains the registration popup anchor
-        if (window.location.hash === '#registration-popup') {
-            // Show the popup
-            alert("<?php echo $_SESSION['registration_status']; ?>");
+            <?php
+    if (isset($_SESSION['registration_status'])) {
+        echo "<script>alert('" . $_SESSION['registration_status'] . "');</script>";
+        unset($_SESSION['registration_status']); // Remove the session variable after displaying the message
+    }
+?>
 
-            // Clear the registration status message
-            <?php unset($_SESSION['registration_status']); ?>
-        }
-    </script>
         </div>
     </main>
   </div>
