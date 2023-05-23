@@ -116,7 +116,6 @@
                     <th>Capacity</th>
                     <th>Description</th>
                     <th>Organizer ID</th>
-                    <th>Category ID</th>
                     <th>Register</th>
                 </tr>
                 <?php
