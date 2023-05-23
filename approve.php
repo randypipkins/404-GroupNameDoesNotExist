@@ -28,7 +28,7 @@ if (isset($_POST['event_id'])) {
         $event = $result->fetch_assoc();
 
         // Insert the event data into the approved_events table
-        $approved_sql = "INSERT INTO approved_events (event_id, title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) 
+        $approved_sql = "INSERT INTO approved_events (id, title, event_type, location, date, start_time, end_time, capacity, description, organizer_id) 
                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($approved_sql);
         $stmt->bind_param("issssssssi", $event['id'], $event['title'], $event['event_type'], $event['location'], $event['date'], $event['start_time'], $event['end_time'], $event['capacity'], $event['description'], $event['organizer_id']);
