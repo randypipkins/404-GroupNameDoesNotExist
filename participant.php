@@ -146,6 +146,13 @@
                 }
                 ?>
             </table>
+            <!-- Add the following PHP snippet after the table -->
+            <?php
+                if (isset($_SESSION['registration_status'])) {
+                echo "<p>" . $_SESSION['registration_status'] . "</p>";
+                unset($_SESSION['registration_status']); // Remove the session variable after displaying the message
+                }
+            ?>
         </div>
     </main>
   </div>
