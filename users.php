@@ -12,9 +12,13 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-      // Execute SQL query
-      $sql = "SELECT id, email, first_name, last_name, user_role FROM users";
-      $result = $conn->query($sql);
+    // Get the current user's ID from the session
+    $currentUserId = $_SESSION['id'];
+
+    // Execute SQL query with condition to exclude current user
+    $sql = "SELECT id, email, first_name, last_name, user_role FROM users WHERE id <> $currentUserId";
+    $result = $conn->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
