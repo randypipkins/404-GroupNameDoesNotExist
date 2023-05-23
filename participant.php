@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $_SESSION['user_id'] = $user_id;
     $servername = "localhost";
     $username = "root";
     $password = "CSCD378GroupWeb";
