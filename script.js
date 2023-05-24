@@ -99,10 +99,19 @@ function removeRow() {
     }
 }
 
+function getEventIdAndConfirmDelete(){
+    // Retrieve the event_id value from the input field
+    var event_id = document.getElementById("input-8").value;
+
+    // Call the confirmDelete function with the event_id parameter
+    confirmDelete(event_id);
+}
+
 // Function to create a confirmation message when trying to delete an event
 function confirmDelete(){
-    if(confirm("Are you sure you want to delete this event?")){
-        // If the user confirms, redirect to the deleting script
+    var result = confirm("Are you sure you want to delete this event?");
+    
+    if(result){
         window.location.href = "delete_event.php?id=" + event_id;
     }
 }

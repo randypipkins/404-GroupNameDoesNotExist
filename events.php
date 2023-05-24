@@ -78,10 +78,12 @@
           <label for="capacity">Capacity:</label>
           <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
+          <input type="hidden" name="id" id="input-8">
+
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn" onlclick="confirmDelete()">Remove</button>
+                        <button class="btn remove-btn" name="remove_event" onlclick="getEventIdAndConfirmDelete()">Remove</button>
                     </div>
             </div>
         </main>
