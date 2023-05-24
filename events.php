@@ -83,7 +83,7 @@
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn" name="remove_event" onlclick="getEventIdAndConfirmDelete()">Remove</button>
+                        <button class="btn remove-btn" name="remove_event" onclick="getEventIdAndConfirmDelete()">Remove</button>
                     </div>
             </div>
         </main>
