@@ -99,20 +99,29 @@ function removeRow() {
     }
 }
 
-function getEventIdAndConfirmDelete(){
-    // Retrieve the event_id value from the input field
-    var event_id = document.getElementById("input-8").value;
+function confirmDeleteEvent(){
+    var confirmation = confirm("Are you sure you want to delete this event?");
 
-    // Call the confirmDelete function with the event_id parameter
-    confirmDelete(event_id);
-}
+    if(confirmation){
+        var event_id = document.getElementById("input-8").value;
 
-// Function to create a confirmation message when trying to delete an event
-function confirmDelete(event_id){
-    var result = confirm("Are you sure you want to delete this event?");
-    
-    if(result){
-        window.location.href = "delete_event.php?id=" + event_id;
+        // Create form element
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "delete_event.php";
+
+        // Create an input field to hold the event ID
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "event_id";
+        input.value = event_id;
+
+        // Append the input field to the form
+        form.appendChild(input);
+
+        // Append the form to the document and submit it
+        document.body.appendChild(form);
+        form.submit();
     }
 }
 // Event Listeners
