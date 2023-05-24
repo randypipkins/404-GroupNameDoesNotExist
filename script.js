@@ -98,32 +98,6 @@ function removeRow() {
         });
     }
 }
-
-function confirmDeleteEvent(){
-    var confirmation = confirm("Are you sure you want to delete this event?");
-
-    if(confirmation){
-        var event_id = document.getElementById("input-8").value;
-
-        // Create form element
-        var form = document.createElement("form");
-        form.method = "POST";
-        form.action = "delete_event.php";
-
-        // Create an input field to hold the event ID
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "event_id";
-        input.value = event_id;
-
-        // Append the input field to the form
-        form.appendChild(input);
-
-        // Append the form to the document and submit it
-        document.body.appendChild(form);
-        form.submit();
-    }
-}
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
