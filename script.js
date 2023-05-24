@@ -108,7 +108,7 @@ function getEventIdAndConfirmDelete(){
 }
 
 // Function to create a confirmation message when trying to delete an event
-function confirmDelete(){
+function confirmDelete(event_id){
     var result = confirm("Are you sure you want to delete this event?");
     
     if(result){
