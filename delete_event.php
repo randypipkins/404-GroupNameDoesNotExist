@@ -2,16 +2,7 @@
 // deleteEvent.php
 
 // Establish database connection
-$servername = "localhost";
-$username = "root";
-$password = "CSCD378GroupWeb";
-$dbname = "myDB";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once("config.php");
 
 // Check if the event ID is provided via POST
 if (isset($_POST['event_id'])) {
@@ -22,6 +13,7 @@ if (isset($_POST['event_id'])) {
 
     if ($conn->query($delete_sql) === TRUE) {
         echo "Event deleted successfully";
+        header("Location: events.php");
     } else {
         echo "Error deleting event: " . $conn->error;
     }

@@ -98,6 +98,14 @@ function removeRow() {
         });
     }
 }
+
+// Function to create a confirmation message when trying to delete an event
+function confirmDelete(){
+    if(confirm("Are you sure you want to delete this event?")){
+        // If the user confirms, redirect to the deleting script
+        window.location.href = "delete_event.php?id=" + event_id;
+    }
+}
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
