@@ -13,14 +13,14 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-       // Fetch data from the events table with filters
+       // Fetch data from the approved_events table with filters
        $search_location = $_POST['search_location'] ?? '';
        $search_capacity = $_POST['search_capacity'] ?? '';
        $search_date = $_POST['search_date'] ?? '';
        $search_keywords = $_POST['search_keywords'] ?? '';
    
        // Construct the base SQL query
-       $sql = "SELECT * FROM events WHERE 1=1";
+       $sql = "SELECT * FROM approved_events WHERE 1=1";
    
        // Add filters based on the search criteria
        if (!empty($search_date)) {
@@ -111,6 +111,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Event Type</th>
                     <th>Location</th>
                     <th>Date</th>
                     <th>Start Time</th>
@@ -121,13 +122,14 @@
                     <th>Register</th>
                 </tr>
                 <?php
-                // Fetch data from the events table
+                // Fetch data from the approved_events table
                 if ($result && $result->num_rows > 0) {
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
                         echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["event_type"] . "</td>";
                         echo "<td>" . $row["location"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
                         echo "<td>" . $row["start_time"] . "</td>";
