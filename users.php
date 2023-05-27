@@ -86,9 +86,11 @@
                         echo "<td>" . $row["last_name"] . "</td>";
                         echo "<td>" . $row["user_role"] . "</td>";
                         echo "<td>";
-                        echo "<form method='POST' action='ban.php'>"; // Change 'ban.php' to the appropriate PHP file for handling ban
-                        echo "<button type='submit' class='btn btn-primary'>Ban</button>";
+                        echo "<form method='POST' action='ban.php'>";
+                        echo "<input type='hidden' name='user_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary' name='ban_user'>Ban <i class='bx bx-check'></i></button>";
                         echo "</form>";
+
                         echo "<td>";
                         echo "<form method='POST' action='delete.php'>"; // Change 'delete.php' to the appropriate PHP file for handling delete
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
