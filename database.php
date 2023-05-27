@@ -35,6 +35,7 @@
         `first_name` VARCHAR(50) NOT NULL,
         `last_name` VARCHAR(50) NOT NULL,
         `user_role` ENUM('event_organizer', 'participant', 'admin') NOT NULL DEFAULT 'participant',
+        `is_banned` INT NOT NULL DEFAULT 0,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
@@ -80,7 +81,6 @@
         `capacity` VARCHAR(255) NOT NULL,
         `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
-        'is_banned' INT NOT NULL DEFAULT 0,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (organizer_id) REFERENCES users(id)
