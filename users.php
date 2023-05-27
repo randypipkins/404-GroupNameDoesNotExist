@@ -96,7 +96,8 @@
                       }
 
                         echo "<td>";
-                        echo "<form method='POST' action='delete.php'>"; // Change 'delete.php' to the appropriate PHP file for handling delete
+                        echo "<form method='POST' action='delete_users.php'>"; 
+                        echo "<input type='hidden' name='user_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
                         echo "<td>";
