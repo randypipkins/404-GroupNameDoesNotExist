@@ -16,7 +16,7 @@
     $currentUserId = $_SESSION['id'];
 
     // Execute SQL query with condition to exclude current user
-    $sql = "SELECT id, email, first_name, last_name, user_role FROM users WHERE id <> $currentUserId";
+    $sql = "SELECT id, email, first_name, last_name, user_role, is_banned FROM users WHERE id <> $currentUserId";
     $result = $conn->query($sql);
 
 ?>
