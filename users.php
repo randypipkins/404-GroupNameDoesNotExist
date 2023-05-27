@@ -101,9 +101,12 @@
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
                         echo "<td>";
-                        echo "<form method='POST' action='promote.php'>"; // Change 'promote.php' to the appropriate PHP file for handling promote
-                        echo "<button type='submit' class='btn btn-primary'>Promote</button>";
-                        echo "</form>";
+                        if ($row["user_role"] === "participant") {
+                          echo "<form method='POST' action='promote.php'>";
+                          echo "<input type='hidden' name='user_id' value='" . $row["id"] . "'>";
+                          echo "<button type='submit' class='btn btn-primary' name='promote_user'>Promote</button>";
+                          echo "</form>";
+                      }
                         echo "</td>";
                         echo "</tr>";
                     }
