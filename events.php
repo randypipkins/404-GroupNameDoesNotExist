@@ -104,7 +104,7 @@ $result = $conn->query($select_sql);
                                 <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                                 <button type="submit" name="delete_event">Delete</button>
                             </form>
-                            <a href="">Modify</a> <!--Modify when modify_event.php is completed-->
+                            <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
                         </td>
                     </tr>
                     <?php
