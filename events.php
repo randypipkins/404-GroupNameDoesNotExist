@@ -1,3 +1,26 @@
+<?php
+// events.php
+
+// Database configuration
+$host = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "mydb";
+
+// Create a database connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve events from the database
+$select_sql = "SELECT * FROM events";
+$result = $conn->query($select_sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +72,42 @@
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
+                        <th>Modify</th>
+                        <th>Delete</th>
                     </tr>
+
+                    <?php
+                // Fetch data from the events table
+                if ($result && $result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["location"] . "</td>";
+                        echo "<td>" . $row["date"] . "</td>";
+                        echo "<td>" . $row["start_time"] . "</td>";
+                        echo "<td>" . $row["end_time"] . "</td>";
+                        echo "<td>" . $row["capacity"] . "</td>";
+                        echo "<td>" . $row["description"] . "</td>";
+                        echo "<td>" . $row["organizer_id"] . "</td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='approve.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Modify</button>";
+                        echo "</form>";
+                        echo "<form method='POST' action='delete_event.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Delete</button>";
+                        echo "</form>";
+
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='12'>No events found</td></tr>";
+                }
+                ?>
                 </table>
             </div>
 
@@ -78,10 +136,10 @@
           <label for="capacity">Capacity:</label>
           <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
+          <input type="hidden" name="id" id="input-8">
+
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
-                        <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn">Remove</button>
                     </div>
             </div>
         </main>
