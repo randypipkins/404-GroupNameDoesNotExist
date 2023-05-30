@@ -1,34 +1,49 @@
 <?php
-// delete_events.php
+// Remove event from the database
+require_once 'config.php';
 
-// Check if the event ID is provided via POST
-if (isset($_POST['event_id'])) {
-    $event_id = $_POST['event_id'];
+// Start the session
+session_start();
 
-    // Establish database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "CSCD378GroupWeb";
-    $dbname = "myDB";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+if (isset($_POST['title']) && isset($_POST['event_type']) && isset($_POST['description']) && isset($_POST['date']) && isset($_POST['start_time']) && isset($_POST['end_time']) && isset($_POST['location']) && isset($_POST['capacity'])) {
+    $title = $_POST['title'];
+    $event_type = $_POST['event_type'];
+    $description = $_POST['description'];
+    $date = $_POST['date'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
+    $location = $_POST['location'];
+    $capacity = $_POST['capacity'];
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    // Retrieve the email of the logged-in user from the session or authentication data
+    $logged_in_email = $_SESSION['email']; // Replace with your specific session variable or authentication data
 
-    // Delete the event from the events table
-    $delete_sql = "DELETE FROM events WHERE id = '" . $event_id . "'";
+    // Get the user ID based on the logged-in email
+    $query = "SELECT id FROM users WHERE email = '$logged_in_email'";
+    $result = $conn->query($query);
 
-    if ($conn->query($delete_sql) === TRUE) {
-        echo "Event deleted successfully";
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $user_id = $row['id'];
+
+        // Get the organizer_id of the logged-in user
+        $organizer_id = $conn->real_escape_string($user_id);
+
+        // Remove the event from the database based on the specified criteria
+        $sql = "DELETE FROM events 
+                WHERE title = '$title' AND event_type = '$event_type' AND description = '$description' AND date = '$date' AND start_time = '$start_time' AND end_time = '$end_time' AND location = '$location' AND capacity = '$capacity' AND organizer_id = '$organizer_id'";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Event removed successfully";
+        } else {
+            echo "Error removing event: " . $conn->error;
+        }
     } else {
-        echo "Error deleting event: " . $conn->error;
+        echo "User not found";
     }
-
-    // Close the database connection
-    $conn->close();
 } else {
-    echo "Invalid request";
+    echo "Incomplete event data";
 }
+
+$conn->close();
 ?>

@@ -90,31 +90,41 @@ function editRow() {
 }
 
 function removeRow() {
-    if (table.rows.length > 1 && rIndex !== undefined) {
-      const eventId = table.rows[rIndex].cells[0].innerHTML;
-  
-      // Send the event ID to the server for deletion
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            alert("Event deleted successfully!");
-            table.deleteRow(rIndex);
-            rIndex = undefined; // Reset the row index
-          } else {
-            alert("Error deleting event: " + xhr.responseText);
-          }
+    if (table.rows.length > 1) {
+        table.deleteRow(rIndex);
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach((input) => {
+            input.value = "";
+        });
+            // Send the data to the server
+            const data = new FormData();
+            data.append("title", selectedRow.cells[0].innerHTML);
+            data.append("event_type", selectedRow.cells[1].innerHTML);
+            data.append("description", selectedRow.cells[2].innerHTML);
+            data.append("date", selectedRow.cells[3].innerHTML);
+            data.append("start_time", selectedRow.cells[4].innerHTML);
+            data.append("end_time", selectedRow.cells[5].innerHTML);
+            data.append("location", selectedRow.cells[6].innerHTML);
+            data.append("capacity", selectedRow.cells[7].innerHTML);
+        
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        alert("Event removed successfully!");
+                        selectedRow.remove(); // Remove the row from the table
+                    } else {
+                        alert("Error removing event: " + xhr.responseText);
+                    }
+                }
+            };
+        
+            xhr.open("POST", "remove_event.php", true);
+            xhr.send(data);
         }
-      };
-  
-      xhr.open("POST", "remove_event.php", true);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.send("event_id=" + eventId);
+        
     }
-  }
-  
-  
-  
+
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
