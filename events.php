@@ -87,8 +87,6 @@
                         echo "<td>" . $row["capacity"] . "</td>";
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td>" . $row["organizer_id"] . "</td>";
-                        echo "<td>";
-                        echo "</td>";
                         echo "</tr>";
                     }
                 } else {
