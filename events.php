@@ -19,6 +19,12 @@ if ($conn->connect_error) {
 $select_sql = "SELECT * FROM events";
 $result = $conn->query($select_sql);
 
+// Error checking
+if(!$result){
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
+}
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +110,7 @@ $result = $conn->query($select_sql);
                                 <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                                 <button type="submit" name="delete_event">Delete</button>
                             </form>
-                            <a href="">Modify</a> <!--Modify when modify_event.php is completed-->
+                            <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
                         </td>
                     </tr>
                     <?php

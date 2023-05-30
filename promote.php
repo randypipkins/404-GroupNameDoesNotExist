@@ -20,6 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Fetch the user's current role from the database
         $sql = "SELECT user_role FROM users WHERE id = $userId";
         $result = $conn->query($sql);
+        if(!$result){
+            $error_message = $conn->error;
+            $file_name = __FILE__;
+            log_error($error_message, $file_name);
+        }
 
         if ($result && $result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -35,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     echo "User promoted successfully.";
                 } else {
                     echo "Error promoting user: " . $conn->error;
+                    $error_message = $conn->error;
+                    $file_name = __FILE__;
+                    log_error($error_message, $file_name);
                 }
             } else {
                 echo "Only 'participant' users can be promoted to 'event_organizer'.";

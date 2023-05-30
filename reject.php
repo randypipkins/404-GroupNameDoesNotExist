@@ -22,6 +22,11 @@ if (isset($_POST['event_id'])) {
     $stmt->bind_param("i", $event_id);
     $stmt->execute();
     $result = $stmt->get_result();
+    if(!$result){
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
+    }
 
     if ($result && $result->num_rows > 0) {
         $event = $result->fetch_assoc();
@@ -35,6 +40,9 @@ if (isset($_POST['event_id'])) {
             echo "Event rejected successfully";
         } else {
             echo "Error rejecting event: " . $stmt->error;
+            $error_message = $conn->error;
+            $file_name = __FILE__;
+            log_error($error_message, $file_name);
         }
     } else {
         echo "Event not found";

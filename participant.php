@@ -143,6 +143,11 @@
                         $user_id = $_SESSION["id"]; // Assuming you have the user's ID stored in a session variable
                         $registration_query = "SELECT * FROM participation WHERE event_id = '$event_id' AND user_id = '$user_id'";
                         $registration_result = $conn->query($registration_query);
+                        if(!$registration_result){
+                            $error_message = $conn->error;
+                            $file_name = __FILE__;
+                            log_error($error_message, $file_name);
+                        }
         
                         if ($registration_result && $registration_result->num_rows > 0) {
                         // User is already registered, display a checkmark

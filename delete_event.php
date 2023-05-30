@@ -27,6 +27,10 @@ if (isset($_POST['event_id'])) {
         header("Location: events.php");
     } else {
         echo "Error deleting event: " . $conn->error;
+        // Error checking
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
     }
 } else {
     echo "Invalid request";
