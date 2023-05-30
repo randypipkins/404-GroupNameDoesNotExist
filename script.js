@@ -39,14 +39,14 @@ function addRow() {
         });
                 // Send the data to the server
                 const data = new FormData();
-                data.append("title", newRow.cells[0].innerHTML);
-                data.append("event_type", newRow.cells[1].innerHTML);
-                data.append("description", newRow.cells[2].innerHTML);
-                data.append("date", newRow.cells[3].innerHTML);
-                data.append("start_time", newRow.cells[4].innerHTML);
-                data.append("end_time", newRow.cells[5].innerHTML);
-                data.append("location", newRow.cells[6].innerHTML);
+                data.append("title", newRow.cells[1].innerHTML);
+                data.append("event_type", newRow.cells[2].innerHTML);
+                data.append("location", newRow.cells[3].innerHTML);
+                data.append("date", newRow.cells[4].innerHTML);
+                data.append("start_time", newRow.cells[5].innerHTML);
+                data.append("end_time", newRow.cells[6].innerHTML);
                 data.append("capacity", newRow.cells[7].innerHTML);
+                data.append("description", newRow.cells[8].innerHTML);
         
                 const xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
@@ -91,13 +91,30 @@ function editRow() {
 
 function removeRow() {
     if (table.rows.length > 1) {
-        table.deleteRow(rIndex);
-        const inputs = document.querySelectorAll('input[type="text"]');
-        inputs.forEach((input) => {
-            input.value = "";
-        });
+      const eventId = table.rows[rIndex].cells[0].innerHTML; // Assuming the event ID is in the first cell
+  
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            table.deleteRow(rIndex);
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach((input) => {
+              input.value = "";
+            });
+            alert("Event removed successfully!");
+          } else {
+            alert("Error removing event: " + xhr.responseText);
+          }
+        }
+      };
+  
+      xhr.open("POST", "remove_event.php", true); // Replace "remove_event.php" with your server endpoint
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send("event_id=" + encodeURIComponent(eventId));
     }
-}
+  }
+  
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
