@@ -63,3 +63,59 @@ if (isset($_POST['update_event'])) {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Event</title>
+    <!-- bootstrap 5 css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Modify Event</h1>
+        <form method="POST">
+            <label for="event-title">Event Title:</label>
+            <input type="text" placeholder="Event Title" name="title" value="<?php echo $event_title; ?>" required>
+
+            <label for="event-type">Event Type:</label>
+            <input type="text" placeholder="Event Type" name="event_type" value="<?php echo $event_type; ?>" required>
+
+            <label for="description">Description:</label>
+            <input type="text" placeholder="Description" name="description"
+                value="<?php echo $event_description; ?>" required>
+
+            <label for="date">Date:</label>
+            <input type="text" name="date" value="<?php echo $event_date; ?>" required>
+
+            <label for="start-time">Start Time:</label>
+            <input type="text" name="start_time" value="<?php echo $event_start_time; ?>" required>
+
+            <label for="end-time">End Time:</label>
+            <input type="text" placeholder="HH:MM PM/AM" name="end_time" value="<?php echo $event_end_time; ?>"
+                required>
+
+            <label for="location">Location:</label>
+            <input type="text" placeholder="Location" name="location" value="<?php echo $event_location; ?>" required>
+
+            <label for="capacity">Capacity:</label>
+            <input type="text" placeholder="Capacity" name="capacity" value="<?php echo $event_capacity; ?>" required>
+
+            <input type="hidden" name="id" value="<?php echo $event_id; ?>">
+            <button class="btn" type="submit" name="update_event">Update</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
