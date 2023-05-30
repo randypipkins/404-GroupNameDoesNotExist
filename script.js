@@ -107,7 +107,7 @@ function removeRow() {
         }
       };
   
-      xhr.open("POST", "delete_events.php", true);
+      xhr.open("POST", "delete_event.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xhr.send("event_id=" + encodeURIComponent(eventId));
     }
