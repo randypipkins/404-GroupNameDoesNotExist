@@ -1,3 +1,26 @@
+<?php
+// events.php
+
+// Database configuration
+$host = "localhost";
+$username = "root";
+$password = "CSCD378GroupWeb";
+$dbname = "mydb";
+
+// Create a database connection
+$conn = new mysqli($host, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve events from the database
+$select_sql = "SELECT * FROM events";
+$result = $conn->query($select_sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +72,47 @@
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
+                        <th>Options</th>
                     </tr>
+
+                    <?php
+                    // Display the events in the table
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            $event_id = $row['id'];
+                            $event_title = $row['title'];
+                            $event_type = $row['event_type'];
+                            $event_location = $row['location'];
+                            $event_date = $row['date'];
+                            $event_start_time = $row['start_time'];
+                            $event_end_time = $row['end_time'];
+                            $event_capacity = $row['capacity'];
+                            $event_description = $row['description'];
+                    ?>
+
+                    <tr>
+                        <td><?php echo $event_title; ?></td>
+                        <td><?php echo $event_type; ?></td>
+                        <td><?php echo $event_location; ?></td>
+                        <td><?php echo $event_date; ?></td>
+                        <td><?php echo $event_start_time; ?></td>
+                        <td><?php echo $event_end_time; ?></td>
+                        <td><?php echo $event_capacity; ?></td>
+                        <td><?php echo $event_description; ?></td>
+                        <td>
+                            <form action="delete_event.php" method="POST" style="display: inline;">
+                                <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+                                <button type="submit" name="delete_event">Delete</button>
+                            </form>
+                            <a href="">Modify</a> <!--Modify when modify_event.php is completed-->
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    } else{
+                        echo "<tr><td colspan='9'>No events found</td></tr>";
+                    }
+                    ?>
                 </table>
             </div>
 
@@ -78,10 +141,12 @@
           <label for="capacity">Capacity:</label>
           <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
+          <input type="hidden" name="id" id="input-8">
+
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn">Remove</button>
+                        <button class="btn remove-btn" onclick="confirmDeleteEvent()">Remove</button>
                     </div>
             </div>
         </main>
