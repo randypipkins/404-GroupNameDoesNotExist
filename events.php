@@ -72,6 +72,7 @@ $result = $conn->query($select_sql);
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
+                        <th>Organizer ID</th>
                         <th>Remove</th>
                     </tr>
 
