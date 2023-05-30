@@ -109,9 +109,10 @@ function removeRow() {
   
       xhr.open("POST", "remove_event.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.send("event_id=" + encodeURIComponent(eventId));
+      xhr.send("event_id=" + eventId);
     }
   }
+  
   
   
 // Event Listeners
