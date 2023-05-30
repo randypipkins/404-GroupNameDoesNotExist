@@ -91,13 +91,27 @@ function editRow() {
 
 function removeRow() {
     if (table.rows.length > 1) {
-        table.deleteRow(rIndex);
-        const inputs = document.querySelectorAll('input[type="text"]');
-        inputs.forEach((input) => {
-            input.value = "";
-        });
+      const eventTitle = table.rows[rIndex].cells[0].innerHTML;
+  
+      // Send the event ID to the server for deletion
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            alert("Event deleted successfully!");
+            table.deleteRow(rIndex);
+          } else {
+            alert("Error deleting event: " + xhr.responseText);
+          }
+        }
+      };
+  
+      xhr.open("POST", "delete_event.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send("event_id=" + encodeURIComponent(eventTitle));
     }
-}
+  }
+  
 // Event Listeners
 addBtn.addEventListener("click", () => {
     addRow();
