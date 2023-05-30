@@ -38,7 +38,7 @@ $result = $conn->query($select_sql);
 </head>
 
 <body>
-    <!-- Side-Nav -->
+    <div class="wrapper">
     <div class="side-nav active-nav" id="sidebar">
         <ul class="nav flex-column text-white w-100">
             <h3 class="h3 text-white my-2" id="h3"> I Do Crew </h3>
@@ -59,6 +59,7 @@ $result = $conn->query($select_sql);
             </li>
         </ul>
     </div>
+
     <div class="container">
     <main>
     <div class="tab tab-1" id="participantT">
@@ -104,8 +105,8 @@ $result = $conn->query($select_sql);
     echo "<tr><td colspan='12'>No events found</td></tr>";
 }
 ?>
-            </table>
-        </div>
+</table>
+</div>
 
             <div class="tab tab-2">
                     <label for="event-title">Event Title:</label>
@@ -141,6 +142,7 @@ $result = $conn->query($select_sql);
             </div>
         </main>
     </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="script.js" async defer></script>
