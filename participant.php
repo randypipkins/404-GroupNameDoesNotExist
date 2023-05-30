@@ -111,6 +111,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Event Type</th>
                     <th>Location</th>
                     <th>Date</th>
                     <th>Start Time</th>
@@ -128,6 +129,7 @@
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
                         echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["event_type"] . "</td>";
                         echo "<td>" . $row["location"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
                         echo "<td>" . $row["start_time"] . "</td>";

@@ -19,15 +19,20 @@ if(!isset($_POST["email"], $_POST["passwrd"])){
 }
 
 //prepare sql to prevent sql injection
-if($stmt = $conn->prepare("SELECT id, passwrd, user_role FROM users WHERE email = ?")){
+if($stmt = $conn->prepare("SELECT id, passwrd, user_role, is_banned FROM users WHERE email = ?")){
     $stmt->bind_param('s', $_POST["email"]);
     $stmt->execute();
     //store results to check if exists in db
     $stmt->store_result();
 
-    if($stmt->num_rows > 0){
-        $stmt->bind_result($id, $passwrd, $user_role);
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($id, $passwrd, $user_role, $isBanned); // Add $isBanned variable
         $stmt->fetch();
+    
+        if ($isBanned) {
+            echo "This account has been banned.";
+            exit();
+        }
         //verify the password
         if(password_verify($_POST["passwrd"], $passwrd)){
             session_regenerate_id();
