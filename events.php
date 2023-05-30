@@ -137,7 +137,6 @@ $result = $conn->query($select_sql);
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn" onclick="confirmDeleteEvent()">Remove</button>
                     </div>
             </div>
         </main>
