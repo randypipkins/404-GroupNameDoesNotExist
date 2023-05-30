@@ -90,8 +90,8 @@ function editRow() {
 }
 
 function removeRow() {
-    if (table.rows.length > 1) {
-      const eventTitle = table.rows[rIndex].cells[0].innerHTML;
+    if (table.rows.length > 1 && rIndex !== undefined) {
+      const eventId = table.rows[rIndex].cells[0].innerHTML;
   
       // Send the event ID to the server for deletion
       const xhr = new XMLHttpRequest();
@@ -100,17 +100,19 @@ function removeRow() {
           if (xhr.status === 200) {
             alert("Event deleted successfully!");
             table.deleteRow(rIndex);
+            rIndex = undefined; // Reset the row index
           } else {
             alert("Error deleting event: " + xhr.responseText);
           }
         }
       };
   
-      xhr.open("POST", "delete_event.php", true);
+      xhr.open("POST", "delete_events.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhr.send("event_id=" + encodeURIComponent(eventTitle));
+      xhr.send("event_id=" + encodeURIComponent(eventId));
     }
   }
+  
   
 // Event Listeners
 addBtn.addEventListener("click", () => {
