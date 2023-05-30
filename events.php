@@ -19,6 +19,12 @@ if ($conn->connect_error) {
 $select_sql = "SELECT * FROM events";
 $result = $conn->query($select_sql);
 
+// Error checking
+if(!$result){
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
+}
 ?>
 
 <!DOCTYPE html>

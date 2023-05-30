@@ -16,6 +16,9 @@ if ($conn->connect_error) {
 // Check if the event ID is provided in the query parameter
 if (!isset($_GET['event_id'])) {
     echo "Event ID not provided";
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
     exit;
 }
 
@@ -24,9 +27,17 @@ $event_id = $_GET['event_id'];
 // Retrieve the event details from the database
 $select_sql = "SELECT * FROM events WHERE id = '$event_id'";
 $result = $conn->query($select_sql);
+if(!$result){
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
+}
 
 if ($result->num_rows != 1) {
     echo "Event not found";
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
     exit;
 }
 
@@ -51,7 +62,8 @@ if (isset($_POST['update_event'])) {
     $event_capacity = $_POST['capacity'];
     $event_description = $_POST['description'];
 
-    $update_sql = "UPDATE events SET title='$event_title', event_type='$event_type', location='$event_location', date='$event_date', start_time='$event_start_time', end_time='$event_end_time', capacity='$event_capacity', description='$event_description' WHERE id='$event_id'";
+    $update_sql = "UPDATE events SET title='$event_title', event_type='$event_type', location='$event_location', date='$event_date', 
+        start_time='$event_start_time', end_time='$event_end_time', capacity='$event_capacity', description='$event_description' WHERE id='$event_id'";
 
     if ($conn->query($update_sql) === TRUE) {
         echo "Event updated successfully";
@@ -60,6 +72,9 @@ if (isset($_POST['update_event'])) {
         exit;
     } else {
         echo "Error updating event: " . $conn->error;
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
     }
 }
 ?>

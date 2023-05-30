@@ -15,6 +15,12 @@
    // Construct the base SQL query
    $sql = "SELECT * FROM events WHERE 1=1";
    $result = $conn->query($sql);
+   // Error checking
+   if(!$result){
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
+  }
 
 ?>
 <!DOCTYPE html>
@@ -96,6 +102,12 @@
                         $event_id = $row["id"];
                         $approved_query = "SELECT * FROM approved_events WHERE id = '$event_id'";
                         $approved_result = $conn->query($approved_query);
+                        // Error checking
+                        if(!$approved_result){
+                          $error_message = $conn->error;
+                          $file_name = __FILE__;
+                          log_error($error_message, $file_name);
+                        }
         
                         if ($approved_result && $approved_result->num_rows > 0) {
                             // Event is approved, display a checkmark
@@ -110,6 +122,12 @@
                         echo "<td>";
                         $rejected_query = "SELECT * FROM rejected_events WHERE id = '$event_id'";
                         $rejected_result = $conn->query($rejected_query);
+                        // Error checking
+                        if(!$result){
+                          $error_message = $conn->error;
+                          $file_name = __FILE__;
+                          log_error($error_message, $file_name);
+                        }
                         if ($rejected_result && $rejected_result->num_rows > 0) {
                             // Event is rejected, display a checkmark
                             echo "<span class='btn btn-success'><i class='bx bx-check'></i></span>";
