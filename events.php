@@ -79,6 +79,7 @@
                         echo "<tr>";
                         echo "<td>" . $row["id"] . "</td>";
                         echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["event_type"] . "</td>";
                         echo "<td>" . $row["location"] . "</td>";
                         echo "<td>" . $row["date"] . "</td>";
                         echo "<td>" . $row["start_time"] . "</td>";
@@ -91,7 +92,7 @@
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='12'>No events found</td></tr>";
+                    echo "<tr><td colspan='11'>No events found</td></tr>";
                 }
             ?>
         </table>
