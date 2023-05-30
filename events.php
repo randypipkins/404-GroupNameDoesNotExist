@@ -60,9 +60,9 @@ $result = $conn->query($select_sql);
         </ul>
     </div>
     <div class="container">
-        <main>
-            <div class="tab tab-1">
-                <table id="table" border="1">
+    <main>
+    <div class="tab tab-1" id="participantT">
+            <table id="table" border="1">
                     <tr>
                         <th>Event Title</th>
                         <th>Event Type</th>
@@ -72,49 +72,39 @@ $result = $conn->query($select_sql);
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
-                        <th>Options</th>
+                        <th>Remove</th>
                     </tr>
 
                     <?php
-                    // Display the events in the table
-                    if($result->num_rows > 0){
-                        while($row = $result->fetch_assoc()){
-                            $event_id = $row['id'];
-                            $event_title = $row['title'];
-                            $event_type = $row['event_type'];
-                            $event_location = $row['location'];
-                            $event_date = $row['date'];
-                            $event_start_time = $row['start_time'];
-                            $event_end_time = $row['end_time'];
-                            $event_capacity = $row['capacity'];
-                            $event_description = $row['description'];
-                    ?>
-
-                    <tr>
-                        <td><?php echo $event_title; ?></td>
-                        <td><?php echo $event_type; ?></td>
-                        <td><?php echo $event_location; ?></td>
-                        <td><?php echo $event_date; ?></td>
-                        <td><?php echo $event_start_time; ?></td>
-                        <td><?php echo $event_end_time; ?></td>
-                        <td><?php echo $event_capacity; ?></td>
-                        <td><?php echo $event_description; ?></td>
-                        <td>
-                            <form action="delete_event.php" method="POST" style="display: inline;">
-                                <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-                                <button type="submit" name="delete_event">Delete</button>
-                            </form>
-                            <a href="">Modify</a> <!--Modify when modify_event.php is completed-->
-                        </td>
-                    </tr>
-                    <?php
-                        }
-                    } else{
-                        echo "<tr><td colspan='9'>No events found</td></tr>";
-                    }
-                    ?>
-                </table>
-            </div>
+                // Fetch data from the events table
+                if ($result && $result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $row["title"] . "</td>";
+                        echo "<td>" . $row["location"] . "</td>";
+                        echo "<td>" . $row["date"] . "</td>";
+                        echo "<td>" . $row["start_time"] . "</td>";
+                        echo "<td>" . $row["end_time"] . "</td>";
+                        echo "<td>" . $row["capacity"] . "</td>";
+                        echo "<td>" . $row["description"] . "</td>";
+                        echo "<td>" . $row["organizer_id"] . "</td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='delete_event.php'>"; 
+                        echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
+                        echo "<button type='submit' class='btn btn-primary'>Remove</button>";
+                        echo "</form>";
+        
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='12'>No events found</td></tr>";
+}
+?>
+            </table>
+        </div>
 
             <div class="tab tab-2">
                     <label for="event-title">Event Title:</label>
