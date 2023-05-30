@@ -1,3 +1,22 @@
+<?php
+    session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "CSCD378GroupWeb";
+    $dbname = "myDB";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+   // Construct the base SQL query
+   $sql = "SELECT * FROM events WHERE 1=1";
+   $result = $conn->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
