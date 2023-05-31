@@ -35,7 +35,7 @@
 
         // Insert the participant's record into the participation table in the database
         $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, email, event_id) 
-                VALUES ('".($event_capacity - 1)."', '$event_waitlist', false, '$user_id', '$user_email', '$event_id')";
+                VALUES ('$event_capacity', '$event_waitlist', false, '$user_id', '$user_email', '$event_id')";
         $result = mysqli_query($conn, $sql);
 
         // Error checking
