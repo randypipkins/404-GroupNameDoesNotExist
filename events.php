@@ -52,7 +52,7 @@ if(!$result){
             <h3 class="h3 text-white my-2" id="h3"> I Do Crew </h3>
             <li href="" class="nav-link">
                 <i class="bx bxs-dashboard text-white"></i>
-                <a href="eventOrg.html" class="btn btn-danger"><span class="mx-2 text-white">Dashboard</span></a>
+                <a href="eventOrg.php" class="btn btn-danger"><span class="mx-2 text-white">Dashboard</span></a>
             </li>
             <li href="" class="nav-link">
                 <i class="bx bxs-dashboard text-white"></i>
