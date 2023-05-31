@@ -136,6 +136,7 @@ if(!$result){
                         <form style="display: inline;">
                         <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                         <button class="delete-button" data-event-id="<?php echo $event_id; ?>">Delete</button>
+
                         </form>
 
                             <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
@@ -181,7 +182,6 @@ if(!$result){
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
-                        <button class="btn remove-btn" onclick="confirmDeleteEvent()">Remove</button>
                     </div>
             </div>
         </main>
