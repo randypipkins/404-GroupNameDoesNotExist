@@ -106,7 +106,7 @@ if(!$result){
                         <td><?php echo $event_capacity; ?></td>
                         <td><?php echo $event_description; ?></td>
                         <td>
-                            <form action="delete_event.php" method="POST">
+                            <form action="delete_event.php" method="POST" style="display: inline">
                                 <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
                                 <button type="submit" name="delete_event">Delete</button>
                             </form>
