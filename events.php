@@ -78,6 +78,7 @@ if(!$result){
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
+                        <th>Description</th>
                         <th>Options</th>
                     </tr>
 
