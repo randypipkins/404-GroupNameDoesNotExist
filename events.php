@@ -70,7 +70,6 @@ if(!$result){
         <div class="tab tab-1" id="participantT">
                 <table id="table" border="1">
                     <tr>
-                        <th>Event ID</th>
                         <th>Event Title</th>
                         <th>Event Type</th>
                         <th>Location</th>
@@ -98,7 +97,6 @@ if(!$result){
                     ?>
 
                     <tr>
-                        <td><?php echo $event_id; ?></td>
                         <td><?php echo $event_title; ?></td>
                         <td><?php echo $event_type; ?></td>
                         <td><?php echo $event_location; ?></td>
@@ -118,7 +116,7 @@ if(!$result){
                     <?php
                         }
                     } else{
-                        echo "<tr><td colspan='10'>No events found</td></tr>";
+                        echo "<tr><td colspan='9'>No events found</td></tr>";
                     }
                     ?>
                 </table>
@@ -126,30 +124,30 @@ if(!$result){
 
             <div class="tab tab-2">
                     <label for="event-title">Event Title:</label>
-                    <input type="text" placeholder="Event Title" name="title" id="input-1">
+                    <input type="text" placeholder="Event Title" name="title" id="input-0">
 
           <label for="Event Type">Event Type:</label>
-          <input type="text" placeholder="Event Type" name="event_type" id="input-2">
+          <input type="text" placeholder="Event Type" name="event_type" id="input-1">
 
-          <label for="location">Location:</label>
-          <input type="text" placeholder="Location" name="location" id="input-3">
+          <label for="description">Description:</label>
+          <input type="text" placeholder="Description" name="description" id="input-2">
 
           <label for="date">Date:</label>
-          <input type="text" name="date" id="input-4" placeholder="mm/dd/yyyy">
+          <input type="text" name="date" id="input-3" placeholder="mm/dd/yyyy">
 
           <label for="start-time">Start Time:</label>
-          <input type="text" name="start_time" id="input-5" placeholder="HH:MM PM/AM">
+          <input type="text" name="start_time" id="input-4" placeholder="HH:MM PM/AM">
 
           <label for="end-time">End Time:</label>
-          <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-6">
+          <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-5">
+
+          <label for="location">Location:</label>
+          <input type="text" placeholder="Location" name="location" id="input-6">
 
           <label for="capacity">Capacity:</label>
           <input type="text" placeholder="Capacity" name="capacity" id="input-7">
 
-          <label for="description">Description:</label>
-          <input type="text" placeholder="Description" name="description" id="input-8">
-
-          <input type="hidden" name="id" id="input-0">
+          <input type="hidden" name="id" id="input-8">
 
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
