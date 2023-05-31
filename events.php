@@ -108,7 +108,7 @@ if(!$result){
                         <td>
                             <form action="delete_event.php" method="POST" style="display: inline">
                                 <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-                                <button type="submit" name="delete_event">Delete</button>
+                                <button type="submit" name="delete_event" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
                             </form>
                             <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
                         </td>
