@@ -72,12 +72,12 @@ if(!$result){
                     <tr>
                         <th>Event Title</th>
                         <th>Event Type</th>
-                        <th>Description</th>
                         <th>Date</th>
                         <th>Start Time</th>
                         <th>End Time</th>
                         <th>Location</th>
                         <th>Capacity</th>
+                        <th>Description</th>
                         <th>Options</th>
                     </tr>
 
