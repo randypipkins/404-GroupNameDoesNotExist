@@ -44,7 +44,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role, is_banned FROM users W
             if($user_role === "participant"){
                 header("Location: participant.php");
             } else if($user_role === "event_organizer"){
-                header("Location: eventOrg.html");
+                header("Location: eventOrg.php");
             } else if($user_role === "admin"){
                 header("Location: admin.php");
             } else{
