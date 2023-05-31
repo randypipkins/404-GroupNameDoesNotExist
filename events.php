@@ -97,6 +97,7 @@ if(!$result){
                     ?>
 
                     <tr>
+                        <td><?php echo $event_id; ?></td>
                         <td><?php echo $event_title; ?></td>
                         <td><?php echo $event_type; ?></td>
                         <td><?php echo $event_location; ?></td>
