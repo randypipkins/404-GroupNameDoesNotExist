@@ -42,7 +42,7 @@ if (isset($_POST['title']) && isset($_POST['event_type']) && isset($_POST['descr
         $event_id = $conn->insert_id;
 
         // Set the event_id value in the input field
-        echo '<script>document.getElementById("input-8").value = "' . $event_id . '";</script>';
+        echo '<script>document.getElementById("input-0").value = "' . $event_id . '";</script>';
 
         if ($conn->query($sql) === TRUE) {
             echo "Event added successfully";
