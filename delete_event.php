@@ -24,7 +24,6 @@ if (isset($_POST['event_id'])) {
 
     if ($conn->query($delete_sql) === TRUE) {
         echo "Event deleted successfully";
-        header("Location: events.php");
     } else {
         echo "Error deleting event: " . $conn->error;
         // Error checking
