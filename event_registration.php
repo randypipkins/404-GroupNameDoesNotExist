@@ -35,7 +35,7 @@
 
         // Insert the participant's record into the participation table in the database
         $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, email, event_id) 
-                VALUES ('$event_capacity','$event_waitlist' , false, '$user_id', '$user_email', '$event_id')";
+                VALUES ('".($event_capacity - 1)."', '$event_waitlist', false, '$user_id', '$user_email', '$event_id')";
         $result = mysqli_query($conn, $sql);
 
         // Error checking
@@ -64,7 +64,7 @@
 
         // Insert the participant's record into the participation table in the database
         $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, email, event_id) 
-                VALUES ('$event_capacity', '$event_waitlist', false, '$user_id', '$user_email', '$event_id')";
+                VALUES ('$event_capacity', '".($event_waitlist - 1)."', false, '$user_id', '$user_email', '$event_id')";
         $result = mysqli_query($conn, $sql);
 
         // Error checking
@@ -77,12 +77,9 @@
         // Display a message to the user indicating the registration was successful
         echo "waitlist Registration successful!";
     } 
-    
-    
-    
     else {
         // The event is already at full capacity, inform the user
-        echo "Sorry, the event and the waitlist is already full and no more registrations can be accepted.";
+        echo "Sorry, the event and the waitlist are already full, and no more registrations can be accepted.";
     }
 
     mysqli_close($conn);
