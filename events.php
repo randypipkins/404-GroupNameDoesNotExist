@@ -70,6 +70,7 @@ if(!$result){
         <div class="tab tab-1" id="participantT">
                 <table id="table" border="1">
                     <tr>
+                        <th>Event ID</th>
                         <th>Event Title</th>
                         <th>Event Type</th>
                         <th>Location</th>
@@ -117,7 +118,7 @@ if(!$result){
                     <?php
                         }
                     } else{
-                        echo "<tr><td colspan='9'>No events found</td></tr>";
+                        echo "<tr><td colspan='10'>No events found</td></tr>";
                     }
                     ?>
                 </table>
