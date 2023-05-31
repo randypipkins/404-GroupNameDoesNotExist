@@ -41,6 +41,33 @@ if(!$result){
   <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
   <!-- custom css -->
   <link rel="stylesheet" href="css/style.css" />
+   <!-- Include jQuery library and your custom script -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Handle delete button click event
+      $(document).on("click", ".delete-button", function(e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Get the event ID from the data attribute
+        var eventId = $(this).data("event-id");
+
+        // Send an AJAX request to delete_event.php
+        $.ajax({
+          url: "delete_event.php",
+          type: "POST",
+          data: { event_id: eventId },
+          success: function(response) {
+            // Refresh the page after successful deletion
+            location.reload();
+          },
+          error: function(xhr, status, error) {
+            console.log(xhr.responseText); // Log any errors to the console
+          }
+        });
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -106,10 +133,11 @@ if(!$result){
                         <td><?php echo $event_capacity; ?></td>
                         <td><?php echo $event_description; ?></td>
                         <td>
-                            <form action="delete_event.php" method="POST" style="display: inline;">
-                                <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-                                <button type="submit" name="delete_event">Delete</button>
-                            </form>
+                        <form style="display: inline;">
+                        <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+                        <button class="delete-button" data-event-id="<?php echo $event_id; ?>">Delete</button>
+                        </form>
+
                             <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
                         </td>
                     </tr>
