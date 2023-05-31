@@ -43,31 +43,6 @@ if(!$result){
   <link rel="stylesheet" href="css/style.css" />
    <!-- Include jQuery library and your custom script -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Handle delete button click event
-      $(document).on("click", ".delete-button", function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Get the event ID from the data attribute
-        var eventId = $(this).data("event-id");
-
-        // Send an AJAX request to delete_event.php
-        $.ajax({
-          url: "delete_event.php",
-          type: "POST",
-          data: { event_id: eventId },
-          success: function(response) {
-            // Refresh the page after successful deletion
-            location.reload();
-          },
-          error: function(xhr, status, error) {
-            console.log(xhr.responseText); // Log any errors to the console
-          }
-        });
-      });
-    });
-  </script>
 </head>
 
 <body>
@@ -182,6 +157,7 @@ if(!$result){
                     <div class="button-div">
                         <button class="btn add-btn" name="add_event">Add</button>
                         <button class="btn edit-btn">Edit</button>
+                        <button class="btn remove-btn" onclick="confirmDeleteEvent()">Remove</button>
                     </div>
             </div>
         </main>
