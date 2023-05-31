@@ -100,6 +100,7 @@
         `start_time` VARCHAR(255) NOT NULL,
         `end_time` VARCHAR(255) NOT NULL,
         `capacity` VARCHAR(255) NOT NULL,
+        `wait_list` INT NOT NULL DEFAULT 10,
         `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
