@@ -139,7 +139,7 @@
                             echo "</form>";
                         }
                         echo "<td>";
-                        echo "<form method='POST' action='delete_event.php'>"; 
+                        echo "<form method='POST' action='admindelete_event.php'>"; 
                         echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";

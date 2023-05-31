@@ -67,15 +67,15 @@ if(!$result){
     </div>
     <div class="container">
         <main>
-            <div class="tab tab-1">
+        <div class="tab tab-1" id="participantT">
                 <table id="table" border="1">
                     <tr>
                         <th>Event Title</th>
                         <th>Event Type</th>
+                        <th>Location</th>
                         <th>Date</th>
                         <th>Start Time</th>
                         <th>End Time</th>
-                        <th>Location</th>
                         <th>Capacity</th>
                         <th>Description</th>
                         <th>Options</th>
@@ -129,8 +129,8 @@ if(!$result){
           <label for="Event Type">Event Type:</label>
           <input type="text" placeholder="Event Type" name="event_type" id="input-1">
 
-          <label for="description">Description:</label>
-          <input type="text" placeholder="Description" name="description" id="input-2">
+          <label for="location">Location:</label>
+          <input type="text" placeholder="Location" name="location" id="input-2">
 
           <label for="date">Date:</label>
           <input type="text" name="date" id="input-3" placeholder="mm/dd/yyyy">
@@ -141,11 +141,11 @@ if(!$result){
           <label for="end-time">End Time:</label>
           <input type="text" placeholder="HH:MM PM/AM" name="end_time" id="input-5">
 
-          <label for="location">Location:</label>
-          <input type="text" placeholder="Location" name="location" id="input-6">
-
           <label for="capacity">Capacity:</label>
-          <input type="text" placeholder="Capacity" name="capacity" id="input-7">
+          <input type="text" placeholder="Capacity" name="capacity" id="input-6">
+
+          <label for="description">Description:</label>
+          <input type="text" placeholder="Description" name="description" id="input-7">
 
           <input type="hidden" name="id" id="input-8">
 
