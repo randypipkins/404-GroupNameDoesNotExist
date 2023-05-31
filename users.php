@@ -18,6 +18,11 @@
     // Execute SQL query with condition to exclude current user
     $sql = "SELECT id, email, first_name, last_name, user_role, is_banned FROM users WHERE id <> $currentUserId";
     $result = $conn->query($sql);
+    if(!$result){
+      $error_message = $conn->error;
+      $file_name = __FILE__;
+      log_error($error_message, $file_name);
+  }
 
 ?>
 <!DOCTYPE html>

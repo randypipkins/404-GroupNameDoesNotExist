@@ -21,6 +21,12 @@ if (isset($_POST['title']) && isset($_POST['event_type']) && isset($_POST['descr
     // Get the user ID based on the logged-in email
     $query = "SELECT id FROM users WHERE email = '$logged_in_email'";
     $result = $conn->query($query);
+    // Error checking
+    if(!$result){
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
+    }
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -32,10 +38,18 @@ if (isset($_POST['title']) && isset($_POST['event_type']) && isset($_POST['descr
         $sql = "INSERT INTO events (title, event_type, description, date, start_time, end_time, location, capacity, organizer_id) 
                 VALUES ('$title', '$event_type', '$description', '$date', '$start_time', '$end_time', '$location', '$capacity', '$organizer_id')";
 
+        // Retrieve the event_id for the newly inserted event
+        $event_id = $conn->insert_id;
+
+        // Set the event_id value in the input field
+        echo '<script>document.getElementById("input-8").value = "' . $event_id . '";</script>';
+
         if ($conn->query($sql) === TRUE) {
             echo "Event added successfully";
         } else {
-            echo "Error adding event: " . $conn->error;
+            $error_message = $conn->error;
+            $file_name = __FILE__;
+            log_error($error_message, $file_name);
         }
     } else {
         echo "User not found";

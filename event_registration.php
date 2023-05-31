@@ -16,10 +16,22 @@
     $sql = "INSERT INTO participation (participant_capacity, wait_list, isFull, user_id, email, event_id) 
         VALUES (0, 0, false, '$user_id', '$user_email', '$event_id')";
     $result = mysqli_query($conn, $sql);
+    // Error checking
+    if(!$result){
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
+    }
 
     //update the event's capacity in the events table
     $sql = "UPDATE events SET capacity = capacity - 1 WHERE id = '$event_id'";
     $result = mysqli_query($conn, $sql);
+    // Error checking
+    if(!$result){
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
+    }
 
     //display a message to the user indicating whether the registration was successful or not
     if($result){

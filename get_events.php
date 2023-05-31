@@ -13,6 +13,12 @@
   // Fetch events data from the database
   $sql = "SELECT * FROM events";
   $result = $conn->query($sql);
+  // Error checking
+  if(!$result){
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
+  }
 
   // Format events data as HTML table rows
   $rows = "";

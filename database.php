@@ -169,3 +169,17 @@
         echo "Error creating database: " . $conn->error;
     }
 
+    //Create error log table
+    $sql = "CREATE TABLE IF NOT EXISTS `error_logs`(
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `error_message` TEXT,
+        `file_name` VARCHAR(255),
+        `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+    )";
+    if($conn->query($sql) === TRUE){
+        echo "Table error_logs created successfully";
+    } else{
+        echo "Error creating database: " . $conn->error;
+    }
+
+?>

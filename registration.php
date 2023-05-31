@@ -44,6 +44,9 @@ if(mysqli_query($conn, $sql)){
     exit;
 } else{
     echo "Error: " . $sql . "<br>" . $conn->error;
+    $error_message = $conn->error;
+    $file_name = __FILE__;
+    log_error($error_message, $file_name);
 }
 
 mysqli_close($conn);

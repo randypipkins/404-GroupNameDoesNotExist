@@ -22,6 +22,10 @@ if (isset($_POST['user_id'])) {
         echo "<span class='text-success'>User banned</span>";
     } else {
         echo "<span class='text-danger'>Error banning user: " . $conn->error . "</span>";
+        // Error checking
+        $error_message = $conn->error;
+        $file_name = __FILE__;
+        log_error($error_message, $file_name);
     }
 }
 ?>
