@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 /*Nav *******************************/
+/*According to https://webaim.org/resources/contrastchecker/ my website colors provide great 
+color contrast. Accessibility feature 2*******************************/
 #h3 {
     font-family: 'Pacifico', cursive;
     padding-left: 1rem;
