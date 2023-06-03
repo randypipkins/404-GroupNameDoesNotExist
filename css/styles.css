@@ -1,5 +1,8 @@
 /*According to https://webaim.org/resources/contrastchecker/ my website colors provide great 
 color contrast. Accessibility feature 2*******************************/
+
+/*provide link styling when hovering that changes color to grey that helps user to interactive with the element (feature 3)*/
+/*provide button styling with a black background color and white text color. These visual cues improve accessibility(feature 3)*/
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 * {
     margin: 0;
@@ -13,7 +16,7 @@ a {
     transition: color 500ms ease;
 }
 a:hover, button:hover {
-    cursor: pointer;
+    cursor: pointer; 
 }
 /** navigation bar style **/
 nav.main-nav{
