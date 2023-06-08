@@ -181,4 +181,22 @@
         echo "Error creating database: " . $conn->error;
     }
 
+    //Create cookies table
+    $sql = "CREATE TABLE IF NOT EXISTS `cookies`(
+        `id` INT AUTO_INCREMENT PRIMARY KEY,
+        `user_id` INT UNSIGNED NOT NULL,
+        `token` VARCHAR(255) NOT NULL,
+        last_access_timestamp INT NOT NULL,
+        expiry INT NOT NULL,
+        CONSTRAINT fk_user_id 
+            FOREIGN KEY (user_id)
+            REFERENCES users(id)
+            ON DELETE CASCADE
+        )";
+        if($conn->query($sql) === TRUE){
+            echo "Table cookies created successfully";
+        } else{
+            echo "Error creating database: " . $conn->error;
+        }
+
 ?>
