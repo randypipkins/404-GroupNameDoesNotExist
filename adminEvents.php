@@ -70,6 +70,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Event Type</th>
                     <th>Location</th>
                     <th>Date</th>
                     <th>Start Time</th>
@@ -87,17 +88,18 @@
                 if ($result && $result->num_rows > 0) {
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["id"] . "</td>";
-                        echo "<td>" . $row["title"] . "</td>";
-                        echo "<td>" . $row["location"] . "</td>";
-                        echo "<td>" . $row["date"] . "</td>";
-                        echo "<td>" . $row["start_time"] . "</td>";
-                        echo "<td>" . $row["end_time"] . "</td>";
-                        echo "<td>" . $row["capacity"] . "</td>";
-                        echo "<td>" . $row["description"] . "</td>";
-                        echo "<td>" . $row["organizer_id"] . "</td>";
-                        echo "<td>";
+                      echo "<tr>";
+                      echo "<td>" . $row["id"] . "</td>";
+                      echo "<td>" . $row["title"] . "</td>";
+                      echo "<td>" . $row["event_type"] . "</td>";
+                      echo "<td>" . $row["location"] . "</td>";
+                      echo "<td>" . $row["date"] . "</td>";
+                      echo "<td>" . $row["start_time"] . "</td>";
+                      echo "<td>" . $row["end_time"] . "</td>";
+                      echo "<td>" . $row["capacity"] . "</td>";
+                      echo "<td>" . $row["description"] . "</td>";
+                      echo "<td>" . $row["organizer_id"] . "</td>";
+                      echo "<td>";
                         // Check if the event is in the approved_events table
                         $event_id = $row["id"];
                         $approved_query = "SELECT * FROM approved_events WHERE id = '$event_id'";
@@ -139,7 +141,7 @@
                             echo "</form>";
                         }
                         echo "<td>";
-                        echo "<form method='POST' action='delete_event.php'>"; 
+                        echo "<form method='POST' action='admindelete_event.php'>"; 
                         echo "<input type='hidden' name='event_id' value='" . $row["id"] . "'>";
                         echo "<button type='submit' class='btn btn-primary'>Delete</button>";
                         echo "</form>";
@@ -148,7 +150,7 @@
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='12'>No events found</td></tr>";
+    echo "<tr><td colspan='13'>No events found</td></tr>";
 }
 ?>
             </table>

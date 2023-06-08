@@ -41,12 +41,12 @@ function addRow() {
                 const data = new FormData();
                 data.append("title", newRow.cells[0].innerHTML);
                 data.append("event_type", newRow.cells[1].innerHTML);
-                data.append("description", newRow.cells[2].innerHTML);
+                data.append("location", newRow.cells[2].innerHTML);
                 data.append("date", newRow.cells[3].innerHTML);
                 data.append("start_time", newRow.cells[4].innerHTML);
                 data.append("end_time", newRow.cells[5].innerHTML);
-                data.append("location", newRow.cells[6].innerHTML);
-                data.append("capacity", newRow.cells[7].innerHTML);
+                data.append("capacity", newRow.cells[6].innerHTML);
+                data.append("description", newRow.cells[7].innerHTML);
         
                 const xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {

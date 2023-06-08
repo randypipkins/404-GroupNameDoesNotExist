@@ -35,7 +35,7 @@ if(isset($_SESSION["success_msg"])){
         </article>
         <article class="form-container">
             <form method="POST" class="form" action="login.php">
-                <img src="img/loginPhoto.jpg" alt="wedding photo" class="form-image">
+                <img src="img/loginPhoto.jpg" alt="Man and woman creating a heart with their hands" class="form-image"> <!--adding alt for a accessibility(feature 1)-->
                 <div>
                     <label for="email" class="email"><strong>Email Address:</strong></label>
                     <br>

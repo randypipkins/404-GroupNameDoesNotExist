@@ -100,6 +100,7 @@
         `start_time` VARCHAR(255) NOT NULL,
         `end_time` VARCHAR(255) NOT NULL,
         `capacity` VARCHAR(255) NOT NULL,
+        `wait_list` INT NOT NULL DEFAULT 10,
         `description` VARCHAR(255) NOT NULL,
         `organizer_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -139,12 +140,13 @@
         `wait_list` INT NOT NULL,
         `isFull` BOOLEAN NOT NULL DEFAULT FALSE, 
         `user_id` INT UNSIGNED NOT NULL,
+        `email` VARCHAR(255) NOT NULL, 
         `event_id` INT UNSIGNED NOT NULL,
         `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id),
         FOREIGN KEY (event_id) REFERENCES events(id)
-     )";
+     )"; //added email for waitlist 
      if($conn->query($sql) === TRUE){
          echo "Table participation created successfully";
      } else{
