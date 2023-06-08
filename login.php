@@ -99,7 +99,7 @@ if($stmt = $conn->prepare("SELECT id, passwrd, user_role, is_banned FROM users W
             } else if($user_role === "event_organizer"){
                 header("Location: eventOrg.php");
             } else if($user_role === "admin"){
-                header("Location: admin.php");
+                header("Location: adminEvents.php");
             } else{
                 echo "Invalid role";
             }
