@@ -108,12 +108,10 @@ if(!$result){
                         <td><?php echo $event_capacity; ?></td>
                         <td><?php echo $event_description; ?></td>
                         <td>
-                        <form style="display: inline;">
-                        <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-                        <button class="delete-button" data-event-id="<?php echo $event_id; ?>">Delete</button>
-
-                        </form>
-
+                            <form action="delete_event.php" method="POST" style="display: inline">
+                                <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+                                <button type="submit" name="delete_event" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
+                            </form>
                             <a href="modify_event.php?event_id=<?php echo $event_id; ?>">Modify</a>
                         </td>
                     </tr>
