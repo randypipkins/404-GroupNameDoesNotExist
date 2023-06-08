@@ -54,6 +54,10 @@
         <a href="users.php" class="btn btn-danger"><span class="mx-2 text-white">Users</span></a>
       </li>
       <li href="" class="nav-link">
+        <i class="bx bxs-dashboard text-white"></i>
+        <a href="logviewer.php" class="btn btn-danger"><span class="mx-2 text-white">Error Log</span></a>
+      </li>
+      <li href="" class="nav-link">
         <i class="bx bx-user-check text-white"></i>
         <a href="logout.php" class="btn btn-danger"><span class="mx-2 text-white">Logout</span></a>
       </li>
